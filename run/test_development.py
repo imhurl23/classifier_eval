@@ -72,7 +72,7 @@ def test_runner_logs_through_span_and_checkpoints_before_logging(tmp_path, monke
 
 def test_reference_scores_human_interaction_only():
     from adapters.base import Decision
-    row={'expected':{'s2':'unsafe','response_s2':'unsafe'},'metadata':{'response_refusal_label':'refusal'}}
+    row={'expected':{'s2':'unsafe','response_s2':'unsafe'},'metadata':{'source':'aegis_v2_validation','label_source':'human','response_refusal_label':'refusal'}}
     d=Decision('safe',{'safe':.9,'unsafe':.1},{},'ok',1)
     job={'target':'interaction_harm','scheme':'s2'}
     assert scores_for('development_reference',job,d,row)['binary_correct_strict']==0

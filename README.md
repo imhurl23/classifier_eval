@@ -1,16 +1,14 @@
 # Decision-interface safety eval
 
-Implementation of [the study design](decision-interface-safety-eval-design.md). The current study uses complete original HH-RLHF conversations and their original Assistant replies, as selected by the user on 2026-10-07. Historical pair-only work below is preserved and superseded for this question.
+Implementation of [the study design](decision-interface-safety-eval-design.md). The active benchmark uses the published human labels on original Aegis and WildGuardTest prompt-response pairs. No new human labeling is required for these supported tasks.
 
-The current [Braintrust human audit](https://www.braintrust.dev/app/eval_engineering/p/decision-interface-safety/datasets/human_full_conversation_audit__966835c91784) contains 200 original conversations with 4–32 turns. Interaction harm covers every observed turn; companion judgments target the marked final User or Assistant turn using all history. These exact dialogues need new human annotations; neither Aegis harm labels nor HH preference labels are transferred. See the [full-conversation runbook](run/FULL_CONTEXT_RUNBOOK.md).
-
-All 112 hosted validation calls completed with valid outputs. The 4,200-call reference replacement is running; Clef paused after Cloudflare exhausted its daily free allocation. Of the subsequent 1,680 repeatability and 2,400 final-turn calls, quota-available partitions are queued and remaining Clef calls are retained as pending. Decisions, Baseten and PolicyLM remain in the study, with their outstanding billing/context requirements documented in the runbook. The 1,630 original full-conversation held-out candidates are prepared and unexecuted. Full context in this research corpus does not establish representativeness of production traffic.
+The Aegis validation comparison reuses 1,400 verified predictions: 200 identical examples for each of seven model/interfaces. HH-RLHF full conversations remain supplemental diagnostics because chosen/rejected preferences are not safety gold. See the [source-label runbook](run/SOURCE_LABEL_RUNBOOK.md) for supported targets, filters, rerun commands, and current coverage.
 
 Review the [study policy target](prompts/policy_target.md), four draft rubrics, and their shared label definitions in the [rubric review index](prompts/README.md). They are local drafts, not frozen Braintrust prompt versions.
 
 The review packet is [REVIEW_CHECKLIST.md](REVIEW_CHECKLIST.md); a printable copy with tick boxes and write-in lines is [REVIEW_CHECKLIST.pdf](REVIEW_CHECKLIST.pdf). Regenerate it after editing the Markdown with `python3 review/build_printable.py` (needs pandoc and Chrome).
 
-## Historical pair-only data build
+## Source data build
 
 ```sh
 python -m venv .venv
@@ -18,7 +16,7 @@ python -m venv .venv
 .venv/bin/python -m data.fetch_sources
 .venv/bin/python data/build_datasets.py
 .venv/bin/python data/build_datasets.py --push
-.venv/bin/python -m pytest -q
+.venv/bin/python -m pytest -q --ignore=data/processed
 ```
 
 Braintrust access always loads `BRAINTRUST_API_KEY` from this repository's `.env`. `BASETEN_API_KEY` in the same file serves the six dedicated deployments (`deploy/baseten/`) and Baseten Loops training. Their model IDs are recorded in `.env`; the verified Tev1/Qwen deployment IDs are pinned there as well. Keys are never stored in the manifest or sent to stdout. Published dataset names include their content hash. `run_manifest.json` holds the returned Braintrust dataset versions and is ignored by Git because it is run-specific. Re-running `--push` republishes only datasets whose content hash changed; unchanged datasets keep their recorded name and version, so earlier experiments stay pinned to the data they ran on.
@@ -64,13 +62,7 @@ Every span also records `arm` and `model`; `model_version` retains the served
 revision. Register new arms in the shared mapping before running them. Runner
 checkpoints retain the run-group name and an `experiment_urls` map for the children.
 
-The current full-conversation runner sets `metadata.study_status = "current"`.
-Single-configuration copies of older pair-only experiments are labeled `legacy`.
-The original aggregate experiments are marked `aggregate_archive`, with all records
-and names preserved. The saved **Current full-conversation study** experiment view
-shows the current single-configuration copies and hides legacy/archive runs.
-The **Model** custom column reads `metadata.model` from the root span.
-All originals remain accessible through All experiments.
+Primary source-labeled configurations set `metadata.study_status = "current"` and `benchmark_primary = true`. HH full-context, unsupported Aegis companion targets, repeatability, and batching checks are `supplemental`; other historical copies are `legacy`. Originals remain `aggregate_archive` with records and names preserved. The saved **Source-labeled safety benchmark** view selects Aegis validation interaction harm and charts `source_accuracy`. Filter by both `source_dataset` and `target` before comparing scores; do not pool unrelated tasks or datasets. The **Model** column reads `metadata.model` from the root span.
 
 `python -m run.maintain_experiments` prepares a backup and metadata-only maintenance
 plan in `data/processed/experiment-maintenance/`. Apply it with

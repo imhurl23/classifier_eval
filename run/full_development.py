@@ -62,7 +62,7 @@ def run(directory,wall_minutes=45,resume=False):
         load_braintrust_key()
         name=previous['experiment'] if previous else summary['stage']+'__'+summary['version']+'__'+datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
         experiment=init_experiments(project='decision-interface-safety',experiment=name,update=bool(previous),
-           metadata={**experiment_model_metadata(j['arm'] for j in jobs),'context_policy':summary['context_policy'],'original_full_conversations':True,'study_status':'current','plan_version':summary['version'],
+           metadata={**experiment_model_metadata(j['arm'] for j in jobs),'context_policy':summary['context_policy'],'original_full_conversations':True,'study_status':'supplemental','evaluation_role':'full_context_diagnostic','benchmark_primary':False,'plan_version':summary['version'],
                      'human_gold_available':False,'pair_only_results_superseded':True,'allocated_planning_reserve_usd':reserve})
         experiment.experiment_urls.update((previous or {}).get('experiment_urls', {}))
         state={'status':'running','experiment':name,'experiment_url':experiment.summarize().experiment_url,'experiment_urls':experiment.experiment_urls,'run_group':name,

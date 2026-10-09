@@ -1,7 +1,7 @@
 """Execute frozen development stages, with checkpoints and Braintrust logs."""
 from __future__ import annotations
 from run.model_metadata import model_metadata, experiment_model_metadata
-from run.experiment_groups import init_experiments
+from run.experiment_groups import init_experiments, configuration
 
 import argparse
 from collections import Counter
@@ -20,7 +20,7 @@ from run.matrix import matched_option_order
 from run.offline_review import digest, request_for, bundled_request
 from run.matrix import COMPANION_RUBRICS
 from run.pilot import adapter_for
-from scorers.scorers import score_item
+from run.source_labels import source_scores, source_gold, usage_metrics, CONTEXT_POLICY, BENCHMARK
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -65,13 +65,8 @@ def reserve_usd(job):
 
 
 def scores_for(stage, job, decision, row):
-    output = {'label':decision.label, 'probs':decision.probs, 'status':decision.status}
-    if stage in {'development_reference', 'development_repeatability'} and job['target'] == 'interaction_harm':
-        return {k:v for k,v in score_item(output, row['expected'], row['metadata'],
-                                         job['scheme']).items() if v is not None}
-    # The dev sample has no independent human turn/refusal annotations. Source
-    # response labels must not be substituted for those missing judgments.
-    return {'valid_output':float(decision.status=='ok'), 'refused':float(decision.status=='refusal')}
+    return source_scores({'label':decision.label, 'probs':decision.probs, 'status':decision.status},
+                         row, job['target'], job['scheme'])
 
 
 def run(directory, budget_usd, wall_minutes=60, resume=False):
@@ -98,8 +93,19 @@ def run(directory, budget_usd, wall_minutes=60, resume=False):
     load_braintrust_key()
     prefix = stage if stage != 'development_schema_smoke' else 'development_schema'
     name = previous['experiment'] if previous else f'{prefix}__{summary["version"]}__{datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")}'
-    experiment = init_experiments(project='decision-interface-safety', experiment=name, update=bool(previous),
+    label_coverage = {}
+    for job in plan:
+        config = configuration(job)
+        label_coverage[config] = label_coverage.get(config, True) and source_gold(rows[job['item_id']], job['target']) is not None
+    profiles = {config: {'human_gold_available': labeled,
+                        'study_status': 'current' if labeled and stage == 'development_reference' else 'supplemental',
+                        'benchmark_primary': labeled and stage == 'development_reference'}
+                for config, labeled in label_coverage.items()}
+    experiment = init_experiments(project='decision-interface-safety', experiment=name, update=bool(previous), configuration_metadata=profiles,
                          metadata={**experiment_model_metadata(j['arm'] for j in plan),'purpose':stage, 'preregistered':False,
+                                   'context_policy':CONTEXT_POLICY, 'benchmark_id':BENCHMARK,
+                                   'study_status':'current' if stage=='development_reference' else 'supplemental',
+                                   'evaluation_role':'source_labeled_development' if stage=='development_reference' else 'diagnostic',
                                    'plan_version':summary['version'], 'budget_usd':budget_usd,
                                    'stage_reserve_usd':reserve, 'file_sha256':summary['file_sha256'],
                                    'item_ids':list(rows), 'arms':sorted({j['arm'] for j in plan}),
@@ -174,7 +180,7 @@ def run(directory, budget_usd, wall_minutes=60, resume=False):
                     result['usage_scope'] = 'whole_bundle_once'
                 scores = scores_for(stage, job, decision, row)
                 result['scores'] = scores
-                gold = row['expected'].get('s2') if stage in {'development_reference', 'development_repeatability'} and job['target'] == 'interaction_harm' else None
+                gold = source_gold(row, job['target'])
                 result['human_interaction_gold'] = gold
                 # Checkpoint before logging so a logging outage cannot cause paid repeats.
                 with lock:
@@ -190,7 +196,7 @@ def run(directory, budget_usd, wall_minutes=60, resume=False):
                          scores=scores,
                          expected={'label':gold} if gold is not None else None,
                          metadata={k:v for k,v in result.items() if k not in {'label','probs','latency_ms'}},
-                         metrics={'latency_ms':decision.latency_ms})
+                         metrics={'latency_ms':decision.latency_ms, **usage_metrics(decision.usage)})
             failures = failures + 1 if decision.status in {'api_error','invalid_output','truncated'} else 0
             if failures >= 3:
                 with lock:

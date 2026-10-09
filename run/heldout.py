@@ -18,6 +18,7 @@ from run.matrix import matched_option_order
 from run.pilot import adapter_for,load_local_service_keys
 from run.baseten_preflight import ALLOWLIST
 from scorers.scorers import score_item
+from run.source_labels import source_scores
 ROOT=Path(__file__).resolve().parents[1]
 NATIVE={'granite_41_8b','qwen3guard_8b','nemotron_guard'}
 BASE_ARMS={'tev1_native','qwen35_4b_letters','qwen35_4b_json','safeguard_120b'}|NATIVE
@@ -104,11 +105,8 @@ def execute(job,row,cache):
 
 
 def result_scores(job,decision,row):
-    if job['target']=='native_pair':return {'valid_output':float(decision.status=='ok'),'refused':float(decision.status=='refusal')}
-    if job['target']!='interaction_harm' and row['metadata']['source']!='wildguardtest':
-        return {'valid_output':float(decision.status=='ok'),'refused':float(decision.status=='refusal')}
-    return {k:v for k,v in score_item({'label':decision.label,'probs':decision.probs,'status':decision.status},
-                                     row['expected'],row['metadata'],job['scheme'],job['target']).items() if v is not None}
+    return source_scores({'label':decision.label,'probs':decision.probs,'status':decision.status},
+                         row,job['target'],job['scheme'])
 
 
 def shutdown_baseten(arms):

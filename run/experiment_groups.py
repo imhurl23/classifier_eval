@@ -41,7 +41,7 @@ def configuration(metadata):
 
 class ExperimentGroup:
     def __init__(self, *, project=None, project_id=None, experiment, metadata=None,
-                 update=False, set_current=False, **kwargs):
+                 update=False, set_current=False, configuration_metadata=None, **kwargs):
         if set_current:
             raise ValueError('Experiment groups cannot be the current span parent')
         self.project = project
@@ -49,6 +49,7 @@ class ExperimentGroup:
         self.name = experiment
         self.metadata = dict(metadata or {})
         self.update = update
+        self.configuration_metadata = configuration_metadata or {}
         self.kwargs = kwargs
         self.children = {}
         self.experiment_urls = {}
@@ -58,7 +59,8 @@ class ExperimentGroup:
         import braintrust as bt
         with self.lock:
             if config not in self.children:
-                metadata = {**self.metadata, **config.metadata(), 'run_group': self.name}
+                metadata = {**self.metadata, **self.configuration_metadata.get(config, {}),
+                            **config.metadata(), 'run_group': self.name}
                 child = bt.init(project=self.project, project_id=self.project_id,
                                 experiment=config.name(self.name), metadata=metadata,
                                 update=self.update, set_current=False, **self.kwargs)

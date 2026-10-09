@@ -74,10 +74,14 @@ def prepare():
         if not arms:
             arms = (experiment.get('metadata') or {}).get('arms', [])
         metadata = {**(experiment.get('metadata') or {}), **experiment_model_metadata(arms)}
-        current = experiment['name'].startswith('full_context_')
-        status = 'current' if current else 'legacy'
+        revision_path = ROOT/'study_revision.json'
+        policy = json.loads(revision_path.read_text()).get('active_context_policy') if revision_path.exists() else None
+        status = (experiment.get('metadata') or {}).get('study_status')
+        if status is None:
+            status = 'supplemental' if experiment['name'].startswith('full_context_') and policy=='source_labeled_original_pairs_v1' else 'legacy'
+        current = status == 'current'
         metadata.update(study_status=status, superseded_for_current_study=not current)
-        prefix = 'CURRENT FULL-CONVERSATION STUDY' if current else 'LEGACY PAIR-ONLY / DIAGNOSTIC — superseded for the current full-conversation study'
+        prefix = 'CURRENT SOURCE-LABELED BENCHMARK' if current else 'SUPPLEMENTAL DIAGNOSTIC' if status=='supplemental' else 'LEGACY DIAGNOSTIC'
         description = prefix + '. Original results preserved. ' + (experiment.get('description') or '')
         patches = [{'id': row['id'], 'metadata': model_metadata(span_arm(row, experiment))}
                    for row in rows if any((row.get('metadata') or {}).get(k) != v

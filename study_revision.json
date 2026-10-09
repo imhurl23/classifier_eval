@@ -1,9 +1,30 @@
 {
-  "active_context_policy": "original_full_conversation_v2",
-  "authorization": "User requested preserving full histories and rerunning all stages; selected original upstream conversations with original Assistant replies",
-  "dataset": "data/processed/full-conversations/92f8046d8b14",
+  "active_context_policy": "source_labeled_original_pairs_v1",
+  "authorization": "User requested restoring source human labels as the primary benchmark and rerunning missing comparisons; no new full-dialogue annotation required",
+  "dataset": "Original Aegis paired inputs for interaction harm; original WildGuardTest pairs for prompt harm, response harm, and refusal",
   "audit": "data/processed/full-conversation-audit/966835c91784",
-  "legacy_pair_results": "Retained; superseded for the revised full-conversation question",
+  "legacy_pair_results": "Matching labeled predictions reusable; pilots remain diagnostic",
   "authorized_total_budget_usd": 1000,
-  "heldout_status": "Not executed; new full-context human safety gold needed"
+  "heldout_status": "Bounded source-labeled WildGuard scoring check completed: 5 matched examples, 105 requests, 21 configurations; full population evaluation remains unexecuted",
+  "primary_benchmark": "source_labeled_safety_v1",
+  "gold_policy": "Use published human labels on unchanged source inputs. WildGuard interaction harm is an explicitly derived OR comparator. No labels transferred to HH histories.",
+  "full_context_study_role": "Supplemental context/repeatability diagnostics; preserved without safety accuracy claims",
+  "previous_revision": {
+    "active_context_policy": "original_full_conversation_v2",
+    "authorization": "User requested preserving full histories and rerunning all stages; selected original upstream conversations with original Assistant replies",
+    "dataset": "data/processed/full-conversations/92f8046d8b14",
+    "audit": "data/processed/full-conversation-audit/966835c91784",
+    "legacy_pair_results": "Retained; superseded for the revised full-conversation question",
+    "authorized_total_budget_usd": 1000,
+    "heldout_status": "Not executed; new full-context human safety gold needed"
+  },
+  "source_benchmark_run": {
+    "plan_version": "ce38af926b4d",
+    "run_group": "source_labeled_wildguard__ce38af926b4d__20261009T154435Z",
+    "allocated_budget_usd": 25,
+    "planning_reserve_usd": 13.83537,
+    "items": 5,
+    "requests": 105,
+    "purpose": "Source-label scoring check; too small for reliable model rankings"
+  }
 }
