@@ -1,0 +1,9 @@
+{
+  "active_context_policy": "original_full_conversation_v2",
+  "authorization": "User requested preserving full histories and rerunning all stages; selected original upstream conversations with original Assistant replies",
+  "dataset": "data/processed/full-conversations/92f8046d8b14",
+  "audit": "data/processed/full-conversation-audit/966835c91784",
+  "legacy_pair_results": "Retained; superseded for the revised full-conversation question",
+  "authorized_total_budget_usd": 1000,
+  "heldout_status": "Not executed; new full-context human safety gold needed"
+}

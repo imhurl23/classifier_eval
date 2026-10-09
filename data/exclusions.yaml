@@ -1,0 +1,8 @@
+# Provisional: current s13 Long rubric exceeds 1,200 tokens before the item.
+# Recompute from actual adapter requests and rebuild/version datasets before freeze.
+max_item_wrapper_tokens_qwen35: 1200
+exclude_redacted: true
+require_human_prompt_label: true
+# Aegis V2 has no per-annotator columns and binary prompt labels. Category
+# values are aggregate annotations, not adjudicated multiclass gold.
+allow_category_proxy_as_gold: false

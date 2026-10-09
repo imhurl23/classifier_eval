@@ -1,0 +1,8 @@
+braintrust>=0.2
+PyYAML>=6
+tokenizers>=0.20
+pytest>=8
+requests>=2.32
+openai>=3.22
+tiktoken>=0.11
+transformers>=5
