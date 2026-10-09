@@ -40,18 +40,22 @@
     "allocated_additional_budget_usd": 1000,
     "request_reserve_usd": 667.424044299,
     "shared_contingency_usd": 250,
-    "status": "running",
+    "status": "hosted_verified_complete_baseten_running",
     "pricing_evidence": "analysis/hosted-pricing-2026-10-09.json",
     "supplement_plan_version": "ecd7a74f882e",
     "planned_supplement_requests": 58207,
     "policylm_plan_version": "d3e705c9e551",
     "policylm_status": "completed_2131_verified",
-    "baseten_status": "starting_56076_requests"
+    "baseten_status": "resumed_after_transport_reset_with_automatic_completion_audit",
+    "hosted_completed_requests": 66566,
+    "hosted_configurations_verified": 59,
+    "hosted_recorded_usage_estimate_usd": 40.081881418,
+    "completion_watcher": "run/watch_source_completion.py"
   },
   "cloudflare_paid_authorization": {
     "date": "2026-10-09",
     "instruction": "Upgrade Workers Paid within budget",
     "base_fee_usd_per_month": 5,
-    "status": "checkout_requires_billing_address"
+    "status": "User reports upgrade complete; both full Clef runs completed successfully"
   }
 }
