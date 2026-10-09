@@ -15,6 +15,7 @@ import time
 from pathlib import Path
 
 from data.bt_auth import ROOT
+from data.jsonl import read_jsonl
 from run.configure_braintrust_audit import PROJECT
 from run.experiment_groups import configuration
 from run.maintain_experiments import api, span_arm
@@ -89,8 +90,7 @@ def list_experiments():
 def manifest_configurations():
     jobs = {}
     for path in (ROOT / 'data/processed').glob('**/manifest.jsonl'):
-        for line in path.read_text().splitlines():
-            job = json.loads(line)
+        for job in read_jsonl(path):
             if job.get('job_id') and all(job.get(k) for k in ('arm', 'target', 'scheme', 'rubric')):
                 config = {k: job[k] for k in ('arm', 'target', 'scheme', 'rubric')}
                 if job['job_id'] in jobs and jobs[job['job_id']] != config:

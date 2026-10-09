@@ -4,7 +4,8 @@ The primary benchmark uses labels already published with the original prompt-res
 
 | Source | Supported gold |
 | --- | --- |
-| Aegis V2 paired validation | Human conversation/interaction binary harm |
+| Aegis V2 validation and test, paired and prompt-only cohorts | Human conversation/interaction binary harm |
+| XSTest | Human prompt binary harm |
 | WildGuardTest | Human prompt harm, response harm, response refusal; interaction harm derived as OR of prompt/response harm |
 | HH-RLHF full conversations | No safety gold; preferences remain supplemental diagnostics |
 
@@ -14,34 +15,45 @@ Do not transfer pair labels to expanded HH conversations, infer safety from chos
 
 On 2026-10-09, 1,400 existing Aegis predictions were verified against their pinned requests and restored as seven primary single-interface experiments with 200 identical validation examples each. No inference was repeated. Inputs, outputs, span identity, and historical results were preserved; source-label provenance, dataset bindings, strict `source_accuracy`, and recorded token usage were added.
 
-A fresh WildGuard scoring check completed 105 requests across 21 configurations on five identical examples. All calls completed. This small, deterministic stratified sample checks scoring and logging; it cannot support a reliable model ranking or a full-population claim. Native prompt/response/refusal questions remain distinct; derived interaction OR is explicitly labeled. Decisions Luna retains its existing Aegis comparison; it was omitted from new calls because endpoint-specific pricing is unresolved.
+The five-example WildGuard scoring check (105 requests, 21 configurations) is a historical diagnostic, not a full-population ranking. Its plan is `ce38af926b4d`.
 
-The new plan is `data/processed/source-labeled-benchmark/ce38af926b4d`; the run group is `source_labeled_wildguard__ce38af926b4d__20261009T154435Z`. The additional allocation was $25 within the previously authorized $1,000 envelope, with a $13.84 conservative request reserve and a separately retained infrastructure allowance. These are planning allowances, not reconciled invoice charges.
+The full hosted plan `000bf1bcb6dc` is running across all 5,252 local `dis-dev`/`dis-test` records and 66,566 supported binary requests. It retains prior development exposure and makes no retrospective held-out or preregistration claim. The local cohorts are Aegis validation 486 paired + 709 prompt-only, Aegis test 813 paired + 1,113 prompt-only, WildGuardTest 1,681 paired, and XSTest 450 prompt-only. Source splits and input units remain separate experiments. This is full coverage of the published local datasets, not every upstream raw record or the historical robustness matrix.
+
+All seven hosted interfaces are included. Jev noul supports interaction harm only. One WildGuard record lacks a source refusal label and is omitted only from refusal evaluation; it remains in the other harm tasks. Baseten common-policy comparisons and native guard references are running under plan `ecd7a74f882e` (56,076 physical requests). The 2,131-example PolicyLM prompt-only supplement completed under `d3e705c9e551`, with every source score and both Braintrust cohort counts verified. PolicyLM remains supplemental because its published development/training overlap caveat applies.
+
+The additional authorized allocation is $1,000. The hosted plan reserves $667.42 plus a shared $250 contingency; $150 of that contingency covers bounded Baseten compute. These are conservative planning reservations, not spending. [Verified public rates](../analysis/hosted-pricing-2026-10-09.json) now include Decisions at $0.10/M input, with no output surcharge. Recorded usage estimates exclude unrecorded retries, infrastructure and gateway fees. Cloudflare Workers Paid was authorized; a saved payment method is available, but checkout is waiting for the account's billing address.
+
+WildGuard's old length metadata measured incomplete context. `data.repair_source_lengths` preserves IDs, full inputs, human labels and cohort membership, archives the prior files, and publishes new content-addressed dataset versions with actual full-pair lengths. Frozen ongoing plans keep their original artifacts. Serving checks tokenize the actual requests; all 24 longer WildGuard records remain included. Four guard deployments were rebuilt at 8,192 tokens; old production deployments were preserved.
 
 ## Braintrust filters and scores
 
-Open [Source-labeled safety benchmark](https://www.braintrust.dev/app/eval_engineering/p/decision-interface-safety/experiments?v=Source-labeled+safety+benchmark). Its saved filters select Aegis validation interaction harm. For another comparison, use all three filters:
+Open [Source-labeled safety benchmark](https://www.braintrust.dev/app/eval_engineering/p/decision-interface-safety/experiments?v=Source-labeled+safety+benchmark). Its saved filters select Aegis validation interaction harm. For another comparison, select the source, input unit and target, and filter the full hosted plan while it runs:
 
 ```sql
-metadata.study_status = 'current'
+metadata.plan_version = '000bf1bcb6dc'
 metadata.source_dataset = 'wildguardtest'
+metadata.input_unit = 'conversation'
 metadata.target = 'prompt_harm'
 ```
 
 Other WildGuard targets: `response_harm`, `response_refusal`, `interaction_harm`. For Aegis: source dataset `aegis_v2_validation`, target `interaction_harm`. Compare models on the same source, target, and cohort. Group by `arm` to keep different interfaces for the same model separate.
 
-Use `source_accuracy` as strict agreement with source gold. Invalid output and classifier refusal count as incorrect. `valid_output` and `refused` describe classifier behavior; they are not safety accuracy. Braintrust's “All scores (avg)” averages different quantities and must not be used as a model-quality metric. Probability scores are available only when the adapter returns probabilities; recall may be absent when the cohort contains no positives. Cost remains absent until billing is reconciled.
+Use `source_accuracy` as strict agreement with source gold. Invalid output and classifier refusal count as incorrect. `valid_output` and `refused` describe classifier behavior; they are not safety accuracy. Braintrust's “All scores (avg)” averages different quantities and must not be used as a model-quality metric. Probability scores are available only when the adapter returns probabilities; recall may be absent when the cohort contains no positives. Estimated usage costs are recorded separately by `analysis.source_costs`; they are not verified invoices. Missing provider usage remains absent.
 
 Primary configurations are `current`. HH, unsupported Aegis companion targets, repeatability, and batching checks are `supplemental`. Historical copies are `legacy`, and preserved originals are `aggregate_archive`. Each experiment contains one model/interface, target, scheme, and rubric; Model is filled from `metadata.model`.
 
 ## Prepare and execute future runs
 
 ```sh
-.venv/bin/python -m run.source_benchmark --prepare --budget-usd 25 --max-items 200
-.venv/bin/python -m run.source_benchmark --plan <returned-plan-directory> --wall-minutes 60
+.venv/bin/python -m run.source_full --prepare --budget-usd 1000
+.venv/bin/python -m run.source_full --plan <returned-plan-directory> --workers-per-arm 8
+.venv/bin/python -m run.source_supplement --prepare
+.venv/bin/python -m run.source_supplement --plan <supplement-plan-directory> --family baseten
+.venv-policylm/bin/python -m run.source_supplement --plan <supplement-plan-directory> --family policy
+.venv/bin/python -m run.verify_source_run <plan-directory> --remote
 ```
 
-Preparation freezes code, prompts, selected original inputs, and exact requests. It checks the study's remaining planning allocation, excludes prior pilot/development exposure, uses the same cohort for every applicable interface, and reserves retries before inference. A budget may fit only a small scoring check. Never rewrite executed plan hashes.
+Preparation freezes code, prompts, selected original inputs, and exact requests. It freezes every supported source request, checks the additional authorized allocation, uses the same cohort for every applicable interface, and reserves retries before inference. Prior exposure is retained explicitly. The older `run.source_benchmark` is only a bounded scoring-check runner. Never rewrite executed plan hashes.
 
 Results and completion checkpoints are fsynced before logging to Braintrust. Completed jobs are never automatically repeated. `--resume` refuses ambiguous inflight calls until they are reconciled. The process lock prevents concurrent execution of the same plan. Future `run.development` calls also select scores from available source gold and mark unsupported configurations supplemental.
 

@@ -3,6 +3,7 @@ from __future__ import annotations
 from run.model_metadata import model_metadata, experiment_model_metadata
 from run.experiment_groups import init_experiments, configuration
 
+from data.jsonl import read_jsonl
 import argparse
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -35,8 +36,8 @@ def load_plan(directory):
     for name, expected in summary['file_sha256'].items():
         if hashlib.sha256((ROOT / name).read_bytes()).hexdigest() != expected:
             raise ValueError(f'Frozen file changed: {name}; prepare a new manifest')
-    rows = {r['id']: r for r in map(json.loads, (directory / 'sample.jsonl').read_text().splitlines())}
-    plan = list(map(json.loads, (directory / 'manifest.jsonl').read_text().splitlines()))
+    rows = {r['id']: r for r in read_jsonl(directory / 'sample.jsonl')}
+    plan = read_jsonl(directory / 'manifest.jsonl')
     if len(plan) != summary['requests'] or len(rows) != summary['items']:
         raise ValueError('Manifest/sample counts changed')
     ids = set()
@@ -81,7 +82,7 @@ def run(directory, budget_usd, wall_minutes=60, resume=False):
     status_path = directory / 'execution.json'
     results_path = directory / 'results.jsonl'
     previous = json.loads(status_path.read_text()) if status_path.exists() else None
-    completed = list(map(json.loads, results_path.read_text().splitlines())) if results_path.exists() else []
+    completed = read_jsonl(results_path) if results_path.exists() else []
     completed_ids = {r['job_id'] for r in completed}
     if (previous or completed) and not resume:
         raise ValueError('Execution already exists; do not automatically repeat paid calls')

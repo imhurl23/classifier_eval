@@ -2,6 +2,7 @@
 from __future__ import annotations
 from run.model_metadata import model_metadata, experiment_model_metadata
 from run.experiment_groups import init_experiments
+from data.jsonl import read_jsonl
 import argparse,fcntl,hashlib,json,os,time
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
@@ -43,8 +44,8 @@ def load_plan(directory):
         if sha(directory/name)!=summary['artifact_sha256'][name]:raise ValueError('Frozen artifact changed: '+name)
     for name,expected in summary['file_sha256'].items():
         if sha(ROOT/name)!=expected:raise ValueError('Frozen code/policy changed: '+name)
-    rows={r['id']:r for r in map(json.loads,(directory/'sample.jsonl').read_text().splitlines())}
-    jobs=list(map(json.loads,(directory/'manifest.jsonl').read_text().splitlines()))
+    rows={r['id']:r for r in read_jsonl(directory/'sample.jsonl')}
+    jobs=read_jsonl(directory/'manifest.jsonl')
     if len(rows)!=summary['items'] or len(jobs)!=summary['physical_requests']:raise ValueError('Frozen counts changed')
     seen=set()
     for j in jobs:
@@ -182,7 +183,7 @@ def run(directory,wall_minutes=120,resume=False):
         if wall_minutes>freeze['max_wall_minutes']:raise ValueError('Wall time exceeds frozen compute envelope')
         statepath=directory/'execution.json';resultpath=directory/'results.jsonl'
         previous=json.loads(statepath.read_text()) if statepath.exists() else None
-        completed=list(map(json.loads,resultpath.read_text().splitlines())) if resultpath.exists() else []
+        completed=read_jsonl(resultpath) if resultpath.exists() else []
         done={r['job_id'] for r in completed}
         if len(done)!=len(completed) or not done.issubset({j['job_id'] for j in jobs}):raise ValueError('Invalid checkpoint identity')
         if (previous or completed) and not resume:raise ValueError('Plan already executed; never automatically repeat paid calls')
@@ -247,7 +248,7 @@ def run(directory,wall_minutes=120,resume=False):
             experiment.flush()
         finally:
             state['baseten_shutdown']=shutdown_baseten(arms)
-            recorded=list(map(json.loads,resultpath.read_text().splitlines())) if resultpath.exists() else []
+            recorded=read_jsonl(resultpath) if resultpath.exists() else []
             atomic(directory/'native-derived.json',derive_native(recorded,rows))
             state['status']='completed' if state['completed_requests']==len(jobs) else 'partial'
             state['finished_at_utc']=datetime.now(timezone.utc).isoformat();save()

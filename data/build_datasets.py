@@ -306,12 +306,11 @@ def build():
                 strata[("wildguard", "duplicate_of_existing_item", row["prompt_harm_label"])] += 1
                 continue
             record = record_wildguard(row, i, tokenizer)
-            if record["metadata"]["token_len_qwen35"] > max_tokens:
-                counts[("wildguard", "over_1200_tokens")] += 1
-                strata[("wildguard", "over_1200_tokens", record["expected"]["s2"])] += 1
-            else:
-                seen.add(normalize_text(row["prompt"]))
-                datasets["dis-test"].append(record)
+            # Preserve the full labeled WildGuard cohort. Serving readiness is
+            # checked against each actual request by the source-run planners;
+            # the old 1,200-token item proxy dropped 24 valid conversations.
+            seen.add(normalize_text(row["prompt"]))
+            datasets["dis-test"].append(record)
     datasets["dis-pilot"] = [r for r in datasets["dis-test"] if r["id"] in PILOT_WG_IDS]
     if len(datasets["dis-pilot"]) != len(PILOT_WG_IDS):
         raise ValueError("Missing reserved WildGuard pilot item")

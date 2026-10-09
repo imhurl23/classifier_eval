@@ -48,7 +48,9 @@ def test_wildguard_record_maps_labels_and_strata():
 def test_wildguard_rows_present_in_test_set():
     datasets, counts, _ = build()
     wg = [r for r in datasets["dis-test"] if r["metadata"]["source"] == "wildguardtest"]
-    assert len(wg) > 1600
+    assert len(wg) == 1681
+    assert sum(r['metadata']['token_len_qwen35'] > 1200 for r in wg) == 24
+    assert counts[("wildguard", "over_1200_tokens")] == 0
     assert counts[("wildguard", "missing_conversation_or_harm_label")] == 36
     assert all(r["metadata"]["prompt_harm_agreement"] in (2 / 3, 1.0) for r in wg)
     assert all(r["metadata"]["response_harm_agreement"] in (2 / 3, 1.0) for r in wg)

@@ -8,7 +8,7 @@ docker_server:
   start_command: >-
     sh -c "vllm serve /app/checkpoint/model
     --served-model-name openai/gpt-oss-safeguard-120b
-    --max-model-len 4096
+    --max-model-len 8192
     --max-num-seqs 16
     --gpu-memory-utilization 0.95
     --port 8000"

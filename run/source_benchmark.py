@@ -3,6 +3,7 @@
 Prepare with --prepare --budget-usd N; execute the returned plan with --plan PATH.
 The budget is an additional conservative planning envelope, not provider billing.
 """
+from data.jsonl import read_jsonl
 import argparse
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
@@ -39,7 +40,7 @@ def sha(path):
 
 
 def candidates():
-    rows = [json.loads(line) for line in (ROOT/'data/processed/heldout-candidate/55a1f8b24835/sample.jsonl').read_text().splitlines()]
+    rows = read_jsonl(ROOT/'data/processed/heldout-candidate/55a1f8b24835/sample.jsonl')
     rows = [r for r in rows if r['metadata']['source'] == 'wildguardtest'
             and all(source_gold(r, target) is not None for target in TASKS)]
     # Exclude previous full-dialogue prompt exposure as well as the earlier
@@ -48,7 +49,7 @@ def candidates():
     exposed = set()
     for filename in ('data/processed/full-conversations/92f8046d8b14/development.jsonl',
                      'data/processed/dis-pilot.jsonl'):
-        for row in map(json.loads, (ROOT/filename).read_text().splitlines()):
+        for row in read_jsonl(ROOT/filename):
             for text in [row['input'].get('prompt',''), *[m['content'] for m in row['input'].get('messages',[]) if m['role']=='user']]:
                 exposed.add(normalize_text(text))
     rows = [r for r in rows if normalize_text(r['input']['prompt']) not in exposed]
@@ -117,7 +118,7 @@ def prepare(budget_usd, max_items=200):
         raise ValueError('Budget cannot cover a meaningful matched cohort')
     files = [p for folder in ('adapters','prompts') for p in sorted((ROOT/folder).rglob('*'))
              if p.suffix in {'.py','.md','.yaml'}]
-    files += [ROOT/p for p in ('run/source_benchmark.py','run/source_labels.py','run/model_metadata.py',
+    files += [ROOT/p for p in ('data/jsonl.py','run/source_benchmark.py','run/source_labels.py','run/model_metadata.py',
                               'run/experiment_groups.py','run/offline_review.py','run/matrix.py',
                               'run/pilot.py','run/development.py','run/heldout.py','scorers/scorers.py')]
     hashes = {str(p.relative_to(ROOT)):sha(p) for p in files}
@@ -152,8 +153,8 @@ def load_plan(directory):
     for name,value in summary['artifact_sha256'].items():
         if sha(directory/name)!=value:
             raise ValueError('Frozen artifact changed: '+name)
-    rows = {r['id']:r for r in map(json.loads,(directory/'sample.jsonl').read_text().splitlines())}
-    jobs = list(map(json.loads,(directory/'manifest.jsonl').read_text().splitlines()))
+    rows = {r['id']:r for r in read_jsonl(directory/'sample.jsonl')}
+    jobs = read_jsonl(directory/'manifest.jsonl')
     if len(rows)!=summary['items'] or len(jobs)!=summary['requests'] or len({j['job_id'] for j in jobs})!=len(jobs):
         raise ValueError('Frozen coverage changed')
     for job in jobs:
@@ -177,7 +178,7 @@ def _run(directory, resume=False, wall_minutes=60):
     summary, rows, jobs = load_plan(directory)
     results_path, state_path = directory/'results.jsonl', directory/'execution.json'
     previous = json.loads(state_path.read_text()) if state_path.exists() else None
-    results = [json.loads(l) for l in results_path.read_text().splitlines()] if results_path.exists() else []
+    results = read_jsonl(results_path) if results_path.exists() else []
     done = {r['job_id'] for r in results}
     if (previous or done) and not resume:
         raise ValueError('Benchmark already started; no automatic paid repeats')

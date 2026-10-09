@@ -9,7 +9,7 @@ docker_server:
     sh -c "vllm serve /app/checkpoint/model
     --served-model-name ibm-granite/granite-guardian-4.1-8b
     --dtype bfloat16
-    --max-model-len 4096
+    --max-model-len 8192
     --max-num-seqs 32
     --gpu-memory-utilization 0.90
     --port 8000"

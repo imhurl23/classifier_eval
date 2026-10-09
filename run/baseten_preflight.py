@@ -6,8 +6,8 @@ import requests
 from run.pilot import load_local_service_keys
 ROOT=Path(__file__).resolve().parents[1]
 ALLOWLIST={'tev1_native':('q0pg2dy3','wxek2l6'),'qwen35_4b_letters':('wgvmr76w','wxek2lz'),
-           'safeguard_120b':('wl5m85e3','31r6mlg'),'granite_41_8b':('qk5pm5lq','qvxk5mx'),
-           'qwen3guard_8b':('wozlgzz3','qrmn8p9'),'nemotron_guard':('wp52658q','qj7g9jl')}
+           'safeguard_120b':('wl5m85e3','q88klop'),'granite_41_8b':('qk5pm5lq','32zk050'),
+           'qwen3guard_8b':('wozlgzz3','q05y014'),'nemotron_guard':('wp52658q','wgk15ev')}
 
 def main(arms=None):
     selected=set(arms or ALLOWLIST)

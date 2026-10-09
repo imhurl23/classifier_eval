@@ -31,7 +31,7 @@ def prepare():
     source=ROOT/'data/processed/heldout-candidate/55a1f8b24835'
     rows=list(map(json.loads,(source/'sample.jsonl').read_text().splitlines()))
     paths=[p for folder in ('adapters','prompts') for p in sorted((ROOT/folder).rglob('*')) if p.suffix in {'.py','.md','.yaml'}]
-    paths += [ROOT/p for p in ('data/label_map.yaml','run/heldout.py','run/model_metadata.py','run/experiment_groups.py','run/source_labels.py','run/prepare_firstwave.py','run/freeze_heldout.py','run/offline_review.py','run/matrix.py','run/pilot.py','run/baseten_preflight.py','scorers/scorers.py','analysis/heldout-analysis-plan.md')]
+    paths += [ROOT/p for p in ('data/label_map.yaml','data/jsonl.py','run/heldout.py','run/model_metadata.py','run/experiment_groups.py','run/source_labels.py','run/prepare_firstwave.py','run/freeze_heldout.py','run/offline_review.py','run/matrix.py','run/pilot.py','run/baseten_preflight.py','scorers/scorers.py','analysis/heldout-analysis-plan.md')]
     paths += sorted((ROOT/'deploy/baseten').glob('*/config.yaml'))
     paths += [p for folder in ('qwen-tokenizer','gpt-oss-tokenizer') for p in sorted((ROOT/'data/raw'/folder).glob('*')) if p.is_file()]
     hashes={str(p.relative_to(ROOT)):sha(p) for p in paths}
