@@ -27,7 +27,7 @@ WildGuard's old length metadata measured incomplete context. `data.repair_source
 
 All 59 hosted configurations passed the final Braintrust readback: row counts, populated source-accuracy counts and averages, sampled requests/outputs/gold, model revisions, and bound dataset counts and source inputs match the frozen local artifacts. The 28 earlier Aegis/WildGuard scoring-check experiments are now supplemental, with all records preserved.
 
-The Baseten runner recovered after a transport reset; 56 failed calls were archived and retried. `run.watch_source_completion` waits for the runner, allows at most two further bounded recovery rounds, verifies physical and derived scores and remote bindings, and confirms all six GPU deployments shut down. Failed verification marks its experiments partial and writes a completion receipt rather than claiming completion. Check `data/processed/source-supplement/ecd7a74f882e/completion.json` for final status.
+The Baseten runner recovered after transport resets; failed calls were archived and retried. Local macOS power logs matched the failures to idle sleep. The completion watcher now uses a temporary `caffeinate -i -w <watcher-pid>` assertion, released automatically when the job exits; the display can still sleep. `run.watch_source_completion` waits for the runner, allows at most two further bounded recovery rounds, verifies physical and derived scores and remote bindings, and confirms all six GPU deployments shut down. Failed verification marks its experiments partial and writes a completion receipt rather than claiming completion. Check `data/processed/source-supplement/ecd7a74f882e/completion.json` for final status.
 
 ## Braintrust filters and scores
 

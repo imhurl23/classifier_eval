@@ -7,7 +7,11 @@ import argparse
 from datetime import datetime,timezone
 import fcntl
 import json
+import os
 from pathlib import Path
+import shutil
+import subprocess
+import sys
 import time
 
 from data.jsonl import read_jsonl
@@ -48,6 +52,12 @@ def watch(directory,max_recoveries=2):
                     time.sleep(30)
             report.update(status='verified_complete',finished_at_utc=datetime.now(timezone.utc).isoformat(),
                           gpu_shutdown_verified=True,compute_reserve_usd=summary['compute_reserve_usd'])
+            for experiment in list_experiments():
+                metadata=experiment.get('metadata') or {}
+                if metadata.get('plan_version')==summary['version']:
+                    api('PATCH','experiment/'+experiment['id'],json={'metadata':{**metadata,
+                        'verification_complete':True,
+                        'benchmark_primary':metadata.get('study_status')=='current' and metadata.get('policy_mode')=='common_policy'}})
             atomic(directory/'completion.json',report)
             atomic(directory/'baseten-verification.json',report)
             print(json.dumps(report),flush=True)
@@ -68,4 +78,10 @@ def watch(directory,max_recoveries=2):
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser();parser.add_argument('directory',type=Path)
-    args=parser.parse_args();watch(args.directory)
+    args=parser.parse_args()
+    # Keep only the active job awake. macOS idle sleep resets every in-flight
+    # HTTPS connection; -w releases this assertion when the watcher exits.
+    if sys.platform=='darwin' and shutil.which('caffeinate'):
+        subprocess.Popen(['caffeinate','-i','-w',str(os.getpid())],
+                         stdin=subprocess.DEVNULL,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL)
+    watch(args.directory)

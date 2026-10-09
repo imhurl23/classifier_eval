@@ -46,7 +46,7 @@
     "planned_supplement_requests": 58207,
     "policylm_plan_version": "d3e705c9e551",
     "policylm_status": "completed_2131_verified",
-    "baseten_status": "resumed_after_transport_reset_with_automatic_completion_audit",
+    "baseten_status": "resumed_after_idle_sleep_connection_resets; temporary keep-awake assertion and automatic completion audit active",
     "hosted_completed_requests": 66566,
     "hosted_configurations_verified": 59,
     "hosted_recorded_usage_estimate_usd": 40.081881418,
