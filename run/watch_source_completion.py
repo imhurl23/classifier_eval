@@ -47,16 +47,27 @@ def watch(directory,max_recoveries=2,workers_per_arm=8):
                 assert len(shutdown)==6 and all(r.get('verified_inactive') for r in shutdown.values())
             for attempt in range(3):
                 try:report=verify(directory,'baseten',remote=True);break
-                except Exception:
+                except Exception as exc:
                     if attempt==2:raise
+                    if isinstance(exc,AssertionError) and exc.args and isinstance(exc.args[0],tuple) and len(exc.args[0])==3:
+                        from run.repair_source_upload import repair
+                        repair(directory)
                     time.sleep(30)
             report.update(status='verified_complete',finished_at_utc=datetime.now(timezone.utc).isoformat(),
                           gpu_shutdown_verified=True,compute_reserve_usd=summary['compute_reserve_usd'])
             for experiment in list_experiments():
                 metadata=experiment.get('metadata') or {}
                 if metadata.get('plan_version')==summary['version']:
+                    if metadata.get('coverage_complete'):
+                        metadata={**metadata,'study_status':'current' if metadata.get('human_gold_available') and
+                            metadata.get('evaluation_role')!='supplemental_policy' else 'supplemental'}
+                    recovery=directory/'context-recovery/receipt.json'
+                    if recovery.exists():
+                        metadata={**metadata,'serving_context_recovery':json.loads(recovery.read_text()).get('replacements',{}),
+                                  'recovery_preserves_completed_predictions':True}
                     api('PATCH','experiment/'+experiment['id'],json={'metadata':{**metadata,
                         'verification_complete':True,
+                        'verification_error':None,
                         'benchmark_primary':metadata.get('study_status')=='current' and metadata.get('policy_mode')=='common_policy'}})
             atomic(directory/'completion.json',report)
             atomic(directory/'baseten-verification.json',report)
