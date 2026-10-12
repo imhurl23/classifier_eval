@@ -1,0 +1,9 @@
+{
+  "scored_judgments": 128899,
+  "cases": 10294,
+  "strict_errors": 18852,
+  "high_confidence_errors": 3044,
+  "archived_api_failure_records": 172,
+  "topics_backfill_run": false,
+  "new_inference_calls": 0
+}

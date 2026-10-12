@@ -1,0 +1,10 @@
+source_dataset,input_unit,target,arm_a,arm_b,n,a_wins,a_losses,both_wrong,both_correct,accuracy_delta_pp,ci_low_pp,ci_high_pp
+aegis_v2_test,conversation,interaction_harm,tev1_native,qwen35_4b_letters,813,92,81,87,553,1.3530135301353015,-1.7220172201722017,4.551045510455105
+aegis_v2_test,prompt_only,interaction_harm,tev1_native,qwen35_4b_letters,1113,163,74,117,759,7.996406109613657,5.300988319856245,10.69182389937107
+aegis_v2_validation,conversation,interaction_harm,tev1_native,qwen35_4b_letters,486,35,51,56,344,-3.292181069958848,-6.995884773662551,0.411522633744856
+aegis_v2_validation,prompt_only,interaction_harm,tev1_native,qwen35_4b_letters,709,113,44,59,493,9.732016925246826,6.346967559943582,13.117066290550069
+wildguardtest,conversation,interaction_harm,tev1_native,qwen35_4b_letters,1681,260,111,135,1175,8.863771564544914,6.60321237358715,11.06484235574063
+wildguardtest,conversation,prompt_harm,tev1_native,qwen35_4b_letters,1681,144,95,142,1300,2.9149315883402735,1.0707911957168352,4.699583581201665
+wildguardtest,conversation,response_harm,tev1_native,qwen35_4b_letters,1681,105,43,81,1452,3.688280785246877,2.260559190957763,5.056513979773944
+wildguardtest,conversation,response_refusal,tev1_native,qwen35_4b_letters,1680,141,17,146,1376,7.380952380952381,5.952380952380952,8.80952380952381
+xstest,prompt_only,prompt_harm,tev1_native,qwen35_4b_letters,450,23,8,36,383,3.3333333333333335,0.8888888888888888,5.777777777777778

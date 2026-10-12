@@ -1,4 +1,5 @@
 .env
+.DS_Store
 .venv/
 .venv-policylm/
 data/models/
@@ -11,3 +12,5 @@ training/data/
 training/logs/
 analysis/output/*/safety-analysis.zip
 analysis/output/*/judgments.csv.gz
+analysis/output/*/failure-explorer.html
+analysis/output/*/failure-analysis.zip
