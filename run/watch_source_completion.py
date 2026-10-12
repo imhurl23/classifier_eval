@@ -23,7 +23,7 @@ from run.split_experiments import list_experiments
 from run.maintain_experiments import api
 
 
-def watch(directory,max_recoveries=2):
+def watch(directory,max_recoveries=2,workers_per_arm=8):
     directory=Path(directory)
     with (directory/'.completion-watch.lock').open('a') as own_lock:
         fcntl.flock(own_lock.fileno(),fcntl.LOCK_EX|fcntl.LOCK_NB)
@@ -38,7 +38,7 @@ def watch(directory,max_recoveries=2):
                 if state.get('inflight'):raise ValueError('Ambiguous inflight calls need reconciliation')
                 if attempt==max_recoveries:raise ValueError('Bounded recoveries exhausted; incomplete coverage retained')
                 if failed:print(json.dumps(prepare_retry(directory,'baseten')),flush=True)
-                run(directory,family='baseten',resume=True,workers_per_arm=8)
+                run(directory,family='baseten',resume=True,workers_per_arm=workers_per_arm)
             summary=json.loads((directory/'summary.json').read_text())
             planned={j['job_id'] for j in read_jsonl(directory/'manifest.jsonl') if j['arm'] in COMMON+NATIVE}
             assert {r['job_id'] for r in records}==planned

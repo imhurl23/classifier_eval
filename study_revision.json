@@ -46,11 +46,12 @@
     "planned_supplement_requests": 58207,
     "policylm_plan_version": "d3e705c9e551",
     "policylm_status": "completed_2131_verified",
-    "baseten_status": "resumed_after_idle_sleep_connection_resets; temporary keep-awake assertion and automatic completion audit active",
+    "baseten_status": "context_recovery_started_2026-10-12; 47434 recorded, 8642 missing plus 14 confirmed API failures; final audit pending",
     "hosted_completed_requests": 66566,
     "hosted_configurations_verified": 59,
     "hosted_recorded_usage_estimate_usd": 40.081881418,
-    "completion_watcher": "run/watch_source_completion.py"
+    "completion_watcher": "run/watch_source_completion.py",
+    "context_recovery_controller": "run/recover_source_context.py"
   },
   "cloudflare_paid_authorization": {
     "date": "2026-10-09",
