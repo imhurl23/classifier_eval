@@ -1,0 +1,8 @@
+arm,recorded_runner_minutes_proxy,deployment_usd_per_minute,allocation_share,gpu_proxy_total_usd,physical_requests,allocation_basis
+tev1_native,157.7703140291521,0.02828,1.0,4.4617444807444215,10294,shared Qwen GPU allocated by cumulative recorded request latency; otherwise full deployment
+qwen35_4b_letters,157.7703140291521,0.02828,0.40573243318692737,1.810274444430778,10294,shared Qwen GPU allocated by cumulative recorded request latency; otherwise full deployment
+qwen35_4b_json,157.7703140291521,0.02828,0.5942675668130727,2.651470036313644,10294,shared Qwen GPU allocated by cumulative recorded request latency; otherwise full deployment
+safeguard_120b,157.7703140291521,0.10833,1.0,17.091258118778047,10294,shared Qwen GPU allocated by cumulative recorded request latency; otherwise full deployment
+granite_41_8b,157.7703140291521,0.01414,1.0,2.2308722403722108,5960,shared Qwen GPU allocated by cumulative recorded request latency; otherwise full deployment
+qwen3guard_8b,157.7703140291521,0.01414,1.0,2.2308722403722108,5960,shared Qwen GPU allocated by cumulative recorded request latency; otherwise full deployment
+nemotron_guard,157.7703140291521,0.01414,1.0,2.2308722403722108,2980,shared Qwen GPU allocated by cumulative recorded request latency; otherwise full deployment

@@ -9,3 +9,5 @@ data/processed/
 run_manifest.json
 training/data/
 training/logs/
+analysis/output/*/safety-analysis.zip
+analysis/output/*/judgments.csv.gz

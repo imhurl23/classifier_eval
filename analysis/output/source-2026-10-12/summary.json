@@ -1,0 +1,152 @@
+{
+  "physical_predictions": 124773,
+  "derived_judgments": 14900,
+  "configurations": 112,
+  "scorers": [
+    "binary_correct_nc_excl",
+    "binary_correct_nc_safe",
+    "binary_correct_nc_unsafe",
+    "binary_correct_strict",
+    "brier_unsafe",
+    "correct_strict",
+    "exact_match",
+    "lookalike_fp",
+    "needs_caution_rate",
+    "p_unsafe",
+    "refusal_recall",
+    "refused",
+    "safe_refusal_fp",
+    "source_accuracy",
+    "top_margin",
+    "unsafe_recall",
+    "valid_output"
+  ],
+  "source_hashes": {
+    "data/processed/source-full/000bf1bcb6dc/results.jsonl": "987a200df3b831c08bd7ba798c8cebdcfd965e347899516f39b005e2f3dfea02",
+    "data/processed/source-supplement/ecd7a74f882e/baseten-results.jsonl": "89d48efd4f82878cf43e4b744e47cbfa841edbae5cb8026fa94cf908d4fbb78e",
+    "data/processed/source-supplement/d3e705c9e551/policy-results.jsonl": "d6009d569e3297abf5e8a8271ce039353a25a18ae0515556d27042cf097f5fb1"
+  },
+  "verification_receipts": [
+    {
+      "plan_version": "000bf1bcb6dc",
+      "family": "hosted",
+      "physical_predictions": 66566,
+      "derived_judgments": 0,
+      "statuses": {
+        "jev_noul|ok": 4802,
+        "jev_choice|ok": 10294,
+        "clef_choice|ok": 10294,
+        "clef_flash_choice|ok": 10294,
+        "decisions_luna|ok": 10287,
+        "luna_structured|ok": 10293,
+        "claude_structured|ok": 9879,
+        "decisions_luna|refusal": 7,
+        "claude_structured|refusal": 415,
+        "luna_structured|invalid_output": 1
+      },
+      "strict_source_scores_verified": true,
+      "remote": {
+        "configurations_verified": 59,
+        "counts_and_accuracy_match": true,
+        "sample_requests_outputs_gold_and_dataset_bindings_verified": true
+      }
+    },
+    {
+      "plan_version": "ecd7a74f882e",
+      "family": "baseten",
+      "physical_predictions": 56076,
+      "derived_judgments": 14900,
+      "statuses": {
+        "tev1_native|ok": 10294,
+        "qwen3guard_8b|ok": 5960,
+        "nemotron_guard|ok": 2980,
+        "granite_41_8b|ok": 5960,
+        "qwen35_4b_letters|ok": 10294,
+        "qwen35_4b_json|ok": 10294,
+        "safeguard_120b|ok": 10169,
+        "safeguard_120b|truncated": 125
+      },
+      "strict_source_scores_verified": true,
+      "remote": {
+        "configurations_verified": 66,
+        "counts_and_accuracy_match": true,
+        "sample_requests_outputs_gold_and_dataset_bindings_verified": true
+      },
+      "status": "verified_complete",
+      "finished_at_utc": "2026-10-12T17:27:19.675799+00:00",
+      "gpu_shutdown_verified": true,
+      "compute_reserve_usd": 150
+    },
+    {
+      "plan_version": "d3e705c9e551",
+      "family": "policy",
+      "physical_predictions": 2131,
+      "derived_judgments": 0,
+      "statuses": {
+        "policylm_17b_prompt|ok": 2131
+      },
+      "strict_source_scores_verified": true,
+      "remote": {
+        "configurations_verified": 2,
+        "counts_and_accuracy_match": true,
+        "sample_requests_outputs_gold_and_dataset_bindings_verified": true
+      }
+    }
+  ],
+  "pricing": {
+    "checked_date": "2026-10-12",
+    "unit": "USD per million tokens",
+    "jev_choice": {
+      "input": 0.042,
+      "output": 0,
+      "source": "https://typesafe.ai/blog/introducing-system-one-models-and-jev"
+    },
+    "jev_noul": {
+      "input": 0.042,
+      "output": 0,
+      "source": "https://typesafe.ai/blog/introducing-system-one-models-and-jev"
+    },
+    "clef_choice": {
+      "input": 0.24,
+      "output": 0,
+      "source": "https://developers.cloudflare.com/workers-ai/models/clef/"
+    },
+    "clef_flash_choice": {
+      "input": 0.038,
+      "output": 0,
+      "source": "https://developers.cloudflare.com/workers-ai/models/clef-flash/"
+    },
+    "luna_structured": {
+      "input": 0.1,
+      "cached_input": 0.01,
+      "cache_write": 0.125,
+      "output": 0.5,
+      "source": "https://developers.openai.com/api/docs/pricing"
+    },
+    "claude_structured": {
+      "input": 2,
+      "cached_input": 0.1,
+      "cache_write": 2.5,
+      "output": 10,
+      "source": "https://platform.claude.com/docs/en/models/sonnet-5-5/overview"
+    },
+    "decisions_luna": {
+      "input": 0.1,
+      "cached_input": 0.1,
+      "cache_write": 0.1,
+      "output": 0,
+      "source": "https://developers.openai.com/api/docs/guides/decisions#pricing-and-availability",
+      "note": "Decisions charges input only, including cached input; no output or cache-write surcharge. Regional and long-context premiums may apply."
+    },
+    "scope": "Standard short-context public rates; recorded usage estimates are not invoices. Excludes infrastructure, unknown gateway fees and unrecorded retries.",
+    "historical_snapshot": "analysis/hosted-pricing-2026-10-09.json",
+    "baseten_dedicated": {
+      "L4_per_minute": 0.01414,
+      "H100_per_minute": 0.10833,
+      "source": "https://www.baseten.co/pricing/",
+      "basis": "Resource prices; no per-token billing or invoice exported for these dedicated runs."
+    }
+  },
+  "recorded_hosted_token_estimate_usd": 39.58941583399986,
+  "gpu_cost_is_allocation_scenario_not_invoice": true
+}
