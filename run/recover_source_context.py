@@ -21,6 +21,7 @@ import yaml
 
 from data.jsonl import read_jsonl
 from run import source_supplement as source
+from run import pilot
 from run.baseten_preflight import ALLOWLIST
 from run.heldout import atomic, shutdown_baseten
 from run.maintain_experiments import api
@@ -29,6 +30,18 @@ from run.split_experiments import list_experiments
 from run.watch_source_completion import watch
 
 ARMS={'tev':'tev1_native','qwen':'qwen35_4b_letters'}
+
+
+def install_bindings(replacement_bindings):
+    original_loader=source.load_local_service_keys
+    def replacement_loader():
+        original_loader()
+        for arm,(_,deployment) in replacement_bindings.items():
+            name='BASETEN_TEV1_DEPLOYMENT_ID' if arm=='tev1_native' else 'BASETEN_QWEN35_DEPLOYMENT_ID'
+            os.environ[name]=deployment
+    source.load_local_service_keys=replacement_loader
+    # adapter_for reloads .env too; keep that reload on the same binding.
+    pilot.load_local_service_keys=replacement_loader
 
 
 def validate_config(original,replacement):
@@ -99,13 +112,7 @@ def recover(directory):
         # Charge deployment startup to the existing cumulative compute allowance.
         state['elapsed_seconds']+=time.monotonic()-started
         atomic(directory/'baseten-execution.json',state)
-        original_loader=source.load_local_service_keys
-        def replacement_loader():
-            original_loader()
-            for arm,(_,deployment) in replacement_bindings.items():
-                name='BASETEN_TEV1_DEPLOYMENT_ID' if arm=='tev1_native' else 'BASETEN_QWEN35_DEPLOYMENT_ID'
-                os.environ[name]=deployment
-        source.load_local_service_keys=replacement_loader
+        install_bindings(replacement_bindings)
         receipt['status']='resuming';atomic(recovery/'receipt.json',receipt)
         report=watch(directory,max_recoveries=3,workers_per_arm=4)
         for experiment in list_experiments():
