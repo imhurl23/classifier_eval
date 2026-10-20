@@ -6,7 +6,7 @@ Each arm implements `Adapter.classify(text, scheme, rubric, option_order)` and r
 
 `clef_choice` and `clef_flash_choice` use the Workers AI typed `choice` question with `state=text`, `instructions=rubric`, and an insertion-ordered `criteria` map. The [Cloudflare API contract](https://developers.cloudflare.com/workers-ai/models/clef/) documents `model`, `state`, and `questions` with one probability per choice. The [model card](https://huggingface.co/Cloudflare/clef) confirms the `choice`, `confidence`, and `probabilities` fields.
 
-The adapter requires `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_AUTH_TOKEN` for live calls. These are distinct from the Braintrust key, which is always loaded from this repository's `.env` before Braintrust operations. The HF weight revisions are recorded in `MODEL_INFO`; Cloudflare's hosted build is not version-pinned yet, so preregistered execution remains gated until a provider revision or dated deployment identifier is captured. Run smoke tests against the live endpoint before accepting response parsing or multiclass option limits.
+The adapter requires `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_AUTH_TOKEN` for live calls. These are distinct from the Braintrust key, which is always loaded from this repository's `.env` before Braintrust operations. The HF weight revisions are recorded in `MODEL_INFO`; Cloudflare's hosted build was not revision-pinned in the completed exploratory run; exported metadata retains `workers-ai-unpinned`. Run smoke tests against the live endpoint before accepting response parsing or multiclass option limits.
 
 ## TypeSafe Jev
 
@@ -43,7 +43,7 @@ The [official contract](https://developers.openai.com/api/reference/python/resou
 uses shared `input` plus an ordered list of native `choice` questions. Offered
 labels and descriptions retain the caller's option order. Selected labels, full
 probability distributions, raw payloads, token usage, and returned model IDs are
-preserved. API refusals and malformed outputs remain unscored. Batched results
+preserved. API refusals and malformed outputs remain explicit missing decisions; downstream strict accuracy counts them as errors. Batched results
 share request-level usage and latency; count these once per request when totaling
 costs. HTTP 429 and 5xx responses retry with a three-attempt cap. Auth headers are
 excluded from logged payloads. The model alias remains unpinned.
@@ -60,8 +60,7 @@ Run the reserved-pair diagnostic explicitly:
 .venv/bin/python -m run.pilot --arms decisions_luna --limit 8 --batched-turns
 ```
 
-The primary study remains gated by rubric/version freeze and preregistration.
-Recompute current Decisions pricing before authorizing a study run.
+The October 19 source-policy revision is complete and exploratory. Original pilot notes above describe integration checks, not its final accuracy. Use a new versioned plan and current pricing for future paid runs.
 
 ## PolicyLM prompt-only reference
 
@@ -115,4 +114,4 @@ held-out evidence. Its native Aegis taxonomy is not the supplied study policy.
 Live diagnostic on 2026-10-07: all 208 User-only predictions were valid on Apple
 MPS float32; 8 reserved prompts have human User-harm gold and 200 dev prompts
 remain unscored for harm agreement. Policy length was 212 tokens, leaving 1,834
-message tokens per native window. [Braintrust diagnostic](https://www.braintrust.dev/app/eval_engineering/p/decision-interface-safety/experiments/policylm_prompt_pilot__20261007T173151Z).
+message tokens per native window. The diagnostic is archived separately from the revised main comparison.

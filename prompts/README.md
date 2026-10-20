@@ -1,6 +1,12 @@
-# Rubric review index — drafts, not frozen
+# Policies and rubric versions
 
-The four candidate rubric templates are:
+The completed October 19 comparison uses the versioned policies in [`source_aligned/`](source_aligned/): [Aegis](source_aligned/aegis.md), [WildGuard harm](source_aligned/wildguard.md), and [WildGuard refusal](source_aligned/refusal.md). [`source_aligned/runtime.py`](source_aligned/runtime.py) adds the target-specific instruction, option definitions, and Aegis detailed context. XSTest reuses the original prompt-harm policy. These files are covered by the completed run's hash manifest and must not be edited in place.
+
+The policy revision followed inspection of test disagreements; it does not establish fresh held-out generalization or exact equivalence to the unpublished Aegis human instructions. [`submission/eee/source_metadata.json`](../submission/eee/source_metadata.json) includes the rendered main-task policy text and options for review.
+
+## Historical rubric development
+
+The notes below describe the original development stage and its then-pending review, not the status of the completed revised run. The four candidate rubric templates were:
 
 | Condition | File | Intent |
 |---|---|---|

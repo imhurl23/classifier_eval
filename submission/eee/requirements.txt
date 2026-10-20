@@ -1,0 +1,3 @@
+every-eval-ever @ git+https://github.com/evaleval/every_eval_ever.git@0791adc3c2488cc8c91d109b3c541da492238e49
+pytest>=8
+ruff>=0.11

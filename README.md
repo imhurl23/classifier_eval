@@ -1,177 +1,92 @@
-# Decision-interface safety eval
+# Decision-interface safety evaluation
 
-Implementation of [the study design](decision-interface-safety-eval-design.md). The active benchmark uses the published human labels on original Aegis and WildGuardTest prompt-response pairs. No new human labeling is required for these supported tasks.
+This study compares decision models, general language models, and safety classifiers against published human labels for harmful requests, harmful responses, whole exchanges, and refusals. It also explores how policy wording and answer choices affect decisions.
 
-The latest article uses the completed October 19 policy revision and the [editorial chart review](analysis/output/source-policy-revision-2026-10-19/decisions/editorial/review.html). Rebuild those charts offline with `.venv/bin/python -m analysis.article_charts`; the input hashes are recorded beside the exports. Earlier results below remain available for provenance and comparison. The revised policies were informed by inspected label disagreements, so the rerun is exploratory.
+The current analysis is **`source_aligned_v1_20261019`**, completed October 19, 2026: **62 configurations across six task cohorts**, covering **89,251 decisions** (84,751 new main decisions and 4,500 reused XSTest decisions). A separate 1,832-decision development diagnostic tests policy and interface changes. Historical results and the custom fine-tuning follow-up remain separate.
 
-The full hosted source-label run completed and verified all 66,566 requests across 5,252 local Aegis, WildGuardTest, and XSTest records. PolicyLM completed its 2,131 prompt-only comparisons. Baseten completed all 56,076 predictions plus 14,900 derived native judgments. All 66 Baseten configurations passed the final score/count/input/output/source-label/dataset audit, and all six GPU deployments were verified inactive with zero replicas. Together, the source-reference runs contain 124,773 physical predictions. The October 12 recovery corrected the deployed Tev/Qwen context limits and repaired three derived-result uploads without repeating completed model calls. The earlier Aegis validation check reused 1,400 verified predictions (200 per interface). HH-RLHF full conversations remain supplemental diagnostics because chosen/rejected preferences are not safety gold. See the [source-label runbook](run/SOURCE_LABEL_RUNBOOK.md) for supported targets, filters, rerun commands, and current coverage.
+The revised policy followed inspection of test disagreements. These results are **exploratory, not a fresh held-out evaluation**, and do not measure agent tool authorization or end-to-end deployment safety.
 
-Review the [study policy target](prompts/policy_target.md), four draft rubrics, and their shared label definitions in the [rubric review index](prompts/README.md). They are local drafts, not frozen Braintrust prompt versions.
+## Start here
 
-The review packet is [REVIEW_CHECKLIST.md](REVIEW_CHECKLIST.md); a printable copy with tick boxes and write-in lines is [REVIEW_CHECKLIST.pdf](REVIEW_CHECKLIST.pdf). Regenerate it after editing the Markdown with `python3 review/build_printable.py` (needs pandoc and Chrome).
+- [Current charts and analysis](analysis/output/source-policy-revision-2026-10-19/decisions/editorial/review.html) — download/open the HTML locally; PNG and SVG exports are beside it.
+- [Current notebook](analysis/source_policy_revision_exploration.ipynb) and [F2 results](analysis/output/source-policy-revision-2026-10-19/f2_metrics.csv).
+- [Policies](prompts/README.md), [adapter interfaces](adapters/README.md), and [study design](decision-interface-safety-eval-design.md).
+- [Every Eval Ever submission preparation](submission/eee/README.md) and [release audit](docs/release-audit.md).
 
-## Source data build
+## What the tasks measure
+
+| Cohort | Examples per configuration | Judgment |
+|---|---:|---|
+| Aegis original single-turn records | 1,822 | Request harm |
+| Aegis paired records | 1,299 | Whole-exchange harm |
+| WildGuardTest requests | 1,681 | Request harm **with the answer visible** |
+| WildGuardTest responses | 1,681 | Response harm with the request visible |
+| WildGuardTest refusals | 1,680 | Whether the response refuses |
+| XSTest | 450 | Request harm on safe and unsafe prompts |
+
+Aegis cohorts pool filtered validation and test records. WildGuardTest excludes reserved pilot pairs; refusal scoring additionally excludes one missing source label. XSTest reuses the original run and policy. These are different tasks: compare models within a cohort, not by pooling all scores. The latest comparison does **not** use the historical derived WildGuard exchange label (“unsafe if either turn is unsafe”).
+
+The main comparison includes Jev Choice and Noul, Clef and Clef Flash, Tev1, Luna Decisions and structured output, Claude structured output, Qwen letters and JSON, and Safeguard 120B. Noul covers only the two Aegis cohorts. Multiple interfaces can use the same underlying model.
+
+## Scoring and limits
+
+Published labels are unchanged; the study adds no human annotations. Models accepting custom instructions receive the task's semantic policy and label options through their respective interfaces. Historical fixed-policy guards are separate references.
+
+- **Strict accuracy:** exact label agreement. A classifier refusal, invalid output, or truncated answer counts as wrong. This differs from correctly detecting a refusal in the conversation being classified.
+- **F2:** `5 × TP / (5 × TP + 4 × FN + FP)`, with unsafe as the positive class for harm tasks and refusal for refusal detection. Missing verdicts on positive examples count as misses; missing verdicts on negative examples are not false alarms. Read F2 alongside missing-verdict rates.
+- **Uncertainty:** saved F2 intervals use 10,000 bootstrap resamples. Paired model comparisons apply Holm correction over the 290-comparison family. Confidence-interval overlap alone is not a significance test.
+- **Costs:** estimates use recorded usage and an October 12 pricing snapshot, not invoices. API and dedicated GPU costs are not interchangeable.
+
+Aegis's complete human annotation instructions are not public; the revision uses published taxonomy and policy descriptions without claiming exact equivalence. Small policy/choice probes are development diagnostics, not full-benchmark robustness tests. Model disagreement with a dataset label is not automatically evidence of dangerous behavior.
+
+## Reproduce charts without model calls
+
+Use Python 3.12 or later. From the repository root:
 
 ```sh
-python -m venv .venv
-.venv/bin/pip install -r requirements.txt
+python3 -m venv .venv
+.venv/bin/python -m pip install -r analysis/requirements.txt
+.venv/bin/python -m analysis.article_charts
+```
+
+This reads committed aggregate tables and rebuilds the five current article figures, review HTML, and input-hash manifest. It requires no API key, dataset download, inference, or upload. Some other analysis commands require local prediction archives that are intentionally not committed.
+
+For notebooks, also install `analysis/requirements-notebook.txt`.
+
+## Data and full-study reproduction
+
+[Source provenance](docs/data-provenance.md) records dataset revisions, task boundaries, and source terms. Dataset text and complete prediction archives are not part of the Every Eval Ever package. Existing historical case-review files in this private working repository can contain benchmark text.
+
+To rebuild local source datasets, install the study dependencies and obtain access to the original datasets under their terms:
+
+```sh
+.venv/bin/python -m pip install -r requirements.txt
 .venv/bin/python -m data.fetch_sources
-.venv/bin/python data/build_datasets.py
-.venv/bin/python data/build_datasets.py --push
+.venv/bin/python -m data.build_datasets
+```
+
+Downloading gated WildGuard data requires access through your own Hugging Face account. The commands above do not upload datasets. Uploads and paid model runs are separate, explicit actions described in the [source-label runbook](run/SOURCE_LABEL_RUNBOOK.md). Older runbooks describe their dated study stages, not the latest comparison's completion status.
+
+Keep credentials in an untracked `.env`; never include them in exports. Providers require their own keys and, for dedicated models, deployments. Existing runner, adapter, and policy hashes are frozen for completed runs. Version new experiments instead of modifying those files to make an old manifest pass.
+
+## Development checks
+
+```sh
 .venv/bin/python -m pytest -q
 ```
 
-`pytest.ini` excludes generated data and archived code snapshots, and permits identically named tests in separate directories. Some study tests require the local processed datasets and tokenizer artifacts. Completed runs freeze runner, adapter, and policy hashes; keep those files unchanged when cleaning up downstream analysis code.
+The full suite expects the local processed study datasets and tokenizer artifacts. It is not a fresh-clone-only test. Every Eval Ever export tests run in their separate environment; see [submission instructions](submission/eee/README.md).
 
-Braintrust access always loads `BRAINTRUST_API_KEY` from this repository's `.env`. `BASETEN_API_KEY` in the same file serves the six dedicated deployments (`deploy/baseten/`) and Baseten Loops training. Their model IDs are recorded in `.env`; the verified Tev1/Qwen deployment IDs are pinned there as well. Keys are never stored in the manifest or sent to stdout. Published dataset names include their content hash. `run_manifest.json` holds the returned Braintrust dataset versions and is ignored by Git because it is run-specific. Re-running `--push` republishes only datasets whose content hash changed; unchanged datasets keep their recorded name and version, so earlier experiments stay pinned to the data they ran on.
+## Repository map
 
-## Source audit and design implications
+| Directory | Contents |
+|---|---|
+| `data/` | Source fetching, filters, labels, dataset construction |
+| `prompts/` | Original and versioned revised policies |
+| `adapters/` | Provider requests and response normalization |
+| `run/` | Frozen plans, execution, verification, upload tools |
+| `analysis/` | Metrics, uncertainty, notebooks, charts, saved aggregate reports |
+| `training/`, `deploy/` | Separate fine-tuning and serving workflows |
+| `submission/eee/` | Offline export adapter, reviewed metadata, submission drafts |
 
-The pinned [Aegis V2 card](https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0/blob/main/README.md) describes a nine-column release with **binary** human `prompt_label`, `response`, `response_label`, and aggregate `violated_categories`. The [paper](https://aclanthology.org/2025.naacl-long.306.pdf) says the human vote was made at conversation level and assigned to `prompt_label`; separate response labels are not human gold. The builder therefore sends both turns on paired rows and scores the human conversation vote, while preserving response-label provenance and leaving unsupported fine gold and agreement fields null. Paired interactions are primary; one-turn Aegis records are secondary.
-
-The [original XSTest prompt CSV](https://github.com/paul-rottger/xstest/blob/main/xstest_prompts.csv) supplies 450 binary-labeled prompts and is CC BY 4.0. Unsafe XSTest examples have no Aegis category gold. Aegis is also marked CC BY 4.0 on its dataset card.
-
-[WildGuardTest](https://huggingface.co/datasets/allenai/wildguardmix) (`wildguardtest` split, 1,725 prompt-response pairs, three human annotators each, ODC-BY) is the second primary test source. The builder preserves both turns and both human harm labels. It derives conversation harm as unsafe if either prompt or response was labeled harmful; that OR is a study-derived comparator, not a source field. The `adversarial` flag defines strata, while `subcategory` remains a candidate label only. The repo is gated: accept the AI2 terms for the **dataset** repo under the Hugging Face account whose token is in `~/.cache/huggingface/token`, then run `python -m data.fetch_sources`. Accuracy is reported per paired source before any paired-only pooled result.
-
-The revised local `dis-test` has 4,057 records: 813 paired Aegis conversations, 1,681 paired WildGuardTest conversations, 1,113 one-turn Aegis records, and 450 XSTest controls. Eight additional WildGuardTest pairs are reserved in `dis-pilot` and excluded from test and controls. Separate [prompt-harm](prompts/rubrics/prompt_harm_s2.md), [response-harm](prompts/rubrics/response_harm_s2.md), and [refusal](prompts/rubrics/response_refusal_s2.md) questions use the complete paired interaction as context and judge distinct decisions.
-
-The scheme names encode approximate granularity: `s6` has 7 options and `s13` has 15. The interaction grid has 151 required cells, or 199 with all three optional arms; the three fixed WildGuardTest companion decisions add 33 binary cells, plus one supplemental PolicyLM User-only cell. Inspect that plan with `.venv/bin/python -m run.matrix --companions`. The main grid remains gated until adapter contracts, rubric versions, and a preregistration are resolved.
-
-## Diagnostic paired pilots
-
-The eight reserved WildGuard pairs were evaluated with Jev Choice, Jev Noul, Claude, ordinary Luna structured output, Tev1, and its Qwen base. Choice, structured, and letter arms used four interaction rubric conditions plus separate User-harm, Assistant-harm, and refusal questions; Noul is binary interaction-only. Results and methodological caveats are in the [pilot report](run/pilot-report-2026-10-01.md). Jev's native three-question request was also tested on the same pairs. Clef and Clef-flash passed binary, 15-option Long, full paired, and batched-question pilots on 2026-10-02 with updated Workers AI credentials. Safeguard, Granite, Qwen3Guard, and Nemotron v3 have Baseten deployments and diagnostic paired pilots; all project Baseten deployments are currently deactivated. The direct OpenAI Decisions API arm (`decisions_luna`) was added on 2026-10-06; the historical pilot above predates that integration. It is now supported by the pilot runner and matrix, including batched turn questions.
-
-## Clef and the Jev Decision Index
-
-The [Jev Decision Index](https://huggingface.co/spaces/multimodalart/jev-decision-index) is a broad fixed benchmark of decision models. [Cloudflare's Clef announcement](https://blog.cloudflare.com/clef-decision-models/) already reports Clef and Clef-flash there. This study first measures **agreement with interaction-level harm labels** under a declared policy, using full user–assistant pairs when available. It then asks how decisions and label agreement change when the offered labels, policy information, rubric length, or option order change on the *same interactions*. Prompt-only XSTest remains a separate benign-lookalike control. Native fixed-policy guards are external references. Index scores are background context, not an outcome or validation target.
-
-`clef_choice` and `clef_flash_choice` are included in the matrix and have a tested request/response adapter in [adapters/clef.py](adapters/clef.py). Live smoke tests need a Cloudflare Workers AI account ID and auth token, which are not present in `.env`; Braintrust operations always use that file's `BRAINTRUST_API_KEY`. The hosted Clef revision and 15-option behavior still require verification before a pilot.
-
-## Jev smoke
-
-The Braintrust gateway does not expose Jev to this organization's API key, so the Jev adapter uses the native [TypeSafe System One API](https://docs.typesafe.ai/api) with `TYPESAFE_API_KEY` from this repository's `.env`. Braintrust logging still uses `BRAINTRUST_API_KEY` from the same file.
-
-Run `.venv/bin/python -m adapters.smoke_jev` to classify a balanced 20-item subset of `dis-dev` and log it to Braintrust. The 2026-10-01 smoke of pinned `jev-1.13.0` returned 20/20 valid Choice responses and 18/20 correct binary labels. The prompt is explicitly provisional, so this result checks adapter behavior rather than estimating final model performance. The experiment is [here](https://www.braintrust.dev/app/eval_engineering/p/decision-interface-safety/experiments/jev_choice__s2__smoke_provisional__20261001T191055Z).
-
-## Tev1, its Qwen3.5-4B base, and the mini safety fine-tune
-
-### Model fields and experiment organization
-
-All experiment runners route through `run/experiment_groups.py`. Each Braintrust
-experiment contains exactly one model/interface (`arm`), target, label scheme, and
-rubric. The shared `run_group` identifies the study stage; it is not an experiment.
-Repeatability replicates remain together within the same stage/configuration.
-`metadata.model` uses the canonical model name from `run/model_metadata.py`.
-Every span also records `arm` and `model`; `model_version` retains the served
-revision. Register new arms in the shared mapping before running them. Runner
-checkpoints retain the run-group name and an `experiment_urls` map for the children.
-
-Primary source-labeled configurations set `metadata.study_status = "current"` and `benchmark_primary = true`. HH full-context, unsupported Aegis companion targets, repeatability, and batching checks are `supplemental`; other historical copies are `legacy`. Originals remain `aggregate_archive` with records and names preserved. The saved **Source-labeled safety benchmark** view selects Aegis validation interaction harm and charts `source_accuracy`. Filter by both `source_dataset` and `target` before comparing scores; do not pool unrelated tasks or datasets. The **Model** column reads `metadata.model` from the root span.
-
-`python -m run.maintain_experiments` prepares a backup and metadata-only maintenance
-plan in `data/processed/experiment-maintenance/`. Apply it with
-`python -m run.maintain_experiments --apply <directory>`. Maintenance makes no
-inference calls and verifies that inputs, outputs, expected values, scores,
-metrics, tags, and span IDs are unchanged. Logging code changes require a new
-plan/freeze for future runs; do not rewrite the hashes of previously executed plans.
-
-`python -m run.split_experiments` backs up current records and prepares exact
-configuration copies, using pinned job manifests where trace metadata lacks a
-dimension. Apply with `python -m run.split_experiments --apply <directory>`.
-This copies existing results without inference, verifies content and trace identity,
-records source provenance, and only archives an original after all copies pass QA.
-Interrupted migrations can resume from their receipt using the same command.
-
-`tev1_native` and `qwen35_4b_letters` share [adapters/tev1.py](adapters/tev1.py), which follows the published Tev1 contract (system prompt, JSON `state`/`question`/`options`, one letter back, letter log-probs turned into a distribution). Both run from matching Baseten dedicated vLLM deployments in [deploy/baseten/](deploy/baseten/) so the fine-tune-vs-base contrast is not confounded with the serving stack; `provider="together"` is a serverless fallback. HF revisions are pinned in the adapter.
-
-The optional `safety_tev` arm applies the Tev1 LoRA recipe to paired Aegis V2 `train` records. `python -m training.build_safety_sft` targets 4,000 train / 400 dev examples across schemes and question variants, with normalized-prompt overlap checks against eval sources and a 2,048-token request limit. The earlier `yqvek93` checkpoint was trained on prompts alone and is obsolete for the paired-interaction comparison. Rebuild after rubric FREEZE and retrain before including this arm. Unsafe fine-grained labels from `violated_categories` are training supervision only.
-
-The user subsequently requested evaluating both existing custom checkpoints on the full study benchmark suite, excluding fine-tuning data. The separate `run/finetune_benchmark.py` runner evaluates `safety_tev` (`yqvek93`) and `cc_repro` (`8w6gjyq`) without retraining. This is an exploratory transfer evaluation of those original checkpoints, including paired-input and refusal tasks; it does not replace the released `tev1_native` arm or claim the old checkpoints were trained for the revised policy. `--prepare` verifies training-time artifact hashes and audits all source items against each checkpoint's training and validation data using source IDs and normalized full-text/turn equality. Results preserve the existing study sample and source-label coverage filters. The audit found zero matches for both checkpoints, leaving 5,252 items and 8,613 physical decisions per model. One WildGuard refusal judgment lacks source gold and is omitted. Preparation, execution, and reporting commands are:
-
-```sh
-.venv/bin/python -m run.finetune_benchmark --prepare
-.venv/bin/python -m run.finetune_benchmark --arm safety_tev --workers 16
-.venv/bin/python -m run.finetune_benchmark --arm cc_repro --workers 16
-.venv/bin/python -m run.upload_finetune_benchmark
-.venv/bin/python -m analysis.finetune_benchmark
-```
-
-The runner restores exact Loops sampler checkpoints, retains the training-time non-thinking chat template, saves each prediction durably, stops on ambiguous requests, bounds each sampler's lifetime, and verifies deployment shutdown. Aegis and WildGuard use the revised source-specific policies; XSTest retains the original request-harm policy. `analysis.finetune_benchmark` requires complete predictions and verified shutdown, then produces separate metrics and an F2 chart with released Tev1 and Qwen base references matched to the same eligible item/task pairs. It preserves model identities and explicitly records the Loops-versus-vLLM serving difference. Outputs live under `data/processed/custom-finetune-benchmark/2026-10-19/` and `analysis/output/custom-finetune-benchmark-2026-10-19/`.
-
-## Claude via the Braintrust AI gateway, and the constitutional-classifier reproduction
-
-All Anthropic calls go through the Braintrust AI gateway (`https://api.braintrust.dev/v1/proxy/anthropic`) with the Braintrust key, gateway cache disabled per request. `claude_structured` ([adapters/claude.py](adapters/claude.py)) is a general-LLM arm: Claude Sonnet 5.5, low effort, structured output with an enum of option ids, no refusal fallbacks so the served model never changes inside the arm.
-
-Anthropic's Constitutional Classifiers have no public weights or API, so `cc_repro` reproduces the *method*: [prompts/constitution.md](prompts/constitution.md) → `python -m training.generate_constitutional --launch` (Claude generates labelled prompts per class with near-miss, adversarial, and multilingual variants, deduped against every eval text and against Aegis train) → `python -m training.train_loops --launch --data training/data/cc-mini/instruction --name cc-repro-mini`. Because it never sees Aegis, XSTest, or WildGuard, it is out-of-distribution and may enter the accuracy contrasts, unlike `safety_tev`.
-
-PolicyLM-1.7B is now a separate prompt-only custom-policy reference. It uses the
-User message alone, a pinned release, native precision cutoff 0.335, and local
-float32 inference in an isolated environment. Its authors exclude conversation
-history and assistant moderation, so it does not enter the paired interaction
-grid. See the [adapter setup and exposure caveats](adapters/README.md#policylm-prompt-only-reference).
-
-## Historical pair-only completion status — 2026-10-07
-
-The 5,000-call development reference and the 208-prediction PolicyLM prompt-only supplement are complete. The subsequent 2,000-call repeatability check completed with 1,984 valid classifications and 16 Claude refusals; there were no API errors. All 160 batched calls returned valid results (480 decisions). Compared with separate reference calls, batching changed 5/120 Clef labels and 9/120 Clef-flash labels; Jev and Decisions Luna changed 0/120. These are development diagnostics, not held-out performance.
-
-Reproduce the local summary with `.venv/bin/python -m analysis.development_report`. Frozen stage artifacts and Braintrust experiment links are recorded under `data/processed/study-repeatability/477ac56d553a` and `data/processed/study-batching/4424eb16d43d`.
-
-The blinded 200-pair audit dataset is uploaded as `human_policy_audit_blind__f0c7bbda4b65`; All 200 items are assigned to Izzy Hurley for native Braintrust annotation; actual judgments remain pending. These historical custom-policy assignments are optional supplemental work, not required for the source-label benchmark. Report these as single-reviewer policy judgments, with no inter-rater agreement or adjudication statistics. Use [native Braintrust review](https://www.braintrust.dev/app/eval_engineering/p/decision-interface-safety/datasets/human_policy_audit_blind__f0c7bbda4b65), with six configured human fields writing to expected. The local annotation packet remains a backup.
-
-The user authorized inclusion of the Baseten models. `run/baseten_preflight.py` limits restarts to six explicit deployment IDs, checks hardware/replica bounds, waits for readiness, runs two-pair diagnostics, and deactivates deployments on completion or timeout. A cold-start attempt failed; its result is retained as failed, not usable evaluation evidence. The readiness-gated retry timed out waiting for Safeguard; no retry pilot calls were made. All six deployments were then verified inactive with zero replicas. This describes the historical pilot attempts. The October 9 source-label deployment builds completed; the four longer-context guard deployments use 8,192-token limits.
-
-The held-out candidate at `data/processed/heldout-candidate/55a1f8b24835` retains full original conversations and quarantines seven development-exposed pairs, leaving 2,487 candidate primary pairs. It is not preregistered or launched. Its full proposed matrix contains 477,526 cell decisions, including native derived decisions and the local PolicyLM supplement; this is not a physical API-call count. Full serving-context coverage, physical-call costs, a frozen analysis plan, and human review remain unresolved. The 24 examples affected by the provisional length filter have not been silently dropped. Development planning reserves total $811.03; three bounded Baseten preflight reserves add $75. These reserves are assumptions, not confirmed charges. This historical robustness-grid candidate remains unlaunched. The October 9 binary source-reference run uses the separate additional $1,000 authorization. Recorded usage and public prices are estimates; reservations are not invoices. Decisions now has a verified $0.10/M-input rate; gateway fees remain unverified.
-
-### Development analysis and charts
-
-The [larger policy-following run](analysis/output/topic-following-multi-domain/report.md) covers 391 cases across nine arms: 262 synthetic cases from five dialogues in each of nine domains, 117 banking human-test cases, and 12 authored policy cases. It contains 3,519 final decisions, reuses 144 matching pilot results, and preserves nine timeout attempts that succeeded on retry. Synthetic original-turn/distractor labels are provisional topic references. The report separates domains, engage/redirect agreement, the banking human-test subset, and the authored policy probes.
-
-Prepare this sample with `.venv/bin/python -m data.topic_following --synthetic-per-domain 5 --output data/processed/topic-following/multi-domain`. The source hashes and selected dialogue indices are saved alongside the cases. Run with `--data data/processed/topic-following/multi-domain --source-limit 379 --pair-limit 6 --workers 4`, a fresh output directory, and the desired `--arms`. `--reuse-run` imports only identical prior jobs and records their provenance. Unmatched distractor anchors and malformed source conversations are recorded rather than guessed. Both temporary Tev/Qwen deployments were verified inactive with zero replicas after execution.
-
-The policy-following diagnostic uses a separate `engage` / `redirect` label space. It keeps the runtime scenario policy, preceding conversation, and current user turn separate, and does not infer content-safety labels. Prepare the pinned CantTalkAboutThis human-test source with `.venv/bin/python -m data.topic_following --fetch`. This produces 99 distractor cases with provisional redirect references, 18 agent-reviewed positive controls, six authored policy pairs, 190 unreviewed original turns, and one unresolved anchor. Each distractor is placed after a uniquely matched source assistant turn; later answers and sibling distractors are excluded.
-
-`.venv/bin/python -m run.topic_following` prepares a 32-request manifest for Decisions Luna and Claude: four source controls plus both conditions of six policy pairs per model. Add `--execute` to run it. Set `--arms`, `--source-limit`, `--pair-limit`, and a fresh `--output` directory for another run. Results checkpoint locally; rerunning an identical manifest skips completed jobs, and interrupted in-flight requests require inspection before retrying. Supported arms accept arbitrary option definitions: Decisions Luna, Luna structured, Claude structured, Jev Choice, Clef, Clef Flash, Tev1 letters, Qwen letters, and Qwen JSON. This runner does not restart Baseten deployments or upload results to Braintrust. `.venv/bin/python -m run.topic_following_baseten` temporarily activates only the two allowlisted Tev/Qwen deployments, runs the three corresponding arms, and deactivates the deployments in cleanup, with a 15-minute wall limit.
-
-Generate the [policy-following report](analysis/output/topic-following/report.md) with `.venv/bin/python -m analysis.topic_following`. Its paired-policy chart holds the user turn, history, and option order fixed and changes only the scenario policy. The report separates source and authored cohorts, counts invalid outputs as errors, and distinguishes changing a decision from getting both decisions right. Disagreements with provisional source references include the full policy and preceding context in a review file. The pilot reports exact counts, without population intervals for dependent conditions. These are exploratory probes, not the Aegis paper's novel-category evaluation or a held-out generalization result.
-
-To combine the existing pilots without rerunning models: `.venv/bin/python -m analysis.topic_following --run data/processed/topic-following/pilot data/processed/topic-following/pilot-hosted-expanded data/processed/topic-following/pilot-tev data/processed/topic-following/pilot-qwen`. Tev and Qwen can start independently with `run.topic_following_baseten --arms tev1_native --output data/processed/topic-following/pilot-tev` and `run.topic_following_baseten --arms qwen35_4b_letters qwen35_4b_json --output data/processed/topic-following/pilot-qwen`. The report checks that every shared case ID has the same policy, history, current turn, and option order across models. Fixed-taxonomy native guards are excluded from this engage/redirect task.
-
-The [development report](analysis/output/development-2026-10-07/report.md) contains six verified PNG/SVG charts covering source-label agreement, harm tradeoffs, repeatability, batching, output reliability, and observed request latency. It includes matched-item bootstrap comparisons and explicitly separates the source-exposed PolicyLM supplement from the primary hosted-arm comparison. No independent human audit or held-out results are claimed.
-
-The [guide to choosing a model for safety checks](analysis/output/safety-usecases-2026-10-14/report.html) explains which tests to use for checking requests, answers, whole exchanges, and refusals. Five dot plots show what each model gets right, which unsafe examples it misses, and how often it calls safe examples unsafe. The guide also explains when models fail to give a decision, when safety rules disagree, and why seeing the assistant answer changes what a request check can tell us. Rebuild with `.venv/bin/python -m analysis.plot_source_agreement`; this uses saved results and makes no new model calls.
-
-The [full-source descriptive report](analysis/output/source-2026-10-12/report.md) covers all 124,773 verified physical predictions and 14,900 reused native judgments. Nine PNG/SVG charts compare hosted token cost and accuracy, matched safety accuracy, judgment types, latency, token use, model disagreement, unsafe recall/false alarms, a separately labeled dedicated-GPU cost scenario, and dataset/input-unit variation. CSV tables include every configured scorer's definition, denominator, missingness, mean, sample standard deviation and percentiles, plus physical-call cost/latency/token distributions. Regenerate with `.venv/bin/python -m analysis.source_report`; the local output also includes a compressed tidy table and `safety-analysis.zip`. Current public-rate estimates and the historical October 9 snapshot remain separate; dedicated GPU allocation is not invoice-reconciled spend.
-
-The [detailed failure report](analysis/output/failures-2026-10-12/report.md) adds eight charts, class-conditional slice tables, paired Tev/Qwen wins and losses, separate user-request/assistant-response safety matrices, probability/operating-point tradeoffs, high-confidence mistakes, and archived execution failures. `.venv/bin/python -m analysis.failure_report` creates the self-contained local `failure-explorer.html` and `failure-analysis.zip` for 10,294 distinct source-item/task cases, with full original context and all available model decisions. The local explorer contains benchmark text and is generated rather than committed. Source tags and wording cues are exploratory slices, not newly adjudicated scenario labels; the rejected Topics backfill is not required or run. Validate the actual JavaScript filter predicates offline with `node analysis/test_failure_filters.cjs` after generation. Browser preview of local HTML was blocked by the browser tool's URL policy; counts, JavaScript syntax and filter behavior were checked offline.
-
-The [Luna explicit-category diagnostic](analysis/output/luna-explicit-categories-2026-10-14/report.md) compares archived Decisions Luna predictions with a fresh original-policy repeat and fresh explicit-category instructions on all 1,681 unchanged WildGuard pairs, including 936 safe controls. Only instructions change between the fresh conditions; both use identical per-item choice order. The added rules are investigator-written and do not reproduce an official annotation policy. Rebuild the offline request/label audit with `.venv/bin/python -m analysis.audit_luna_category_misses`; prepare the paired manifest with `.venv/bin/python -m run.luna_explicit_categories`, execute with `--execute`, or continue unfinished calls with `--execute --resume`. Completed requests are preserved. Regenerate the comparison chart and tables without API calls with `.venv/bin/python -m analysis.luna_explicit_categories`.
-
-The [all-model explicit-category comparison](analysis/output/explicit-categories-2026-10-14/report.md) expands that protocol to 13 custom-policy interfaces, with archived Qwen3Guard and Nemotron fixed-policy references. Each custom-policy arm has 3,362 planned decisions; Decisions Luna's exact matching completed requests are reused. Run hosted arms with `.venv/bin/python -m run.explicit_categories_batch`, GPU arms with `--baseten --arms tev1_native qwen35_4b_letters qwen35_4b_json safeguard_120b granite_41_8b`, and local PolicyLM with `--arms policylm_17b_prompt`. The supervisor uses the separate PolicyLM environment, bounded workers and wall time, allowlisted GPU deployments, and shutdown verification. Use `--resume` only for unfinished arms; unresolved calls stop resumption. `.venv/bin/python -m analysis.explicit_categories` verifies coverage and payload hashes before rebuilding tables, paired changes, and unsafe-miss/false-alarm plots. `--allow-partial` creates a clearly incomplete progress report.
-
-Install plotting dependencies with `.venv/bin/python -m pip install -r analysis/requirements.txt`, then regenerate with `.venv/bin/python -m analysis.make_development_charts`. The output directory also contains tidy decision records, metric tables, paired differences, and a JSON summary with source hashes.
-
-The [exploratory inferential report](analysis/output/development-2026-10-07/inference/report.md) adds paired t-tests with Holm correction, exact McNemar sensitivity tests, a frequentist logistic random-intercept model for strict source agreement, an arm-by-source-label extension, and a log-latency linear mixed model. Full tables, convergence checks, numerical verification, and coefficient charts are included. Regenerate with `.venv/bin/python -m analysis.inferential_models`; the binary likelihood is checked against independent adaptive integration in `analysis/test_inferential_models.py`.
-
-### First-wave preparation
-
-The checkpointed runner and freeze validator are implemented in `run/heldout.py` and `run/freeze_heldout.py`. The binary long-rubric first wave retains 2,487 pairs and schedules 39,792 physical calls; native guard interaction ORs add no inference calls. The separate local PolicyLM supplement has 2,487 User-only requests prepared. See the [launch runbook](run/HELDOUT_RUNBOOK.md) and [draft analysis plan](analysis/heldout-analysis-plan.md). No held-out predictions have been made.
-
-The five-model Baseten preflight at `data/processed/baseten-preflight/20261007T200841Z` completed with no failed pilot outputs. All five were verified inactive with zero replicas; Safeguard remains unresolved and inactive. Matching Tev/Qwen configs now propose 8,192-token contexts, but those changes are not deployed or validated. Full serving-context coverage, completed human audit, deployment readiness and billing reconciliation remain launch requirements.
-
-### Source-policy revision — 2026-10-19
-
-The new `source_aligned_v1_20261019` run preserves the completed original study and uses dataset-specific policies in `prompts/source_aligned/`. Aegis uses its published taxonomy and policy descriptions; its full human annotation instructions are not public, so exact annotation-policy equivalence is not claimed. WildGuard uses its documented harm taxonomy and refusal definition, including refusal followed by compliance as non-refusal. Published labels and inputs stay unchanged, including questionable individual labels. This revision follows inspection of test disagreements and is exploratory.
-
-The frozen plan is in `data/processed/source-policy-revision/source_aligned_v1_20261019/summary.json`. It schedules 84,751 main decisions and 1,832 development diagnostic decisions. Unchanged XSTest results are reused; the derived WildGuard interaction task is excluded. Rubric and expanded-choice diagnostics retain the original small development samples and are not full-dataset robustness evaluations. Token estimates use the saved pricing snapshot; the hosted ledger allows $85, GPU lifecycle allocation allows $60, and the overall planning limit is $150. GPU activation, hardware, replica bounds, readiness, and shutdown are supervised.
-
-`run/source_policy_revision.py` verifies frozen payloads and records every decision. `run/source_policy_revision_batch.py` supervises workers. `run/watch_source_policy_revision.py` waits for complete coverage and verified GPU shutdown before running `analysis/source_policy_revision.py`. Completion or failures are recorded in the plan directory's `completion.json`; ambiguous paid calls are never automatically repeated. The analysis writes a separate `analysis/output/source-policy-revision-2026-10-19/` directory and `analysis/source_policy_revision_exploration.ipynb`, including old-versus-new decisions, six task/test F2 comparisons, and Holm correction across the revised 290-comparison family. The archived notebook and results remain intact.
-
-The revision is complete: 86,583 new decisions plus 4,500 reused XSTest decisions; GPU shutdown is verified. The [decision-oriented review](analysis/output/source-policy-revision-2026-10-19/decisions/review.html) and revised notebook organize results around request checks, answer checks, failure modes, and unnecessary flags, with three supporting views. Horizontal bars show errors per 100 relevant examples and hosted API cost per 10,000 checks. Error bars use Wilson 95% intervals; a single marker denotes higher error than the named comparison model after exact paired McNemar tests and Holm correction over 680 unique comparisons. Costs use recorded usage and historical rates; GPU deployment costs are excluded. Detailed F2 and paired-test tables remain supporting outputs.
-
-Regenerate the underlying statistical analysis offline with `.venv/bin/python -m analysis.decision_story`. Proposed narrative titles live in `analysis/decision_chart_titles.json`; images use only `approved_title`. The review includes proposed titles and decision implications outside the figures.
-
-The current article uses the [editorial chart set](analysis/output/source-policy-revision-2026-10-19/decisions/editorial/review.html), rebuilt with `.venv/bin/python -m analysis.article_charts`. It reads the completed analysis tables without inference or new statistical tests. It retains the F2/cost frontier, shows all 11 request interfaces, separates missing verdicts within answer misses, and uses readable topic and fine-tuning panels. Detailed methods live in numbered article notes. PNG and SVG exports, input hashes, and optional title proposals for the author's rewrite are saved alongside the review. The existing statistical tables and prior plots remain available.
-
-The [topic and policy-design review](analysis/output/source-policy-revision-2026-10-19/decisions/context/review.html) adds source-topic slices, matched short/detailed/filler/withheld policy comparisons, answer-choice changes, order checks, and repeated-run agreement. It reads the October 19 revised results. Policy and choice probes contain only 12 distinct conversations; repeatability contains 40. The advice-topic gap requires policy/label review, not an automatic interpretation as missed danger. Rebuild with `.venv/bin/python -m analysis.decision_context`; it is also included in `analysis.decision_story`. Narrative title proposals are in `analysis/context_chart_titles.json`.
-
-Editorial curation (October 19): the current review and notebook contain four figures, ordered as answer-checking value, request-detection tradeoffs, missing verdicts, and source-topic disagreement. Six redundant or weakly supported plots are removed from the narrative and retained under the output `archive/` directories. Policy and answer-choice results now appear only as a brief text limitation. Proposed titles are finding-led statements for the author to rewrite; no narrative titles are rendered until approved. Statistical comparison families are unchanged by editorial selection.
+No repository-wide release license has been selected. Preparation of an export does not authorize public release of this repository or change the source datasets' terms.
