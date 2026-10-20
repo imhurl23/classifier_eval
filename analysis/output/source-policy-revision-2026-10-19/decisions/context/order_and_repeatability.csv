@@ -1,0 +1,14 @@
+kind,arm,n,changed,gained,lost
+order,claude_structured,12,0,0,0
+repeatability,claude_structured,40,0,0,0
+order,clef_choice,12,0,0,0
+repeatability,clef_choice,40,0,0,0
+order,clef_flash_choice,12,0,0,0
+repeatability,clef_flash_choice,40,0,0,0
+order,decisions_luna,12,0,0,0
+repeatability,decisions_luna,40,0,0,0
+order,jev_choice,12,0,0,0
+repeatability,jev_choice,40,0,0,0
+repeatability,jev_noul,40,0,0,0
+order,luna_structured,12,0,0,0
+repeatability,luna_structured,40,2,2,0

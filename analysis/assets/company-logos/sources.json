@@ -1,0 +1,50 @@
+{
+  "cloudflare": {
+    "source": "https://www.cloudflare.com/favicon.ico",
+    "company_site": "https://www.cloudflare.com/",
+    "dimensions": [
+      99,
+      96
+    ]
+  },
+  "typesafe": {
+    "source": "https://framerusercontent.com/images/kcuF2BEp5XaVfkmFB634IPRKQH0.png",
+    "company_site": "https://typesafe.ai/",
+    "dimensions": [
+      400,
+      400
+    ]
+  },
+  "anthropic": {
+    "source": "https://cdn.prod.website-files.com/67ce28cfec624e2b733f8a52/67d31dd7aa394792257596c5_webclip.png",
+    "company_site": "https://www.anthropic.com/",
+    "dimensions": [
+      256,
+      256
+    ]
+  },
+  "together": {
+    "source": "https://cdn.prod.website-files.com/69654e88dce9154b5f1206dd/69a59cff65ed0f267dd2fbe8_touchicon.png",
+    "company_site": "https://www.together.ai/",
+    "dimensions": [
+      256,
+      256
+    ]
+  },
+  "qwen": {
+    "source": "https://img.alicdn.com/imgextra/i4/O1CN01OXv3EM1FN8t9W4P79_!!6000000000474-2-tps-80-80.png",
+    "company_site": "https://qwen.ai/",
+    "dimensions": [
+      80,
+      80
+    ]
+  },
+  "openai": {
+    "source": "https://developers.openai.com/favicon.png",
+    "company_site": "https://developers.openai.com/",
+    "dimensions": [
+      48,
+      48
+    ]
+  }
+}

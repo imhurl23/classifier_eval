@@ -1,0 +1,221 @@
+topic,arm_a,arm_b,n,a_only_errors,b_only_errors,p_raw,p_holm
+PII/Privacy,claude_structured,clef_choice,62,8,5,0.5810546875,1.0
+PII/Privacy,claude_structured,clef_flash_choice,62,8,1,0.0390625,1.0
+PII/Privacy,claude_structured,decisions_luna,62,5,12,0.143463134765625,1.0
+PII/Privacy,claude_structured,jev_choice,62,6,5,1.0,1.0
+PII/Privacy,claude_structured,jev_noul,62,6,9,0.6072387695312499,1.0
+PII/Privacy,claude_structured,luna_structured,62,5,9,0.4239501953125,1.0
+PII/Privacy,claude_structured,qwen35_4b_json,62,6,16,0.052478790283203125,1.0
+PII/Privacy,claude_structured,qwen35_4b_letters,62,7,17,0.06391465663909912,1.0
+PII/Privacy,claude_structured,safeguard_120b,62,7,1,0.0703125,1.0
+PII/Privacy,claude_structured,tev1_native,62,6,13,0.1670684814453125,1.0
+PII/Privacy,clef_choice,clef_flash_choice,62,5,1,0.21875,1.0
+PII/Privacy,clef_choice,decisions_luna,62,1,11,0.00634765625,1.0
+PII/Privacy,clef_choice,jev_choice,62,2,4,0.6875,1.0
+PII/Privacy,clef_choice,jev_noul,62,0,6,0.03125,1.0
+PII/Privacy,clef_choice,luna_structured,62,3,10,0.09228515625,1.0
+PII/Privacy,clef_choice,qwen35_4b_json,62,0,13,0.000244140625,0.0517578125
+PII/Privacy,clef_choice,qwen35_4b_letters,62,0,13,0.000244140625,0.0517578125
+PII/Privacy,clef_choice,safeguard_120b,62,4,1,0.375,1.0
+PII/Privacy,clef_choice,tev1_native,62,0,10,0.001953125,0.390625
+PII/Privacy,clef_flash_choice,decisions_luna,62,0,14,0.0001220703125,0.0263671875
+PII/Privacy,clef_flash_choice,jev_choice,62,1,7,0.0703125,1.0
+PII/Privacy,clef_flash_choice,jev_noul,62,0,10,0.001953125,0.390625
+PII/Privacy,clef_flash_choice,luna_structured,62,0,11,0.0009765625,0.2021484375
+PII/Privacy,clef_flash_choice,qwen35_4b_json,62,1,18,7.62939453125e-05,0.016632080078125
+PII/Privacy,clef_flash_choice,qwen35_4b_letters,62,1,18,7.62939453125e-05,0.016632080078125
+PII/Privacy,clef_flash_choice,safeguard_120b,62,1,2,1.0,1.0
+PII/Privacy,clef_flash_choice,tev1_native,62,0,14,0.0001220703125,0.0263671875
+PII/Privacy,decisions_luna,jev_choice,62,8,0,0.0078125,1.0
+PII/Privacy,decisions_luna,jev_noul,62,6,2,0.2890625,1.0
+PII/Privacy,decisions_luna,luna_structured,62,5,2,0.453125,1.0
+PII/Privacy,decisions_luna,qwen35_4b_json,62,6,9,0.6072387695312499,1.0
+PII/Privacy,decisions_luna,qwen35_4b_letters,62,7,10,0.629058837890625,1.0
+PII/Privacy,decisions_luna,safeguard_120b,62,14,1,0.0009765625,0.2021484375
+PII/Privacy,decisions_luna,tev1_native,62,6,6,1.0,1.0
+PII/Privacy,jev_choice,jev_noul,62,0,4,0.125,1.0
+PII/Privacy,jev_choice,luna_structured,62,3,8,0.2265625,1.0
+PII/Privacy,jev_choice,qwen35_4b_json,62,2,13,0.00738525390625,1.0
+PII/Privacy,jev_choice,qwen35_4b_letters,62,3,14,0.012725830078125,1.0
+PII/Privacy,jev_choice,safeguard_120b,62,6,1,0.125,1.0
+PII/Privacy,jev_choice,tev1_native,62,1,9,0.021484375,1.0
+PII/Privacy,jev_noul,luna_structured,62,5,6,1.0,1.0
+PII/Privacy,jev_noul,qwen35_4b_json,62,3,10,0.09228515625,1.0
+PII/Privacy,jev_noul,qwen35_4b_letters,62,3,10,0.09228515625,1.0
+PII/Privacy,jev_noul,safeguard_120b,62,9,0,0.00390625,0.7734375
+PII/Privacy,jev_noul,tev1_native,62,1,5,0.21875,1.0
+PII/Privacy,luna_structured,qwen35_4b_json,62,7,13,0.26317596435546875,1.0
+PII/Privacy,luna_structured,qwen35_4b_letters,62,9,15,0.30745625495910645,1.0
+PII/Privacy,luna_structured,safeguard_120b,62,11,1,0.00634765625,1.0
+PII/Privacy,luna_structured,tev1_native,62,5,8,0.5810546875,1.0
+PII/Privacy,qwen35_4b_json,qwen35_4b_letters,62,7,7,1.0,1.0
+PII/Privacy,qwen35_4b_json,safeguard_120b,62,17,1,0.00014495849609375,0.0310211181640625
+PII/Privacy,qwen35_4b_json,tev1_native,62,9,6,0.6072387695312499,1.0
+PII/Privacy,qwen35_4b_letters,safeguard_120b,62,17,1,0.00014495849609375,0.0310211181640625
+PII/Privacy,qwen35_4b_letters,tev1_native,62,10,7,0.629058837890625,1.0
+PII/Privacy,safeguard_120b,tev1_native,62,0,13,0.000244140625,0.0517578125
+Unauthorized Advice,claude_structured,clef_choice,40,5,0,0.0625,1.0
+Unauthorized Advice,claude_structured,clef_flash_choice,40,2,0,0.5,1.0
+Unauthorized Advice,claude_structured,decisions_luna,40,0,0,1.0,1.0
+Unauthorized Advice,claude_structured,jev_choice,40,0,0,1.0,1.0
+Unauthorized Advice,claude_structured,jev_noul,40,0,0,1.0,1.0
+Unauthorized Advice,claude_structured,luna_structured,40,1,1,1.0,1.0
+Unauthorized Advice,claude_structured,qwen35_4b_json,40,4,0,0.125,1.0
+Unauthorized Advice,claude_structured,qwen35_4b_letters,40,9,0,0.00390625,0.7734375
+Unauthorized Advice,claude_structured,safeguard_120b,40,6,0,0.03125,1.0
+Unauthorized Advice,claude_structured,tev1_native,40,1,0,1.0,1.0
+Unauthorized Advice,clef_choice,clef_flash_choice,40,1,4,0.375,1.0
+Unauthorized Advice,clef_choice,decisions_luna,40,0,5,0.0625,1.0
+Unauthorized Advice,clef_choice,jev_choice,40,0,5,0.0625,1.0
+Unauthorized Advice,clef_choice,jev_noul,40,0,5,0.0625,1.0
+Unauthorized Advice,clef_choice,luna_structured,40,1,6,0.125,1.0
+Unauthorized Advice,clef_choice,qwen35_4b_json,40,2,3,1.0,1.0
+Unauthorized Advice,clef_choice,qwen35_4b_letters,40,6,2,0.2890625,1.0
+Unauthorized Advice,clef_choice,safeguard_120b,40,4,3,1.0,1.0
+Unauthorized Advice,clef_choice,tev1_native,40,0,4,0.125,1.0
+Unauthorized Advice,clef_flash_choice,decisions_luna,40,0,2,0.5,1.0
+Unauthorized Advice,clef_flash_choice,jev_choice,40,0,2,0.5,1.0
+Unauthorized Advice,clef_flash_choice,jev_noul,40,0,2,0.5,1.0
+Unauthorized Advice,clef_flash_choice,luna_structured,40,1,3,0.625,1.0
+Unauthorized Advice,clef_flash_choice,qwen35_4b_json,40,3,1,0.625,1.0
+Unauthorized Advice,clef_flash_choice,qwen35_4b_letters,40,8,1,0.0390625,1.0
+Unauthorized Advice,clef_flash_choice,safeguard_120b,40,4,0,0.125,1.0
+Unauthorized Advice,clef_flash_choice,tev1_native,40,0,1,1.0,1.0
+Unauthorized Advice,decisions_luna,jev_choice,40,0,0,1.0,1.0
+Unauthorized Advice,decisions_luna,jev_noul,40,0,0,1.0,1.0
+Unauthorized Advice,decisions_luna,luna_structured,40,1,1,1.0,1.0
+Unauthorized Advice,decisions_luna,qwen35_4b_json,40,4,0,0.125,1.0
+Unauthorized Advice,decisions_luna,qwen35_4b_letters,40,9,0,0.00390625,0.7734375
+Unauthorized Advice,decisions_luna,safeguard_120b,40,6,0,0.03125,1.0
+Unauthorized Advice,decisions_luna,tev1_native,40,1,0,1.0,1.0
+Unauthorized Advice,jev_choice,jev_noul,40,0,0,1.0,1.0
+Unauthorized Advice,jev_choice,luna_structured,40,1,1,1.0,1.0
+Unauthorized Advice,jev_choice,qwen35_4b_json,40,4,0,0.125,1.0
+Unauthorized Advice,jev_choice,qwen35_4b_letters,40,9,0,0.00390625,0.7734375
+Unauthorized Advice,jev_choice,safeguard_120b,40,6,0,0.03125,1.0
+Unauthorized Advice,jev_choice,tev1_native,40,1,0,1.0,1.0
+Unauthorized Advice,jev_noul,luna_structured,40,1,1,1.0,1.0
+Unauthorized Advice,jev_noul,qwen35_4b_json,40,4,0,0.125,1.0
+Unauthorized Advice,jev_noul,qwen35_4b_letters,40,9,0,0.00390625,0.7734375
+Unauthorized Advice,jev_noul,safeguard_120b,40,6,0,0.03125,1.0
+Unauthorized Advice,jev_noul,tev1_native,40,1,0,1.0,1.0
+Unauthorized Advice,luna_structured,qwen35_4b_json,40,5,1,0.21875,1.0
+Unauthorized Advice,luna_structured,qwen35_4b_letters,40,10,1,0.01171875,1.0
+Unauthorized Advice,luna_structured,safeguard_120b,40,7,1,0.0703125,1.0
+Unauthorized Advice,luna_structured,tev1_native,40,2,1,1.0,1.0
+Unauthorized Advice,qwen35_4b_json,qwen35_4b_letters,40,7,2,0.1796875,1.0
+Unauthorized Advice,qwen35_4b_json,safeguard_120b,40,5,3,0.7265625,1.0
+Unauthorized Advice,qwen35_4b_json,tev1_native,40,0,3,0.25,1.0
+Unauthorized Advice,qwen35_4b_letters,safeguard_120b,40,5,8,0.5810546875,1.0
+Unauthorized Advice,qwen35_4b_letters,tev1_native,40,0,8,0.0078125,1.0
+Unauthorized Advice,safeguard_120b,tev1_native,40,0,5,0.0625,1.0
+Suicide and Self Harm,claude_structured,clef_choice,40,2,0,0.5,1.0
+Suicide and Self Harm,claude_structured,clef_flash_choice,40,3,0,0.25,1.0
+Suicide and Self Harm,claude_structured,decisions_luna,40,1,1,1.0,1.0
+Suicide and Self Harm,claude_structured,jev_choice,40,2,0,0.5,1.0
+Suicide and Self Harm,claude_structured,jev_noul,40,1,0,1.0,1.0
+Suicide and Self Harm,claude_structured,luna_structured,40,1,3,0.625,1.0
+Suicide and Self Harm,claude_structured,qwen35_4b_json,40,2,1,1.0,1.0
+Suicide and Self Harm,claude_structured,qwen35_4b_letters,40,3,0,0.25,1.0
+Suicide and Self Harm,claude_structured,safeguard_120b,40,2,0,0.5,1.0
+Suicide and Self Harm,claude_structured,tev1_native,40,2,0,0.5,1.0
+Suicide and Self Harm,clef_choice,clef_flash_choice,40,1,0,1.0,1.0
+Suicide and Self Harm,clef_choice,decisions_luna,40,0,2,0.5,1.0
+Suicide and Self Harm,clef_choice,jev_choice,40,0,0,1.0,1.0
+Suicide and Self Harm,clef_choice,jev_noul,40,0,1,1.0,1.0
+Suicide and Self Harm,clef_choice,luna_structured,40,1,5,0.21875,1.0
+Suicide and Self Harm,clef_choice,qwen35_4b_json,40,1,2,1.0,1.0
+Suicide and Self Harm,clef_choice,qwen35_4b_letters,40,1,0,1.0,1.0
+Suicide and Self Harm,clef_choice,safeguard_120b,40,1,1,1.0,1.0
+Suicide and Self Harm,clef_choice,tev1_native,40,0,0,1.0,1.0
+Suicide and Self Harm,clef_flash_choice,decisions_luna,40,0,3,0.25,1.0
+Suicide and Self Harm,clef_flash_choice,jev_choice,40,0,1,1.0,1.0
+Suicide and Self Harm,clef_flash_choice,jev_noul,40,0,2,0.5,1.0
+Suicide and Self Harm,clef_flash_choice,luna_structured,40,0,5,0.0625,1.0
+Suicide and Self Harm,clef_flash_choice,qwen35_4b_json,40,0,2,0.5,1.0
+Suicide and Self Harm,clef_flash_choice,qwen35_4b_letters,40,0,0,1.0,1.0
+Suicide and Self Harm,clef_flash_choice,safeguard_120b,40,0,1,1.0,1.0
+Suicide and Self Harm,clef_flash_choice,tev1_native,40,0,1,1.0,1.0
+Suicide and Self Harm,decisions_luna,jev_choice,40,2,0,0.5,1.0
+Suicide and Self Harm,decisions_luna,jev_noul,40,1,0,1.0,1.0
+Suicide and Self Harm,decisions_luna,luna_structured,40,1,3,0.625,1.0
+Suicide and Self Harm,decisions_luna,qwen35_4b_json,40,2,1,1.0,1.0
+Suicide and Self Harm,decisions_luna,qwen35_4b_letters,40,3,0,0.25,1.0
+Suicide and Self Harm,decisions_luna,safeguard_120b,40,2,0,0.5,1.0
+Suicide and Self Harm,decisions_luna,tev1_native,40,2,0,0.5,1.0
+Suicide and Self Harm,jev_choice,jev_noul,40,0,1,1.0,1.0
+Suicide and Self Harm,jev_choice,luna_structured,40,1,5,0.21875,1.0
+Suicide and Self Harm,jev_choice,qwen35_4b_json,40,1,2,1.0,1.0
+Suicide and Self Harm,jev_choice,qwen35_4b_letters,40,1,0,1.0,1.0
+Suicide and Self Harm,jev_choice,safeguard_120b,40,1,1,1.0,1.0
+Suicide and Self Harm,jev_choice,tev1_native,40,0,0,1.0,1.0
+Suicide and Self Harm,jev_noul,luna_structured,40,1,4,0.375,1.0
+Suicide and Self Harm,jev_noul,qwen35_4b_json,40,1,1,1.0,1.0
+Suicide and Self Harm,jev_noul,qwen35_4b_letters,40,2,0,0.5,1.0
+Suicide and Self Harm,jev_noul,safeguard_120b,40,1,0,1.0,1.0
+Suicide and Self Harm,jev_noul,tev1_native,40,1,0,1.0,1.0
+Suicide and Self Harm,luna_structured,qwen35_4b_json,40,4,1,0.375,1.0
+Suicide and Self Harm,luna_structured,qwen35_4b_letters,40,5,0,0.0625,1.0
+Suicide and Self Harm,luna_structured,safeguard_120b,40,4,0,0.125,1.0
+Suicide and Self Harm,luna_structured,tev1_native,40,5,1,0.21875,1.0
+Suicide and Self Harm,qwen35_4b_json,qwen35_4b_letters,40,2,0,0.5,1.0
+Suicide and Self Harm,qwen35_4b_json,safeguard_120b,40,1,0,1.0,1.0
+Suicide and Self Harm,qwen35_4b_json,tev1_native,40,2,1,1.0,1.0
+Suicide and Self Harm,qwen35_4b_letters,safeguard_120b,40,0,1,1.0,1.0
+Suicide and Self Harm,qwen35_4b_letters,tev1_native,40,0,1,1.0,1.0
+Suicide and Self Harm,safeguard_120b,tev1_native,40,1,1,1.0,1.0
+Profanity,claude_structured,clef_choice,84,2,0,0.5,1.0
+Profanity,claude_structured,clef_flash_choice,84,2,6,0.2890625,1.0
+Profanity,claude_structured,decisions_luna,84,0,15,6.103515625e-05,0.01336669921875
+Profanity,claude_structured,jev_choice,84,1,2,1.0,1.0
+Profanity,claude_structured,jev_noul,84,0,2,0.5,1.0
+Profanity,claude_structured,luna_structured,84,1,13,0.0018310546875,0.3680419921875
+Profanity,claude_structured,qwen35_4b_json,84,2,13,0.00738525390625,1.0
+Profanity,claude_structured,qwen35_4b_letters,84,2,11,0.0224609375,1.0
+Profanity,claude_structured,safeguard_120b,84,1,5,0.21875,1.0
+Profanity,claude_structured,tev1_native,84,2,11,0.0224609375,1.0
+Profanity,clef_choice,clef_flash_choice,84,0,6,0.03125,1.0
+Profanity,clef_choice,decisions_luna,84,0,17,1.52587890625e-05,0.00335693359375
+Profanity,clef_choice,jev_choice,84,0,3,0.25,1.0
+Profanity,clef_choice,jev_noul,84,0,4,0.125,1.0
+Profanity,clef_choice,luna_structured,84,1,15,0.000518798828125,0.108428955078125
+Profanity,clef_choice,qwen35_4b_json,84,1,14,0.0009765625,0.2021484375
+Profanity,clef_choice,qwen35_4b_letters,84,0,11,0.0009765625,0.2021484375
+Profanity,clef_choice,safeguard_120b,84,0,6,0.03125,1.0
+Profanity,clef_choice,tev1_native,84,0,11,0.0009765625,0.2021484375
+Profanity,clef_flash_choice,decisions_luna,84,3,14,0.012725830078125,1.0
+Profanity,clef_flash_choice,jev_choice,84,6,3,0.5078125,1.0
+Profanity,clef_flash_choice,jev_noul,84,6,4,0.75390625,1.0
+Profanity,clef_flash_choice,luna_structured,84,3,11,0.057373046875,1.0
+Profanity,clef_flash_choice,qwen35_4b_json,84,6,13,0.1670684814453125,1.0
+Profanity,clef_flash_choice,qwen35_4b_letters,84,5,10,0.30175781249999994,1.0
+Profanity,clef_flash_choice,safeguard_120b,84,3,3,1.0,1.0
+Profanity,clef_flash_choice,tev1_native,84,2,7,0.1796875,1.0
+Profanity,decisions_luna,jev_choice,84,15,1,0.000518798828125,0.108428955078125
+Profanity,decisions_luna,jev_noul,84,14,1,0.0009765625,0.2021484375
+Profanity,decisions_luna,luna_structured,84,8,5,0.5810546875,1.0
+Profanity,decisions_luna,qwen35_4b_json,84,14,10,0.5412561893463135,1.0
+Profanity,decisions_luna,qwen35_4b_letters,84,14,8,0.28627872467041016,1.0
+Profanity,decisions_luna,safeguard_120b,84,16,5,0.02660369873046875,1.0
+Profanity,decisions_luna,tev1_native,84,13,7,0.26317596435546875,1.0
+Profanity,jev_choice,jev_noul,84,0,1,1.0,1.0
+Profanity,jev_choice,luna_structured,84,2,13,0.00738525390625,1.0
+Profanity,jev_choice,qwen35_4b_json,84,4,14,0.0308837890625,1.0
+Profanity,jev_choice,qwen35_4b_letters,84,3,11,0.057373046875,1.0
+Profanity,jev_choice,safeguard_120b,84,1,4,0.375,1.0
+Profanity,jev_choice,tev1_native,84,3,11,0.057373046875,1.0
+Profanity,jev_noul,luna_structured,84,2,12,0.012939453125,1.0
+Profanity,jev_noul,qwen35_4b_json,84,4,13,0.049041748046875,1.0
+Profanity,jev_noul,qwen35_4b_letters,84,4,11,0.11846923828124999,1.0
+Profanity,jev_noul,safeguard_120b,84,2,4,0.6875,1.0
+Profanity,jev_noul,tev1_native,84,4,11,0.11846923828124999,1.0
+Profanity,luna_structured,qwen35_4b_json,84,12,11,1.0,1.0
+Profanity,luna_structured,qwen35_4b_letters,84,12,9,0.6636238098144531,1.0
+Profanity,luna_structured,safeguard_120b,84,11,3,0.057373046875,1.0
+Profanity,luna_structured,tev1_native,84,8,5,0.5810546875,1.0
+Profanity,qwen35_4b_json,qwen35_4b_letters,84,7,5,0.7744140625,1.0
+Profanity,qwen35_4b_json,safeguard_120b,84,13,6,0.1670684814453125,1.0
+Profanity,qwen35_4b_json,tev1_native,84,10,8,0.8145294189453125,1.0
+Profanity,qwen35_4b_letters,safeguard_120b,84,10,5,0.30175781249999994,1.0
+Profanity,qwen35_4b_letters,tev1_native,84,8,8,1.0,1.0
+Profanity,safeguard_120b,tev1_native,84,3,8,0.2265625,1.0

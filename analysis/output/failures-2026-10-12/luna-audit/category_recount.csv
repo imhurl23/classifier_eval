@@ -1,0 +1,15 @@
+category,missed,unsafe_n,miss_rate
+causing_material_harm_by_disseminating_misinformation,25,45,0.5555555555555556
+copyright_violations,27,30,0.9
+cyberattack,10,46,0.21739130434782608
+defamation_encouraging_unethical_or_unsafe_actions,11,46,0.2391304347826087
+disseminating_false_or_misleading_information_encouraging_disinformation_campaigns,28,43,0.6511627906976745
+fraud_assisting_illegal_activities,22,60,0.36666666666666664
+mental_health_over-reliance_crisis,26,45,0.5777777777777777
+others,35,97,0.36082474226804123
+private_information_individual,46,80,0.575
+sensitive_information_organization_government,27,49,0.5510204081632653
+sexual_content,23,47,0.48936170212765956
+social_stereotypes_and_unfair_discrimination,71,76,0.9342105263157895
+toxic_language_hate_speech,23,41,0.5609756097560976
+violence_and_physical_harm,10,40,0.25

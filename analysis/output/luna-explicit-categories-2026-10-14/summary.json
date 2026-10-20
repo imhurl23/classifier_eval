@@ -1,0 +1,86 @@
+{
+  "examples": 1681,
+  "new_calls": 3362,
+  "status_counts": {
+    "ok": 3362
+  },
+  "model_versions": {
+    "gpt-6-luna": 3362
+  },
+  "original_repeat_changed_labels": 71,
+  "input_tokens": 3947925,
+  "estimated_input_cost_usd": 0.3947925,
+  "pricing_source": "https://developers.openai.com/api/docs/guides/decisions",
+  "paired_transitions": [
+    {
+      "reference_label": "safe",
+      "n": 936,
+      "corrected": 1,
+      "introduced": 29,
+      "unchanged": 906
+    },
+    {
+      "reference_label": "unsafe",
+      "n": 745,
+      "corrected": 212,
+      "introduced": 5,
+      "unchanged": 528
+    }
+  ],
+  "metrics": [
+    {
+      "variant": "archived_original",
+      "reference_label": "safe",
+      "errors": 15,
+      "n": 936,
+      "error_rate": 0.016025641025641024,
+      "ci_low": 0.00973536282871847,
+      "ci_high": 0.026272406991217138
+    },
+    {
+      "variant": "archived_original",
+      "reference_label": "unsafe",
+      "errors": 384,
+      "n": 745,
+      "error_rate": 0.5154362416107383,
+      "ci_low": 0.4795618280933639,
+      "ci_high": 0.5511522775332468
+    },
+    {
+      "variant": "explicit_categories",
+      "reference_label": "safe",
+      "errors": 45,
+      "n": 936,
+      "error_rate": 0.04807692307692308,
+      "ci_low": 0.03612275296213029,
+      "ci_high": 0.06372556190284269
+    },
+    {
+      "variant": "explicit_categories",
+      "reference_label": "unsafe",
+      "errors": 168,
+      "n": 745,
+      "error_rate": 0.22550335570469798,
+      "ci_low": 0.19694563209939234,
+      "ci_high": 0.25687744610566465
+    },
+    {
+      "variant": "original_policy_repeat",
+      "reference_label": "safe",
+      "errors": 17,
+      "n": 936,
+      "error_rate": 0.018162393162393164,
+      "ci_low": 0.01137009109555419,
+      "ci_high": 0.02889371506071725
+    },
+    {
+      "variant": "original_policy_repeat",
+      "reference_label": "unsafe",
+      "errors": 375,
+      "n": 745,
+      "error_rate": 0.5033557046979866,
+      "ci_low": 0.46752708447300817,
+      "ci_high": 0.5391498950110376
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "data_revision": "source_aligned_v1_20261019",
+  "inference_calls": 0,
+  "comparison_references": {
+    "request_value": [
+      "clef_choice",
+      "decisions_luna"
+    ],
+    "response_failures": [
+      "luna_structured",
+      "safeguard_120b"
+    ]
+  },
+  "inputs": {
+    "analysis/output/source-policy-revision-2026-10-19/decisions/response_cost_f2.csv": "df5a93a668c38c2fea21af835088a0ad14bcfbd018d6e7f669cd86ecb23544cd",
+    "analysis/output/source-policy-revision-2026-10-19/decisions/error_rates.csv": "4c0ed94061ac93c545ecbe6f432970e9600b454d1fec2cef5fb939d6da3a6c66",
+    "analysis/output/source-policy-revision-2026-10-19/decisions/paired_comparisons.csv": "a37cfe612381ce2d5f25ec3396c785f44ea8ce1197010aca7fe09b8413199cb8",
+    "analysis/output/source-policy-revision-2026-10-19/decisions/context/topic_rates.csv": "de9236d5b265889cf25d96c72143074c23aef7f11f1598dde6cbf22994005676",
+    "analysis/output/source-policy-revision-2026-10-19/decisions/context/topic_paired_tests.csv": "77a8de58a8413ea5007c9304b5d7fe62dffffb2070a279e5e733362aeaf284d5",
+    "analysis/output/custom-finetune-benchmark-2026-10-19/matched_metrics.csv": "8315da482a26059842fe13da85c0a2dfab1a12737ec6cbcbc5da18cd6937387d"
+  }
+}

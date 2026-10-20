@@ -1,0 +1,145 @@
+arm,cohort,domain,n,matched,agreement,invalid_or_missing
+claude_structured,paired_policy,banking,2,2,1.0,0
+claude_structured,paired_policy,computers,2,2,1.0,0
+claude_structured,paired_policy,health,2,2,1.0,0
+claude_structured,paired_policy,history,2,2,1.0,0
+claude_structured,paired_policy,legal,2,2,1.0,0
+claude_structured,paired_policy,travel,2,2,1.0,0
+claude_structured,source_topic_following,banking,117,65,0.5555555555555556,0
+claude_structured,synthetic_topic_following,banking,30,21,0.7,0
+claude_structured,synthetic_topic_following,computer troubleshooting,27,22,0.8148148148148148,0
+claude_structured,synthetic_topic_following,education,29,17,0.5862068965517241,0
+claude_structured,synthetic_topic_following,health,30,20,0.6666666666666666,0
+claude_structured,synthetic_topic_following,insurance,30,19,0.6333333333333333,0
+claude_structured,synthetic_topic_following,legal,30,23,0.7666666666666667,0
+claude_structured,synthetic_topic_following,real estate,29,19,0.6551724137931034,0
+claude_structured,synthetic_topic_following,taxes,28,25,0.8928571428571429,0
+claude_structured,synthetic_topic_following,travel,29,15,0.5172413793103449,0
+clef_choice,paired_policy,banking,2,2,1.0,0
+clef_choice,paired_policy,computers,2,2,1.0,0
+clef_choice,paired_policy,health,2,2,1.0,0
+clef_choice,paired_policy,history,2,2,1.0,0
+clef_choice,paired_policy,legal,2,2,1.0,0
+clef_choice,paired_policy,travel,2,2,1.0,0
+clef_choice,source_topic_following,banking,117,71,0.6068376068376068,0
+clef_choice,synthetic_topic_following,banking,30,24,0.8,0
+clef_choice,synthetic_topic_following,computer troubleshooting,27,23,0.8518518518518519,0
+clef_choice,synthetic_topic_following,education,29,17,0.5862068965517241,0
+clef_choice,synthetic_topic_following,health,30,21,0.7,0
+clef_choice,synthetic_topic_following,insurance,30,22,0.7333333333333333,0
+clef_choice,synthetic_topic_following,legal,30,24,0.8,0
+clef_choice,synthetic_topic_following,real estate,29,22,0.7586206896551724,0
+clef_choice,synthetic_topic_following,taxes,28,25,0.8928571428571429,0
+clef_choice,synthetic_topic_following,travel,29,18,0.6206896551724138,0
+clef_flash_choice,paired_policy,banking,2,2,1.0,0
+clef_flash_choice,paired_policy,computers,2,2,1.0,0
+clef_flash_choice,paired_policy,health,2,2,1.0,0
+clef_flash_choice,paired_policy,history,2,2,1.0,0
+clef_flash_choice,paired_policy,legal,2,2,1.0,0
+clef_flash_choice,paired_policy,travel,2,2,1.0,0
+clef_flash_choice,source_topic_following,banking,117,65,0.5555555555555556,0
+clef_flash_choice,synthetic_topic_following,banking,30,26,0.8666666666666667,0
+clef_flash_choice,synthetic_topic_following,computer troubleshooting,27,24,0.8888888888888888,0
+clef_flash_choice,synthetic_topic_following,education,29,24,0.8275862068965517,0
+clef_flash_choice,synthetic_topic_following,health,30,19,0.6333333333333333,0
+clef_flash_choice,synthetic_topic_following,insurance,30,22,0.7333333333333333,0
+clef_flash_choice,synthetic_topic_following,legal,30,26,0.8666666666666667,0
+clef_flash_choice,synthetic_topic_following,real estate,29,24,0.8275862068965517,0
+clef_flash_choice,synthetic_topic_following,taxes,28,25,0.8928571428571429,0
+clef_flash_choice,synthetic_topic_following,travel,29,21,0.7241379310344828,0
+decisions_luna,paired_policy,banking,2,2,1.0,0
+decisions_luna,paired_policy,computers,2,2,1.0,0
+decisions_luna,paired_policy,health,2,2,1.0,0
+decisions_luna,paired_policy,history,2,2,1.0,0
+decisions_luna,paired_policy,legal,2,2,1.0,0
+decisions_luna,paired_policy,travel,2,2,1.0,0
+decisions_luna,source_topic_following,banking,117,53,0.452991452991453,0
+decisions_luna,synthetic_topic_following,banking,30,23,0.7666666666666667,0
+decisions_luna,synthetic_topic_following,computer troubleshooting,27,22,0.8148148148148148,0
+decisions_luna,synthetic_topic_following,education,29,16,0.5517241379310345,0
+decisions_luna,synthetic_topic_following,health,30,18,0.6,0
+decisions_luna,synthetic_topic_following,insurance,30,23,0.7666666666666667,0
+decisions_luna,synthetic_topic_following,legal,30,24,0.8,0
+decisions_luna,synthetic_topic_following,real estate,29,20,0.6896551724137931,0
+decisions_luna,synthetic_topic_following,taxes,28,25,0.8928571428571429,0
+decisions_luna,synthetic_topic_following,travel,29,16,0.5517241379310345,0
+jev_choice,paired_policy,banking,2,2,1.0,0
+jev_choice,paired_policy,computers,2,2,1.0,0
+jev_choice,paired_policy,health,2,2,1.0,0
+jev_choice,paired_policy,history,2,2,1.0,0
+jev_choice,paired_policy,legal,2,2,1.0,0
+jev_choice,paired_policy,travel,2,2,1.0,0
+jev_choice,source_topic_following,banking,117,77,0.6581196581196581,0
+jev_choice,synthetic_topic_following,banking,30,23,0.7666666666666667,0
+jev_choice,synthetic_topic_following,computer troubleshooting,27,23,0.8518518518518519,0
+jev_choice,synthetic_topic_following,education,29,16,0.5517241379310345,0
+jev_choice,synthetic_topic_following,health,30,20,0.6666666666666666,0
+jev_choice,synthetic_topic_following,insurance,30,25,0.8333333333333334,0
+jev_choice,synthetic_topic_following,legal,30,26,0.8666666666666667,0
+jev_choice,synthetic_topic_following,real estate,29,22,0.7586206896551724,0
+jev_choice,synthetic_topic_following,taxes,28,25,0.8928571428571429,0
+jev_choice,synthetic_topic_following,travel,29,16,0.5517241379310345,0
+luna_structured,paired_policy,banking,2,2,1.0,0
+luna_structured,paired_policy,computers,2,2,1.0,0
+luna_structured,paired_policy,health,2,2,1.0,0
+luna_structured,paired_policy,history,2,2,1.0,0
+luna_structured,paired_policy,legal,2,2,1.0,0
+luna_structured,paired_policy,travel,2,2,1.0,0
+luna_structured,source_topic_following,banking,117,64,0.5470085470085471,0
+luna_structured,synthetic_topic_following,banking,30,23,0.7666666666666667,0
+luna_structured,synthetic_topic_following,computer troubleshooting,27,22,0.8148148148148148,0
+luna_structured,synthetic_topic_following,education,29,19,0.6551724137931034,0
+luna_structured,synthetic_topic_following,health,30,19,0.6333333333333333,0
+luna_structured,synthetic_topic_following,insurance,30,21,0.7,0
+luna_structured,synthetic_topic_following,legal,30,24,0.8,0
+luna_structured,synthetic_topic_following,real estate,29,22,0.7586206896551724,0
+luna_structured,synthetic_topic_following,taxes,28,26,0.9285714285714286,0
+luna_structured,synthetic_topic_following,travel,29,18,0.6206896551724138,0
+qwen35_4b_json,paired_policy,banking,2,2,1.0,0
+qwen35_4b_json,paired_policy,computers,2,2,1.0,0
+qwen35_4b_json,paired_policy,health,2,2,1.0,0
+qwen35_4b_json,paired_policy,history,2,2,1.0,0
+qwen35_4b_json,paired_policy,legal,2,2,1.0,0
+qwen35_4b_json,paired_policy,travel,2,2,1.0,0
+qwen35_4b_json,source_topic_following,banking,117,93,0.7948717948717948,0
+qwen35_4b_json,synthetic_topic_following,banking,30,25,0.8333333333333334,0
+qwen35_4b_json,synthetic_topic_following,computer troubleshooting,27,24,0.8888888888888888,0
+qwen35_4b_json,synthetic_topic_following,education,29,19,0.6551724137931034,0
+qwen35_4b_json,synthetic_topic_following,health,30,19,0.6333333333333333,0
+qwen35_4b_json,synthetic_topic_following,insurance,30,26,0.8666666666666667,0
+qwen35_4b_json,synthetic_topic_following,legal,30,26,0.8666666666666667,0
+qwen35_4b_json,synthetic_topic_following,real estate,29,21,0.7241379310344828,0
+qwen35_4b_json,synthetic_topic_following,taxes,28,26,0.9285714285714286,0
+qwen35_4b_json,synthetic_topic_following,travel,29,21,0.7241379310344828,0
+qwen35_4b_letters,paired_policy,banking,2,2,1.0,0
+qwen35_4b_letters,paired_policy,computers,2,2,1.0,0
+qwen35_4b_letters,paired_policy,health,2,2,1.0,0
+qwen35_4b_letters,paired_policy,history,2,2,1.0,0
+qwen35_4b_letters,paired_policy,legal,2,1,0.5,0
+qwen35_4b_letters,paired_policy,travel,2,2,1.0,0
+qwen35_4b_letters,source_topic_following,banking,117,89,0.7606837606837606,0
+qwen35_4b_letters,synthetic_topic_following,banking,30,23,0.7666666666666667,0
+qwen35_4b_letters,synthetic_topic_following,computer troubleshooting,27,24,0.8888888888888888,0
+qwen35_4b_letters,synthetic_topic_following,education,29,18,0.6206896551724138,0
+qwen35_4b_letters,synthetic_topic_following,health,30,19,0.6333333333333333,0
+qwen35_4b_letters,synthetic_topic_following,insurance,30,21,0.7,0
+qwen35_4b_letters,synthetic_topic_following,legal,30,23,0.7666666666666667,0
+qwen35_4b_letters,synthetic_topic_following,real estate,29,19,0.6551724137931034,0
+qwen35_4b_letters,synthetic_topic_following,taxes,28,23,0.8214285714285714,0
+qwen35_4b_letters,synthetic_topic_following,travel,29,18,0.6206896551724138,0
+tev1_native,paired_policy,banking,2,2,1.0,0
+tev1_native,paired_policy,computers,2,2,1.0,0
+tev1_native,paired_policy,health,2,2,1.0,0
+tev1_native,paired_policy,history,2,2,1.0,0
+tev1_native,paired_policy,legal,2,2,1.0,0
+tev1_native,paired_policy,travel,2,2,1.0,0
+tev1_native,source_topic_following,banking,117,82,0.7008547008547008,0
+tev1_native,synthetic_topic_following,banking,30,26,0.8666666666666667,0
+tev1_native,synthetic_topic_following,computer troubleshooting,27,24,0.8888888888888888,0
+tev1_native,synthetic_topic_following,education,29,21,0.7241379310344828,0
+tev1_native,synthetic_topic_following,health,30,19,0.6333333333333333,0
+tev1_native,synthetic_topic_following,insurance,30,24,0.8,0
+tev1_native,synthetic_topic_following,legal,30,26,0.8666666666666667,0
+tev1_native,synthetic_topic_following,real estate,29,22,0.7586206896551724,0
+tev1_native,synthetic_topic_following,taxes,28,26,0.9285714285714286,0
+tev1_native,synthetic_topic_following,travel,29,19,0.6551724137931034,0

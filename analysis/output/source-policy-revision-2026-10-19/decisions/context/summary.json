@@ -1,0 +1,21 @@
+{
+  "topic_test_family": 220,
+  "diagnostic_test_family": 52,
+  "diagnostic_significant": 0,
+  "policy_unique_conversations": 12,
+  "repeated_unique_conversations": 40,
+  "actual_option_counts": {
+    "s2": 2,
+    "s3": 3,
+    "s6": 7,
+    "s13": 15
+  },
+  "narrative_charts": 1,
+  "omitted_charts": [
+    "policy_changes",
+    "choice_changes"
+  ],
+  "titles_rendered": [
+    "topic_failures"
+  ]
+}

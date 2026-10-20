@@ -1,0 +1,134 @@
+<!doctype html><meta charset="utf-8"><title>Topics and policy review</title><style>body{font:17px system-ui;color:#18181b;max-width:1500px;margin:40px auto;padding:0 28px}section{margin:48px 0}img{width:100%}td,th{text-align:left;padding:8px;border-bottom:1px solid #eee}h2{margin-top:40px}</style><h1>Topics and policy design</h1><p><b>Data:</b> completed October 19 source_aligned_v1_20261019 rerun: 84,751 new core decisions and 1,832 new diagnostic decisions. The 4,500 unchanged XSTest decisions are reused. The topic chart and policy comparisons below use the new rerun.</p><p>Use these results to decide what to test in your own policy and traffic. The topic chart belongs in the main analysis. Policy and answer-choice plots have been removed; the small diagnostic probes are summarized in text.</p><p>The four illustrated Aegis topics were selected for their distinct policy boundaries, not as a representative average of all topics. All source topic slices are in <a href="topic_rates.csv">topic_rates.csv</a>. Topic tags can overlap and are not independently adjudicated category ground truth.</p><section><p><b>Decision:</b> Choose and validate a checker for the topics your application actually handles.</p><p><b>Proposed title for your rewrite:</b> Harm classification performance by topic</p><p>Failure patterns differ sharply by source topic. The selected request-only slices include 62 source-unsafe privacy requests, 40 advice requests, 40 self-harm requests, and 84 profanity requests. All tested models disagree with most of the advice labels, while many detect most of the self-harm and profanity cases.</p><p>A general harm benchmark cannot establish suitability for a specific risk domain. Audit the policy boundary and representative examples before interpreting a topic-level miss as real-world danger. The advice gap is shared across model types and needs policy/label review.</p><img src="topic_failures.png" alt="Choose and validate a checker for the topics your application actually handles."></section><h2>Stable decisions can still be wrong</h2><p>Reversing binary answer order changed no decisions for the six tested interfaces on 12 conversations. Across two runs on 40 conversations, six of seven interfaces returned the same operational outcomes; Luna structured output changed two. Jev Choice disagreed with the source label on nine conversations in both runs. Repeatability does not establish correctness.</p><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>comparison</th>
+      <th>model</th>
+      <th>Distinct conversations</th>
+      <th>Changed decisions</th>
+      <th>Disagreed with source both times</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Reversed option order</td>
+      <td>Claude</td>
+      <td>12</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Two repeated runs</td>
+      <td>Claude</td>
+      <td>40</td>
+      <td>0</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>Reversed option order</td>
+      <td>Clef</td>
+      <td>12</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Two repeated runs</td>
+      <td>Clef</td>
+      <td>40</td>
+      <td>0</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>Reversed option order</td>
+      <td>Clef Flash</td>
+      <td>12</td>
+      <td>0</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>Two repeated runs</td>
+      <td>Clef Flash</td>
+      <td>40</td>
+      <td>0</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <td>Reversed option order</td>
+      <td>Luna · decision API</td>
+      <td>12</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Two repeated runs</td>
+      <td>Luna · decision API</td>
+      <td>40</td>
+      <td>0</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>Reversed option order</td>
+      <td>Jev · Choice</td>
+      <td>12</td>
+      <td>0</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>Two repeated runs</td>
+      <td>Jev · Choice</td>
+      <td>40</td>
+      <td>0</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>Two repeated runs</td>
+      <td>Jev · Noul</td>
+      <td>40</td>
+      <td>0</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>Reversed option order</td>
+      <td>Luna · structured output</td>
+      <td>12</td>
+      <td>0</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>Two repeated runs</td>
+      <td>Luna · structured output</td>
+      <td>40</td>
+      <td>2</td>
+      <td>5</td>
+    </tr>
+  </tbody>
+</table><h2>What short and long actually mean</h2><p>Short retains the taxonomy. Detailed adds boundary guidance and examples. Neutral-long adds filler instead. Withheld removes the policy and meaningful option definitions together, so it is not a pure test of policy presence. Word counts below exclude the evaluated conversation.</p><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>variant</th>
+      <th>instruction_words</th>
+      <th>option_definition_words</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>short</td>
+      <td>219</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>long</td>
+      <td>438</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>neutral_long</td>
+      <td>450</td>
+      <td>27</td>
+    </tr>
+    <tr>
+      <td>withheld</td>
+      <td>31</td>
+      <td>2</td>
+    </tr>
+  </tbody>
+</table><p>The policy and choice studies reuse 12 conversations (9 source-unsafe and 3 source-safe). They are not large enough to establish small improvements. Exact case counts remain in the supporting tables; none of the 52 paired diagnostic comparisons survives Holm correction. Repeated inference noise is not cleanly separated from prompt effects. Expanded category choices are collapsed to binary harm; caution and no verdict remain separate and do not count as source agreement. The source provides no independent category or caution gold for these comparisons.</p><h2>The advice boundary needs review</h2><p>All 11 models fail to flag most of the 40 source-unsafe requests tagged Unauthorized Advice (75–97.5%). Examples include an IT architect role prompt (aegis-validation-000317), a teacher lesson-plan request (aegis-validation-000806), and a legal-advisor request after a car accident (aegis-validation-000555). These are materially different requests. Broad disagreement may reflect source labels, incomplete policy alignment, model behavior, or a combination. We cannot interpret the entire gap as missed real-world danger. The original labels remain unchanged.</p><p><a href="unauthorized_advice_cases.csv">Inspect all 40 advice cases</a> · <a href="diagnostic_cases.csv">Inspect each changed decision</a> · <a href="topic_paired_tests.csv">Topic paired tests</a> · <a href="diagnostic_changes.csv">Diagnostic comparisons</a></p>

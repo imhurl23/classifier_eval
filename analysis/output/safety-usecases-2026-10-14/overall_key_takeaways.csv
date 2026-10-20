@@ -1,0 +1,5 @@
+theme,finding,qualification
+Broad quality,"Highest observed F2 on 4/7 combinations; 42 significant wins, 0 significant losses",Exploratory; correlated questions and examples; F2 objective
+Clearest advantage,Whole-exchange WildGuardTest: +4.9 pp versus strongest alternative,Global Holm-adjusted p = 0.011
+Cost versus Claude,15.7× lower estimated token cost on answer safety,Recorded usage at 2026-10-12 saved rates; not invoices
+Cheaper candidates,Jev 4.5× cheaper; Luna structured 2.3× cheaper,"Quality gaps from Clef unresolved, not equivalent"

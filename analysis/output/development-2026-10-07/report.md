@@ -12,7 +12,11 @@ The completed development runs support technical and exploratory comparisons. Th
 | Decisions Luna | 76.0% | 0.756 | 69.8% | 13.5% |
 | Clef Flash | 76.0% | 0.758 | 68.3% | 10.8% |
 
-![Source-label agreement](01_source_agreement.png)
+The chart below uses the completed tests to check safety across whole exchanges. For Aegis, the test answer is the majority of people’s safety votes. For WildGuardTest, we count an exchange as unsafe if either the request or the answer was labeled unsafe. We combined the Aegis groups called “validation” and “test,” counting each example once; their separate results are still available. Checking requests, checking answers, and checking whether the assistant refused each have their own charts in the [guide to choosing a model for safety checks](../safety-usecases-2026-10-14/report.html). That guide explains what each test can tell us and what each model gets wrong. Rebuild with `.venv/bin/python -m analysis.plot_source_agreement`. The table above uses 200 development examples; the other charts and numbers on this page also keep their original development scope.
+
+![Source-label agreement by dataset](01_source_agreement.png)
+
+[Separate request-screening plot](../safety-usecases-2026-10-14/01_request_screening.png) · [Assistant-answer safety plot](../safety-usecases-2026-10-14/02_response_safety.png) · [Refusal detection](../safety-usecases-2026-10-14/04_refusal_detection.png)
 
 ![Harm tradeoffs](02_harm_tradeoffs.png)
 

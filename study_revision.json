@@ -63,5 +63,21 @@
     "instruction": "Upgrade Workers Paid within budget",
     "base_fee_usd_per_month": 5,
     "status": "User reports upgrade complete; both full Clef runs completed successfully"
+  },
+  "source_policy_revision_20261019": {
+    "status": "complete",
+    "policy_version": "source_aligned_v1_20261019",
+    "authorization": "User approved implementation after estimates of $75\u2013$150 including robustness; runner bounds hosted estimates at $85 and GPU time allocation at $60 within $150 total.",
+    "plan": "data/processed/source-policy-revision/source_aligned_v1_20261019",
+    "original_results": "preserved",
+    "new_core_predictions": 84751,
+    "new_diagnostic_predictions": 1832,
+    "reused_xstest_predictions": 4500,
+    "heldout_status": "Policy revision after inspected test disagreements; exploratory, not preregistered",
+    "primary_policy": "Source-specific documented taxonomy and refusal definitions; Aegis human instructions incompletely published; exact equivalence not claimed",
+    "labels": "Published labels unchanged; questionable examples remain scored against original labels",
+    "analysis_directory": "analysis/output/source-policy-revision-2026-10-19",
+    "decision_review": "analysis/output/source-policy-revision-2026-10-19/decisions/review.html",
+    "gpu_shutdown_verified": true
   }
 }

@@ -1,0 +1,30 @@
+{
+  "verified_at": "2026-10-14T22:33:22.998127+00:00",
+  "interfaces_complete": 13,
+  "unique_recorded_decisions": 43706,
+  "case_rows": 1681,
+  "policy_prediction_columns": 26,
+  "archived_native_reference_columns": 2,
+  "parser_recoveries": 1,
+  "output_statuses": {
+    "ok": 43466,
+    "refusal": 190,
+    "truncated": 50
+  },
+  "tests_passed": 23,
+  "checks": [
+    "frozen actual request hashes and source gold verified by report generator",
+    "independent overall counts and rates",
+    "paired correction/regression counts and category totals",
+    "all case-comparison prediction columns complete",
+    "all lifecycle supervisors exited successfully; GPU deployments inactive with zero replicas"
+  ],
+  "sha256": {
+    "decisions.csv": "c9674dd574f5ac9452800ecb466c60d131855fc9fa2d861b2247beeee9977244",
+    "overall_metrics.csv": "2edc5adfc46dd45c39c3649f37d599f1917f84d3463609d8d02d3c9cdf319ce3",
+    "category_metrics.csv": "d827062d0aae755c3ad635350f7c51579b4bf5f23078fbc16012495a8a75147f",
+    "paired_changes.csv": "5eeebbf03e304f193b792f70f16d38f765ba396129578ea2095c49efbeb07799",
+    "case_comparison.csv": "bafd60062374679c354641cc00dc7e7040f6d4d72619e540d9d2bd2cb853bcab",
+    "report.md": "a4c9d3a8d058a9ed8e54b40b474a05a2532af4f3d31cc43536e6fcf09f16f208"
+  }
+}

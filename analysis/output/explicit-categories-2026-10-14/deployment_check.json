@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-10-14T22:33:44.593809+00:00",
+  "deployments": [
+    {
+      "arm": "tev1_native",
+      "status": "INACTIVE",
+      "active_replicas": 0
+    },
+    {
+      "arm": "qwen35_4b_letters",
+      "status": "INACTIVE",
+      "active_replicas": 0
+    },
+    {
+      "arm": "safeguard_120b",
+      "status": "INACTIVE",
+      "active_replicas": 0
+    },
+    {
+      "arm": "granite_41_8b",
+      "status": "INACTIVE",
+      "active_replicas": 0
+    },
+    {
+      "arm": "qwen3guard_8b",
+      "status": "INACTIVE",
+      "active_replicas": 0
+    },
+    {
+      "arm": "nemotron_guard",
+      "status": "INACTIVE",
+      "active_replicas": 0
+    }
+  ]
+}

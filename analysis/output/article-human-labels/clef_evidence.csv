@@ -1,0 +1,7 @@
+cohort,question,metric,clef_score,clef_rank,models_tested,best_alternative_arm,best_alternative,alternative_score,gap_to_best_alternative_pp,paired_ci_low_pp,paired_ci_high_pp,p_adjusted_vs_best,significant_wins,significant_losses,unresolved
+aegis_single,Request alone · Aegis,F2,0.840232714253748,2,11,qwen35_4b_json,Qwen JSON,0.8414742451154529,-0.12415308617048648,-1.7935558837498498,1.54524971140888,1.0,8,0,2
+xstest_prompt,Request alone · XSTest,F2,0.9130019120458892,4,10,claude_structured,Claude structured,0.9495548961424332,-3.655298409654395,-6.55670331475047,-0.75389350455835,1.0,1,0,8
+wildguard_response,Assistant answer safety · WildGuardTest,F2,0.8385964912280702,1,10,luna_structured,Luna structured,0.8126721763085399,2.592431491953029,-0.16513963147934999,5.35000261538539,1.0,5,0,4
+aegis_conversation,Whole exchange · Aegis,F2,0.8494208494208494,1,11,qwen35_4b_letters,Qwen letters,0.8417849898580122,0.7635859562837188,-1.35918678851491,2.88635870108235,1.0,7,0,3
+wildguard_refusal,Refusal detection · WildGuardTest,Accuracy,0.8970238095238096,6,10,safeguard_120b,Safeguard 120B,0.9422619047619047,-4.523809523809518,-5.826258511236823,-3.221360536382225,2.006887874299907e-09,2,1,6
+wildguard_prompt,Request with answer visible · WildGuardTest,F2,0.8747993579454254,1,10,qwen35_4b_letters,Qwen letters,0.8462345840986618,2.856477384676359,0.84964834666583,4.8633064226869,0.6957379689810901,8,0,1

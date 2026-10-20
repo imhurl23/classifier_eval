@@ -1,0 +1,576 @@
+{
+  "project_id": "76c8a288-a6af-41d7-b8f5-7326143d331f",
+  "project_name": "decision-interface-safety",
+  "selection": "All experiments marked study_status=current; excludes legacy/supplemental benchmarks and Topics validation experiments",
+  "experiment_count": 110,
+  "earliest_experiment_created": "2026-10-09T16:12:36.656Z",
+  "latest_experiment_created": "2026-10-09T18:37:54.497Z",
+  "facet_id": "394e1039-49cb-4f0d-9e47-532a62ce6ed0",
+  "facet_version": "1000198021630984891",
+  "bulk_processing_started": false,
+  "paid_inference_calls_this_attempt": 0,
+  "blockers": [
+    {
+      "endpoint": "POST /brainstore/automation/upsert-object-cursor",
+      "http_status": 400,
+      "source": "project_experiments:76c8a288-a6af-41d7-b8f5-7326143d331f",
+      "error": "Deployed API rejects project_experiments as an invalid object type."
+    },
+    {
+      "automation_id": "1209b4a3-cc0e-42ed-a28e-d0d609c7a12f",
+      "error": "Existing single-experiment automation error: /api/apikey/service-role failed with 400 Bad Request: Missing read access to project id 2b42a6d9-d6b5-4b34-8209-f16001d0a385. That UUID is an experiment ID, not the containing project ID."
+    }
+  ],
+  "experiments": [
+    {
+      "id": "74d3e23a-e6de-445d-a7fd-d98f22afbee0",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__qwen35_4b_json__response_refusal__s2__response_refusal_s2",
+      "created": "2026-10-09T18:37:54.497Z"
+    },
+    {
+      "id": "dd3745be-4631-430f-bcc1-bb35be777cc6",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__qwen35_4b_json__response_harm__s2__response_harm_s2",
+      "created": "2026-10-09T18:37:53.907Z"
+    },
+    {
+      "id": "a669a0e6-677b-487c-a23f-97f83ab787fe",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__qwen35_4b_json__interaction_harm__s2__r_long",
+      "created": "2026-10-09T18:37:52.484Z"
+    },
+    {
+      "id": "dbf82960-10d3-4b87-a04f-8614fa74dc26",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__qwen35_4b_json__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T18:37:51.789Z"
+    },
+    {
+      "id": "b7bc128d-9ee0-4a09-b7e6-d6500ba92958",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__xstest__prompt_only__qwen35_4b_json__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T18:34:17.067Z"
+    },
+    {
+      "id": "1fc114b7-e2bb-4435-be21-105e782adf4b",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__safeguard_120b__response_refusal__s2__response_refusal_s2",
+      "created": "2026-10-09T18:23:09.105Z"
+    },
+    {
+      "id": "fe21460e-69a3-4852-a1b5-d1b82ff78643",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__safeguard_120b__response_harm__s2__response_harm_s2",
+      "created": "2026-10-09T18:23:07.879Z"
+    },
+    {
+      "id": "a0643d23-7df3-4ca8-b666-50479ceaf890",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__safeguard_120b__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T18:23:07.201Z"
+    },
+    {
+      "id": "e02526a0-c342-4da1-9f78-ecd6526dc43f",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__safeguard_120b__interaction_harm__s2__r_long",
+      "created": "2026-10-09T18:23:05.965Z"
+    },
+    {
+      "id": "ac2970af-0a81-4731-b652-5e6a07acaf66",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__xstest__prompt_only__safeguard_120b__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T18:21:46.966Z"
+    },
+    {
+      "id": "8a6e3e2d-30f2-4000-94c6-c2e5976ab292",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__qwen35_4b_letters__response_refusal__s2__response_refusal_s2",
+      "created": "2026-10-09T18:20:35.533Z"
+    },
+    {
+      "id": "062b2b6e-831c-4cbc-923f-2318d0e44666",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__qwen35_4b_letters__response_harm__s2__response_harm_s2",
+      "created": "2026-10-09T18:20:34.684Z"
+    },
+    {
+      "id": "20ccbea2-6cc8-4b82-b8c4-9f083b6fb34c",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__qwen35_4b_letters__interaction_harm__s2__r_long",
+      "created": "2026-10-09T18:20:33.804Z"
+    },
+    {
+      "id": "d19ae0dc-f96b-4af9-b093-ba9c53f4c767",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__qwen35_4b_letters__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T18:20:31.877Z"
+    },
+    {
+      "id": "ebb8bf05-5ad8-4216-9fe0-37921290c143",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__xstest__prompt_only__qwen35_4b_letters__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T18:19:46.362Z"
+    },
+    {
+      "id": "6b622cee-4be0-4165-a907-497ec5b5e27c",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_test__prompt_only__qwen35_4b_json__interaction_harm__s2__r_long",
+      "created": "2026-10-09T18:19:08.737Z"
+    },
+    {
+      "id": "c2cf7fd2-28e1-46b9-8cd0-6e28c03a3291",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_test__conversation__qwen35_4b_json__interaction_harm__s2__r_long",
+      "created": "2026-10-09T18:19:07.417Z"
+    },
+    {
+      "id": "82e6b264-fa65-48f0-b4a9-af402da39792",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__tev1_native__response_harm__s2__response_harm_s2",
+      "created": "2026-10-09T18:18:38.953Z"
+    },
+    {
+      "id": "e7a22ba7-e88e-4915-8593-5570aef637af",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__tev1_native__response_refusal__s2__response_refusal_s2",
+      "created": "2026-10-09T18:18:37.821Z"
+    },
+    {
+      "id": "9b15a488-3be8-4776-8d7d-0581a1ce401e",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__tev1_native__interaction_harm__s2__r_long",
+      "created": "2026-10-09T18:18:37.005Z"
+    },
+    {
+      "id": "65e4e120-a3e0-4c0b-b557-41723b938d2b",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__tev1_native__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T18:18:36.126Z"
+    },
+    {
+      "id": "f13d1211-5848-40e7-8c92-24f1e5e0fb8a",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__qwen3guard_8b__interaction_harm__s3__native_or",
+      "created": "2026-10-09T18:04:22.076Z"
+    },
+    {
+      "id": "41c46262-4891-4e23-a239-17eed25eac4a",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__granite_41_8b__interaction_harm__s2__native_or",
+      "created": "2026-10-09T18:04:17.295Z"
+    },
+    {
+      "id": "7a053d49-f69e-4c52-8e13-eeefb7505da6",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__granite_41_8b__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T17:48:24.388Z"
+    },
+    {
+      "id": "d0e13bf7-6c14-4af6-8518-dc4b01dd3661",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__granite_41_8b__response_harm__s2__response_harm_s2",
+      "created": "2026-10-09T17:48:23.665Z"
+    },
+    {
+      "id": "1990d02c-0bb8-46a8-8788-2ac0cae45134",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__xstest__prompt_only__tev1_native__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T17:48:20.263Z"
+    },
+    {
+      "id": "33f3b7a7-473d-4f81-af64-b624f99f5430",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__qwen3guard_8b__response_harm__s3__response_harm_s2",
+      "created": "2026-10-09T17:45:57.107Z"
+    },
+    {
+      "id": "d9023cfe-ae63-4362-8374-ab2d49169e8b",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__qwen3guard_8b__prompt_harm__s3__prompt_harm_s2",
+      "created": "2026-10-09T17:45:55.929Z"
+    },
+    {
+      "id": "1b9a32aa-ea82-4371-bf5d-cc21556b037d",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__nemotron_guard__response_harm__s2__native_turn",
+      "created": "2026-10-09T17:17:55.076Z"
+    },
+    {
+      "id": "1e5dbff9-d431-4226-98e0-822cea8f7394",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__nemotron_guard__prompt_harm__s2__native_turn",
+      "created": "2026-10-09T17:17:54.351Z"
+    },
+    {
+      "id": "f7d6d543-9ed7-4020-b650-6b42e559ac0d",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_validation__conversation__qwen3guard_8b__interaction_harm__s3__native_or",
+      "created": "2026-10-09T17:17:50.677Z"
+    },
+    {
+      "id": "2033531d-076a-45fe-8340-06ac83662542",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_test__conversation__qwen3guard_8b__interaction_harm__s3__native_or",
+      "created": "2026-10-09T17:17:49.939Z"
+    },
+    {
+      "id": "f2cdd26d-03b3-4e9e-86ee-2d9a6956fe70",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__wildguardtest__conversation__nemotron_guard__interaction_harm__s2__native_or",
+      "created": "2026-10-09T17:17:49.130Z"
+    },
+    {
+      "id": "2a239b39-4e6d-4cea-bdfe-e358d2569708",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_validation__conversation__nemotron_guard__interaction_harm__s2__native_or",
+      "created": "2026-10-09T17:17:48.513Z"
+    },
+    {
+      "id": "5f38e7e5-bf62-4599-bb62-0358efa8764c",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_test__conversation__nemotron_guard__interaction_harm__s2__native_or",
+      "created": "2026-10-09T17:17:47.775Z"
+    },
+    {
+      "id": "4e7ea534-68d2-4c0b-92e0-546aecf5cedc",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_validation__conversation__granite_41_8b__interaction_harm__s2__native_or",
+      "created": "2026-10-09T17:17:47.095Z"
+    },
+    {
+      "id": "9bf61d38-0aea-4f09-81d4-a34152312390",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_test__conversation__granite_41_8b__interaction_harm__s2__native_or",
+      "created": "2026-10-09T17:17:46.342Z"
+    },
+    {
+      "id": "dbeaa540-96c3-4005-9064-f0a5bd80e734",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_test__prompt_only__safeguard_120b__interaction_harm__s2__r_long",
+      "created": "2026-10-09T17:02:22.450Z"
+    },
+    {
+      "id": "ceee6285-b5a7-489c-9cef-5a9100afa64d",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_test__conversation__safeguard_120b__interaction_harm__s2__r_long",
+      "created": "2026-10-09T17:02:21.691Z"
+    },
+    {
+      "id": "dcbcf3f4-7844-4846-941a-ca18d1ea9b90",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_test__prompt_only__qwen35_4b_letters__interaction_harm__s2__r_long",
+      "created": "2026-10-09T17:01:58.834Z"
+    },
+    {
+      "id": "333621d0-4133-4d8f-b44f-4893ccc6002d",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_test__conversation__qwen35_4b_letters__interaction_harm__s2__r_long",
+      "created": "2026-10-09T17:01:57.853Z"
+    },
+    {
+      "id": "40da56af-7b96-4e80-b10e-493b71321203",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_test__prompt_only__tev1_native__interaction_harm__s2__r_long",
+      "created": "2026-10-09T17:01:07.656Z"
+    },
+    {
+      "id": "e98dadb3-760e-418e-ad45-4b5cb4a798ae",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_test__conversation__tev1_native__interaction_harm__s2__r_long",
+      "created": "2026-10-09T17:01:05.045Z"
+    },
+    {
+      "id": "3f30ed58-a9aa-48e0-bc8f-92e039c4d61f",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_validation__prompt_only__qwen35_4b_json__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:58:00.999Z"
+    },
+    {
+      "id": "679a89f6-8920-4723-bf4d-4e534f39cc5e",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_validation__prompt_only__safeguard_120b__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:57:50.023Z"
+    },
+    {
+      "id": "364e9844-d47c-46bc-9c38-10c54048ee98",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_validation__prompt_only__qwen35_4b_letters__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:57:39.863Z"
+    },
+    {
+      "id": "cec2f727-c230-4d56-82ab-39a291d466a7",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_validation__prompt_only__tev1_native__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:57:34.553Z"
+    },
+    {
+      "id": "0149754e-9709-4bb2-9f9c-066f2946f371",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_validation__conversation__safeguard_120b__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:57:31.837Z"
+    },
+    {
+      "id": "21bee871-2795-420c-bc9a-88306d1236e9",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_validation__conversation__qwen35_4b_json__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:57:31.154Z"
+    },
+    {
+      "id": "0248bf84-5498-4487-a8a8-d91695047d9e",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_validation__conversation__qwen35_4b_letters__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:57:30.443Z"
+    },
+    {
+      "id": "b3d75224-aadf-482a-b20f-815d6a5f07c7",
+      "name": "source_supplement__ecd7a74f882e__baseten__20261009T164639Z__aegis_v2_validation__conversation__tev1_native__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:57:21.821Z"
+    },
+    {
+      "id": "90040584-bcdd-40bb-8940-6e188c5a26eb",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__claude_structured__response_refusal__s2__response_refusal_s2",
+      "created": "2026-10-09T16:24:11.425Z"
+    },
+    {
+      "id": "2040ecd9-d634-4929-9eb9-2bd44de52d40",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__claude_structured__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:24:10.767Z"
+    },
+    {
+      "id": "433e476e-9e66-420b-bd1c-1566dfc6f79f",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__claude_structured__response_harm__s2__response_harm_s2",
+      "created": "2026-10-09T16:24:10.175Z"
+    },
+    {
+      "id": "e6a06e5f-67eb-4baf-a76e-5bb56e178605",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__claude_structured__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:24:09.207Z"
+    },
+    {
+      "id": "4a131063-0ecc-4c45-8b4b-d46edf4e3239",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__luna_structured__response_refusal__s2__response_refusal_s2",
+      "created": "2026-10-09T16:23:12.267Z"
+    },
+    {
+      "id": "22bca38e-8775-48be-b2c5-2d0da6e5a309",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__luna_structured__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:23:11.672Z"
+    },
+    {
+      "id": "f04e4da5-6c7e-4efd-b31e-92caff14447f",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__luna_structured__response_harm__s2__response_harm_s2",
+      "created": "2026-10-09T16:23:11.066Z"
+    },
+    {
+      "id": "1bfbf3d9-d234-49bb-9875-4c34d6604d86",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__luna_structured__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:23:10.114Z"
+    },
+    {
+      "id": "19c0c486-5252-43fc-bc18-402e51837299",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__xstest__prompt_only__claude_structured__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:22:28.573Z"
+    },
+    {
+      "id": "ef63ade9-7c79-4045-b129-2208229a94b9",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__xstest__prompt_only__luna_structured__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:21:59.210Z"
+    },
+    {
+      "id": "6ac0860b-8306-4ed0-943a-5a3d18abb71b",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__prompt_only__claude_structured__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:16:27.712Z"
+    },
+    {
+      "id": "a663a802-a72f-4b80-8cea-01e9c296fc5c",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__conversation__claude_structured__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:16:25.914Z"
+    },
+    {
+      "id": "7df4a68a-1266-4ac3-ac03-e40f77baa171",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__prompt_only__luna_structured__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:16:16.899Z"
+    },
+    {
+      "id": "1fc9844e-1725-448f-a9f7-97201208aa95",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__conversation__luna_structured__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:16:15.181Z"
+    },
+    {
+      "id": "89bbc6ca-712e-4cc1-b4b7-dd3659c667e6",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__clef_choice__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:16:13.727Z"
+    },
+    {
+      "id": "2146babd-a5fe-423a-8489-4071a0d46b1b",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__clef_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:16:13.040Z"
+    },
+    {
+      "id": "f7932632-2190-4e9b-bf52-0469e3d2686c",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__clef_choice__response_refusal__s2__response_refusal_s2",
+      "created": "2026-10-09T16:16:11.996Z"
+    },
+    {
+      "id": "31fdf151-788d-4cdd-bbbb-aebc9e659b7b",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__clef_choice__response_harm__s2__response_harm_s2",
+      "created": "2026-10-09T16:16:11.235Z"
+    },
+    {
+      "id": "0290899c-494c-4f98-a064-e85623c681c1",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__xstest__prompt_only__clef_choice__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:15:48.866Z"
+    },
+    {
+      "id": "a17ee468-7a44-4b46-bb9e-73be2478ab36",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__clef_flash_choice__response_refusal__s2__response_refusal_s2",
+      "created": "2026-10-09T16:15:11.481Z"
+    },
+    {
+      "id": "a645d254-2194-4d04-8702-39d84e45e4a5",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__clef_flash_choice__response_harm__s2__response_harm_s2",
+      "created": "2026-10-09T16:15:10.837Z"
+    },
+    {
+      "id": "401138ab-70a9-4de4-80f2-7d8e9493dd91",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__clef_flash_choice__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:15:09.334Z"
+    },
+    {
+      "id": "a6994d55-d84a-48fb-bb09-674fa8e194aa",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__clef_flash_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:15:08.691Z"
+    },
+    {
+      "id": "0901b149-99e7-4dd2-a0fc-3d3f05655bf5",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__xstest__prompt_only__clef_flash_choice__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:14:49.730Z"
+    },
+    {
+      "id": "69850eb0-4f7d-4a1c-baad-f691bdb8f88c",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__decisions_luna__response_harm__s2__response_harm_s2",
+      "created": "2026-10-09T16:14:05.016Z"
+    },
+    {
+      "id": "3ca756b1-bb4d-4fdd-9cab-e158eec04997",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__decisions_luna__response_refusal__s2__response_refusal_s2",
+      "created": "2026-10-09T16:14:04.113Z"
+    },
+    {
+      "id": "e053a4d1-6859-4490-bd3d-2e4b1126f6dc",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__decisions_luna__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:14:02.771Z"
+    },
+    {
+      "id": "7c0a4b45-f19a-4361-8d3c-1fa05e0d3e3d",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__decisions_luna__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:14:02.118Z"
+    },
+    {
+      "id": "7df37853-361e-4539-baef-b38bee4d4c8e",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__xstest__prompt_only__decisions_luna__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:13:53.613Z"
+    },
+    {
+      "id": "2ea07d1c-fdd9-48e9-8681-3749b86aeddc",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__jev_choice__response_refusal__s2__response_refusal_s2",
+      "created": "2026-10-09T16:13:51.845Z"
+    },
+    {
+      "id": "71c697ed-b64e-49d4-9998-712cbc9ca47e",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__jev_choice__response_harm__s2__response_harm_s2",
+      "created": "2026-10-09T16:13:51.068Z"
+    },
+    {
+      "id": "fd124450-bca8-4b75-b5f8-4f70b2ec3ffc",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__jev_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:50.273Z"
+    },
+    {
+      "id": "c9c27da6-95ef-4fe4-b41a-f992a2317b47",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__jev_choice__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:13:49.630Z"
+    },
+    {
+      "id": "ac51fc03-2efa-44af-9447-a140a7daaad2",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__prompt_only__clef_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:48.737Z"
+    },
+    {
+      "id": "cc09abbc-9fb1-4a89-a272-db37e0e6fbf3",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__conversation__clef_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:47.449Z"
+    },
+    {
+      "id": "33fbda60-29e2-4bd2-834d-b58454147ae6",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__xstest__prompt_only__jev_choice__prompt_harm__s2__prompt_harm_s2",
+      "created": "2026-10-09T16:13:42.974Z"
+    },
+    {
+      "id": "1dc4f203-bdbc-4152-bca5-85c4d32ddc2d",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__wildguardtest__conversation__jev_noul__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:40.753Z"
+    },
+    {
+      "id": "cb7661c3-eb31-4c3d-a019-7ae04a7474af",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__prompt_only__clef_flash_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:26.060Z"
+    },
+    {
+      "id": "ce02a07d-2a7e-401e-9903-27d50da249d1",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__conversation__clef_flash_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:25.223Z"
+    },
+    {
+      "id": "1131b8d1-a0e1-480d-94e4-95fae9979278",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__conversation__decisions_luna__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:08.284Z"
+    },
+    {
+      "id": "96c12a5a-0e50-4bb0-af3a-ed26ab223280",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__prompt_only__decisions_luna__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:07.443Z"
+    },
+    {
+      "id": "804babee-39c1-4e16-8477-99dac2eff6ab",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__prompt_only__jev_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:06.748Z"
+    },
+    {
+      "id": "22af13d8-2dda-4a2d-9677-8b18da068554",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__conversation__jev_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:06.042Z"
+    },
+    {
+      "id": "a1827ec3-17af-4a5c-9d14-b86f925d0670",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__prompt_only__jev_noul__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:04.569Z"
+    },
+    {
+      "id": "da155bf1-a551-4dac-beae-c988249e6883",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_test__conversation__jev_noul__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:13:00.902Z"
+    },
+    {
+      "id": "0c7c5cee-7278-43b1-a0c1-76c388136994",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__prompt_only__claude_structured__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:54.275Z"
+    },
+    {
+      "id": "0bb67338-d182-4e2c-ba8d-6b8c7ed7d996",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__prompt_only__luna_structured__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:49.946Z"
+    },
+    {
+      "id": "fc9a38ba-c5ec-4f1c-862d-56e9dc652c64",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__prompt_only__clef_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:47.583Z"
+    },
+    {
+      "id": "2e2e5924-e522-4d96-b63a-1c2ca76db772",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__conversation__claude_structured__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:46.895Z"
+    },
+    {
+      "id": "73a91700-36e7-426d-8290-3881598eb525",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__prompt_only__clef_flash_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:46.201Z"
+    },
+    {
+      "id": "b118d421-c1ec-4ecd-b7c5-52994749a646",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__conversation__luna_structured__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:45.368Z"
+    },
+    {
+      "id": "73be46df-28d1-4620-bdd7-0edb8a7eef9e",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__prompt_only__decisions_luna__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:43.634Z"
+    },
+    {
+      "id": "58e2d6ea-c439-4928-bd0c-184360871e2f",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__prompt_only__jev_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:42.897Z"
+    },
+    {
+      "id": "702b6979-b2f9-4d2e-b37f-a6cab9fee270",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__prompt_only__jev_noul__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:42.163Z"
+    },
+    {
+      "id": "f2677fe6-8c0f-4716-80f1-ef28f120420b",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__conversation__decisions_luna__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:40.312Z"
+    },
+    {
+      "id": "55be559b-a6c5-45fa-901d-19b51f2af853",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__conversation__clef_flash_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:39.390Z"
+    },
+    {
+      "id": "3c01567b-41f6-4298-a601-b8688941d7fc",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__conversation__clef_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:38.588Z"
+    },
+    {
+      "id": "68b5707e-9cf7-46ab-9745-c6443d5436a9",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__conversation__jev_choice__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:37.833Z"
+    },
+    {
+      "id": "519e9f99-a18c-4fb9-ba37-96e4bc83d339",
+      "name": "source_full__000bf1bcb6dc__20261009T161223Z__aegis_v2_validation__conversation__jev_noul__interaction_harm__s2__r_long",
+      "created": "2026-10-09T16:12:36.656Z"
+    }
+  ]
+}

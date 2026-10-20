@@ -1,0 +1,62 @@
+{
+  "response_value": {
+    "proposed_title": "Model performance on harm classification",
+    "approved_title": "Model performance on harm classification",
+    "decision": "Choose an API model for checking an assistant answer before showing it to a user.",
+    "placement": "main",
+    "finding": "The observed F2\u2013cost frontier contains Clef Flash ($0.32 per 10,000 checks; 74.6% F2) and Jev Choice ($0.44; 82.5%). The other four hosted interfaces have both higher estimated cost and lower observed F2 than Jev Choice. The F2 differences from Clef and Luna structured output remain statistically unresolved.",
+    "use_in_decision": "The frontier identifies the observed cost/quality tradeoff on this answer-harm benchmark, not statistically established dominance or a production guarantee. F2 weights recall more than precision; inspect the separate error-type chart before choosing automatic blocking or review. Historical API cost excludes the work created by false alarms and missing verdicts."
+  },
+  "request_value": {
+    "proposed_title": "Model performance on request classification",
+    "approved_title": "Model performance on request classification",
+    "decision": "Choose an API model for checking a request before the assistant answers.",
+    "placement": "main",
+    "finding": "Clef has the lowest observed miss rate for unsafe requests, with more false alarms than most alternatives. Clef Flash costs less per check but misses more unsafe requests. Price and exact agreement alone hide this choice.",
+    "use_in_decision": "For screening before an assistant answers, shortlist according to the consequence of a miss versus an unnecessary block. A human-review queue may tolerate more flags than an automatic refusal system."
+  },
+  "response_failures": {
+    "proposed_title": "Error types in harm classification",
+    "approved_title": "Error types in harm classification",
+    "decision": "Decide whether missed harm, false alarms, or a missing verdict requires a fallback.",
+    "placement": "main",
+    "finding": "A wrong safe label and no usable verdict require different handling. Claude sometimes refuses the classification task itself; that contributes to its unsafe examples not flagged. General LLM interfaces also differ substantially: Qwen JSON produces fewer false alarms than Qwen letters, but more wrong safe labels.",
+    "use_in_decision": "Define what happens when the checker cannot decide: block, retry, or route to review. These figures measure classifier behavior; they do not assume that a deployed system lets missing verdicts pass. The evidence supports comparisons between tested models and interfaces, not a blanket ranking of model types."
+  },
+  "benign_requests": {
+    "proposed_title": "False alarms can interrupt legitimate requests.",
+    "approved_title": null,
+    "decision": "Assess friction from incorrectly flagging legitimate requests, including sensitive-looking wording.",
+    "placement": "archive",
+    "finding": "More aggressive detection can create unnecessary intervention. Clef flags roughly one in five safe XSTest requests, while Jev Choice and the two Luna interfaces flag roughly one in twenty. Different benign datasets also change the observed error rates.",
+    "use_in_decision": "For customer-facing assistants, test legitimate requests that mention sensitive topics before choosing automatic blocking. The false-alarm rate among safe requests is not the proportion of alerts that will be wrong; that also depends on how common unsafe traffic is.",
+    "exclusion_reason": "Repeats the false-alarm tradeoff already visible in request_value; adds a reused dataset without a distinct central conclusion."
+  },
+  "adversarial_answers": {
+    "proposed_title": "Observed detection rates differed between ordinary and adversarial examples.",
+    "approved_title": null,
+    "decision": "Assess candidates for adversarial settings; the two slices have different examples and are not a controlled attack experiment.",
+    "placement": "archive",
+    "finding": "Performance on harmful answers varies between ordinary and adversarial prompt subsets. Some model gaps are large, while small groups leave wider uncertainty. These are different examples, so the difference cannot be attributed solely to an attack.",
+    "use_in_decision": "For abuse-exposed applications, use this view to choose candidates for further adversarial testing. It does not establish robustness to new attacks or long agent workflows.",
+    "exclusion_reason": "Different examples prevent attributing the difference to an attack; does not support a strong robustness headline."
+  },
+  "exchange_review": {
+    "proposed_title": "Whole-exchange review also trades missed harm against false alarms.",
+    "approved_title": null,
+    "decision": "Choose candidates for retrospective conversation review, where both messages are available.",
+    "placement": "archive",
+    "finding": "Whole-exchange review produces its own tradeoff: Clef has a low observed miss rate with more false alarms, while Jev produces fewer false alarms but misses more source-labeled unsafe exchanges.",
+    "use_in_decision": "Use this comparison for reviewing completed conversations. Both messages are available here, and Aegis supplies the exchange label. This is separate from checking a request or response alone; no unsafe-if-either-message rule is constructed.",
+    "exclusion_reason": "Repeats the miss/false-alarm tradeoff for a secondary task."
+  },
+  "refusal_audit": {
+    "proposed_title": "Harm detection and refusal detection require separate evaluation.",
+    "approved_title": null,
+    "decision": "Choose a refusal detector for auditing behavior; this is a different task from judging harmfulness.",
+    "placement": "archive",
+    "finding": "Refusal detection is a separate capability from harm detection. Qwen JSON frequently calls non-refusals refusals, despite producing relatively few false alarms in the answer-harm task. A model that detects harm well is not automatically a good refusal auditor.",
+    "use_in_decision": "For auditing refusal behavior, select on refusal errors directly. A refusal label alone does not establish that the request was harmful or that the answer was safe.",
+    "exclusion_reason": "Separate auditing task distracts from the central harm-classification decision."
+  }
+}

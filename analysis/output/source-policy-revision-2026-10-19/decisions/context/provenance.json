@@ -1,0 +1,13 @@
+{
+  "policy_version": "source_aligned_v1_20261019",
+  "completion_status": "complete",
+  "completed_at": "2026-10-19T23:19:48.970553+00:00",
+  "new_core_rows": 84751,
+  "new_diagnostic_rows": 1832,
+  "reused_xstest_rows": 4500,
+  "diagnostic_distinct_items": {
+    "option_order": 12,
+    "repeatability": 40,
+    "robustness": 12
+  }
+}

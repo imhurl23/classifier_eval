@@ -1,0 +1,22 @@
+arm,source_dataset,input_unit,target,n,accuracy,ci_low,ci_high,rank,leaderboard
+clef_choice,aegis_v2_combined,conversation,interaction_harm,1299,0.8314087759815243,0.8100782105472927,0.8507849365920065,1,Aegis pooled pairs
+luna_structured,aegis_v2_combined,conversation,interaction_harm,1299,0.8190916089299461,0.7972266934327679,0.8390747571810289,2,Aegis pooled pairs
+jev_choice,aegis_v2_combined,conversation,interaction_harm,1299,0.8090839107005389,0.7868114197142877,0.8295336524725383,3,Aegis pooled pairs
+qwen35_4b_json,aegis_v2_combined,conversation,interaction_harm,1299,0.8083140877598153,0.7860111847388542,0.8287987814151281,4,Aegis pooled pairs
+jev_noul,aegis_v2_combined,conversation,interaction_harm,1299,0.8075442648190916,0.7852110809285141,0.8280637791926241,5,Aegis pooled pairs
+claude_structured,aegis_v2_combined,conversation,interaction_harm,1299,0.7998460354118553,0.7772171284905556,0.8207066713021436,6,Aegis pooled pairs
+qwen35_4b_letters,aegis_v2_combined,conversation,interaction_harm,1299,0.792147806004619,0.7692356719562592,0.8133370675080012,7,Aegis pooled pairs
+tev1_native,aegis_v2_combined,conversation,interaction_harm,1299,0.7882986913010007,0.7652494673848985,0.8096477419151421,8,Aegis pooled pairs
+clef_flash_choice,aegis_v2_combined,conversation,interaction_harm,1299,0.7875288683602771,0.7644525805621362,0.8089095227050608,9,Aegis pooled pairs
+decisions_luna,aegis_v2_combined,conversation,interaction_harm,1299,0.7867590454195535,0.763655810676614,0.808171186557739,10,Aegis pooled pairs
+safeguard_120b,aegis_v2_combined,conversation,interaction_harm,1299,0.7790608160123171,0.755694444245132,0.8007814926607818,11,Aegis pooled pairs
+claude_structured,xstest,prompt_only,prompt_harm,450,0.94,0.9141108080946956,0.9584403198759444,1,XSTest prompt only
+jev_choice,xstest,prompt_only,prompt_harm,450,0.9266666666666666,0.898800980941121,0.9473092037576814,2,XSTest prompt only
+safeguard_120b,xstest,prompt_only,prompt_harm,450,0.9222222222222224,0.8937499296330166,0.9435466073085068,3,XSTest prompt only
+luna_structured,xstest,prompt_only,prompt_harm,450,0.9111111111111112,0.8812183325487989,0.9340440849995264,4,XSTest prompt only
+clef_flash_choice,xstest,prompt_only,prompt_harm,450,0.9088888888888887,0.8787269747424755,0.9321286189272102,5,XSTest prompt only
+tev1_native,xstest,prompt_only,prompt_harm,450,0.9022222222222224,0.8712799839898335,0.9263551380439334,6,XSTest prompt only
+qwen35_4b_letters,xstest,prompt_only,prompt_harm,450,0.8688888888888889,0.8345566278017795,0.8969761360523936,7,XSTest prompt only
+decisions_luna,xstest,prompt_only,prompt_harm,450,0.86,0.824883637570539,0.8890218307690757,8,XSTest prompt only
+qwen35_4b_json,xstest,prompt_only,prompt_harm,450,0.86,0.824883637570539,0.8890218307690757,8,XSTest prompt only
+clef_choice,xstest,prompt_only,prompt_harm,450,0.8577777777777778,0.8224721743745146,0.8870264700864604,10,XSTest prompt only

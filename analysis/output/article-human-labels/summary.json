@@ -1,0 +1,14 @@
+{
+  "task_test_combinations": 6,
+  "configurations": 62,
+  "comparisons": 290,
+  "significant_comparisons": 141,
+  "clef_observed_leads": 3,
+  "clef_significant_wins": 31,
+  "clef_significant_losses": 1,
+  "clef_unresolved": 24,
+  "original_holm_family": 345,
+  "excluded_cohort": "wildguard_conversation",
+  "refusal_metric": "Accuracy",
+  "screening_metric": "F2"
+}

@@ -1,0 +1,6 @@
+# Keep generated reports out of the default source-code review.
+analysis/output/** linguist-generated=true
+# Matplotlib SVG path data contains insignificant trailing spaces.
+*.svg -whitespace
+# Preserve whitespace inside quoted benchmark text rather than editing evidence.
+analysis/output/**/*.csv -whitespace

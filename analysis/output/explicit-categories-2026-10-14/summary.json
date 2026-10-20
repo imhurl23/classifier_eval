@@ -1,0 +1,23 @@
+{
+  "complete_custom_policy_interfaces": 13,
+  "planned_custom_policy_interfaces": 13,
+  "recorded_decisions": 43706,
+  "reused_decisions": 3362,
+  "parser_recovered_decisions": 1,
+  "direction_counts": {
+    "unsafe": {
+      "decreased": 11,
+      "increased": 2,
+      "unchanged": 0
+    },
+    "safe": {
+      "decreased": 3,
+      "increased": 10,
+      "unchanged": 0
+    }
+  },
+  "fixed_policy_reference_interfaces": [
+    "qwen3guard_8b",
+    "nemotron_guard"
+  ]
+}

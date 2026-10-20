@@ -1,0 +1,147 @@
+[
+  {
+    "arm": "jev_choice",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3362
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "jev_noul",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3362
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "clef_choice",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3362
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "clef_flash_choice",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3362
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "luna_structured",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3362
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "claude_structured",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3172,
+      "refusal": 190
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "decisions_luna",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3362
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "tev1_native",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3362
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "qwen35_4b_letters",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3362
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "qwen35_4b_json",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3362
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "safeguard_120b",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3312,
+      "truncated": 50
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "granite_41_8b",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3362
+    },
+    "unresolved_inflight": 0
+  },
+  {
+    "arm": "policylm_17b_prompt",
+    "planned": 3362,
+    "prepared": 3362,
+    "completed": 3362,
+    "complete": true,
+    "statuses": {
+      "ok": 3362
+    },
+    "unresolved_inflight": 0
+  }
+]

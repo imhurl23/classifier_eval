@@ -1,0 +1,61 @@
+{
+  "audit_scope": "Offline artifact integrity; does not validate server implementation or policy alignment.",
+  "checked_requests": 1681,
+  "checked_category_cells": 14,
+  "checks": [
+    "original parquet prompt/response/category and prompt-only gold",
+    "frozen manifest request and hash; current request reconstruction",
+    "saved API answer, parser replay, recorded label and probabilities",
+    "tidy CSV label and score; unique category aggregation and counts"
+  ],
+  "confusion": {
+    "safe -> safe": 921,
+    "safe -> unsafe": 15,
+    "unsafe -> unsafe": 361,
+    "unsafe -> safe": 384
+  },
+  "unsafe_misses_by_first_option": [
+    {
+      "first_option": "safe",
+      "missed": 208,
+      "unsafe_n": 376
+    },
+    {
+      "first_option": "unsafe",
+      "missed": 176,
+      "unsafe_n": 369
+    }
+  ],
+  "hosted_comparisons": [
+    {
+      "arm": "claude_structured",
+      "unsafe_n": 745,
+      "unsafe_labeled_safe": 170
+    },
+    {
+      "arm": "clef_choice",
+      "unsafe_n": 745,
+      "unsafe_labeled_safe": 91
+    },
+    {
+      "arm": "clef_flash_choice",
+      "unsafe_n": 745,
+      "unsafe_labeled_safe": 181
+    },
+    {
+      "arm": "decisions_luna",
+      "unsafe_n": 745,
+      "unsafe_labeled_safe": 384
+    },
+    {
+      "arm": "jev_choice",
+      "unsafe_n": 745,
+      "unsafe_labeled_safe": 153
+    },
+    {
+      "arm": "luna_structured",
+      "unsafe_n": 745,
+      "unsafe_labeled_safe": 173
+    }
+  ]
+}

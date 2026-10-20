@@ -1,0 +1,48 @@
+{
+  "basis": "List-price trainer-compute estimate from first compute-resources-acquired log to trainer-stopped log; includes initialization and inactivity/shutdown time, not a verified billing duration or invoice.",
+  "price_source": "https://www.baseten.co/pricing/",
+  "usd_per_h100_minute": 0.10833,
+  "excludes": [
+    "synthetic data generation",
+    "validation sampler",
+    "benchmark evaluation",
+    "smoke runs",
+    "engineering effort"
+  ],
+  "billing_check": {
+    "start": "2026-10-01T00:00:00Z",
+    "end": "2026-10-03T00:00:00Z",
+    "training_usage": {
+      "subtotal": "0.00",
+      "credits_used": "0.00",
+      "total": "0.00",
+      "minutes": 0,
+      "breakdown": []
+    },
+    "interpretation": "No trainer charges returned; absence of a charge does not establish free training."
+  },
+  "runs": [
+    {
+      "arm": "safety_tev",
+      "run_id": "yqvek93",
+      "deployment_id": "2qjrdpw",
+      "gpu_type": "H100",
+      "gpu_count": 2,
+      "compute_acquired": "2026-10-01T19:53:27.506551+00:00",
+      "trainer_stopped": "2026-10-01T20:35:02.083415+00:00",
+      "allocation_minutes": 41.57628106453333,
+      "estimated_usd": 9.007917055441792
+    },
+    {
+      "arm": "cc_repro",
+      "run_id": "8w6gjyq",
+      "deployment_id": "03yrvlq",
+      "gpu_type": "H100",
+      "gpu_count": 2,
+      "compute_acquired": "2026-10-01T22:25:02.207573+00:00",
+      "trainer_stopped": "2026-10-01T23:10:02.614843+00:00",
+      "allocation_minutes": 45.00678783671666,
+      "estimated_usd": 9.751170652703031
+    }
+  ]
+}

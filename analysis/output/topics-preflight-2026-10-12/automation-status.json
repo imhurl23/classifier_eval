@@ -1,0 +1,368 @@
+{
+  "project": {
+    "id": "76c8a288-a6af-41d7-b8f5-7326143d331f",
+    "name": "decision-interface-safety",
+    "org_name": "eval_engineering",
+    "topics_url": "https://www.braintrust.dev/app/eval_engineering/p/decision-interface-safety/topics"
+  },
+  "automations": [
+    {
+      "id": "557d7807-3798-4fea-a474-3742e12008a6",
+      "name": "Historical Experiment Safety Topics",
+      "description": "One-time Topics analysis of all experiment traces created through 2026-10-12T18:35:58.957Z; future traces are excluded by the cutoff filter.",
+      "scope_type": "trace",
+      "btql_filter": "created <= '2026-10-12T18:35:58.957Z'",
+      "window_seconds": 952558,
+      "rerun_seconds": 86400,
+      "relabel_overlap_seconds": null,
+      "idle_seconds": 30,
+      "configured_facets": 1,
+      "configured_topic_maps": 1,
+      "progress_loaded": false,
+      "progress_window_seconds": null,
+      "processing_lag_label": null,
+      "processing_lag_seconds": null,
+      "total_traces": 0,
+      "facet_current_count": 0,
+      "facets": [],
+      "topics": [],
+      "facet_functions": [
+        {
+          "name": "Experiment safety scenario",
+          "ref_type": "function",
+          "function_type": "facet",
+          "id": "394e1039-49cb-4f0d-9e47-532a62ce6ed0",
+          "description": "Summarizes each experiment trace by safety theme and observed response behavior for Topics clustering.",
+          "version": "1000198021630984891",
+          "btql_filter": null,
+          "source_facet": null,
+          "embedding_model": null,
+          "distance_threshold": null,
+          "disable_reconciliation": null,
+          "generation_settings": null
+        }
+      ],
+      "topic_map_functions": [
+        {
+          "name": "Experiment safety scenario",
+          "ref_type": "function",
+          "function_type": "classifier",
+          "id": "fdba2d81-8be0-4310-a95b-c9fab49412fc",
+          "description": "Experiment safety scenario",
+          "version": null,
+          "btql_filter": null,
+          "source_facet": "Experiment safety scenario",
+          "embedding_model": "brain-embedding-1",
+          "distance_threshold": null,
+          "disable_reconciliation": false,
+          "generation_settings": null
+        }
+      ],
+      "cursor": {
+        "total_segments": 0,
+        "pending_segments": 0,
+        "error_segments": 0,
+        "pending_min_compacted_xact_id": null,
+        "pending_max_compacted_xact_id": null,
+        "pending_min_executed_xact_id": null
+      },
+      "object_cursor": {
+        "total_objects": 0,
+        "due_objects": 0,
+        "error_objects": 0,
+        "last_compacted_xact_id": null,
+        "next_run_at": null,
+        "last_run_at": null,
+        "retry_after": null,
+        "last_error": null,
+        "last_error_at": null,
+        "topic_runtime": null
+      }
+    },
+    {
+      "id": "1209b4a3-cc0e-42ed-a28e-d0d609c7a12f",
+      "name": "Historical Safety \u2014 2b42a6d9",
+      "description": "One-time historical safety Topics analysis for experiment paired_pilot__20261001T222627Z (2b42a6d9-d6b5-4b34-8209-f16001d0a385); future traces after the approved cutoff are excluded.",
+      "scope_type": "trace",
+      "btql_filter": "created <= '2026-10-12T18:35:58.957Z'",
+      "window_seconds": 936569,
+      "rerun_seconds": 86400,
+      "relabel_overlap_seconds": null,
+      "idle_seconds": 30,
+      "configured_facets": 1,
+      "configured_topic_maps": 1,
+      "progress_loaded": false,
+      "progress_window_seconds": null,
+      "processing_lag_label": null,
+      "processing_lag_seconds": null,
+      "total_traces": 0,
+      "facet_current_count": 0,
+      "facets": [],
+      "topics": [],
+      "facet_functions": [
+        {
+          "name": "Experiment safety scenario",
+          "ref_type": "function",
+          "function_type": "facet",
+          "id": "394e1039-49cb-4f0d-9e47-532a62ce6ed0",
+          "description": "Summarizes each experiment trace by safety theme and observed response behavior for Topics clustering.",
+          "version": "1000198021630984891",
+          "btql_filter": null,
+          "source_facet": null,
+          "embedding_model": null,
+          "distance_threshold": null,
+          "disable_reconciliation": null,
+          "generation_settings": null
+        }
+      ],
+      "topic_map_functions": [
+        {
+          "name": "Experiment safety scenario",
+          "ref_type": "function",
+          "function_type": "classifier",
+          "id": "ff623338-a01a-4428-a78b-1b92ce408fb6",
+          "description": "Experiment safety scenario",
+          "version": null,
+          "btql_filter": null,
+          "source_facet": "Experiment safety scenario",
+          "embedding_model": "brain-embedding-1",
+          "distance_threshold": null,
+          "disable_reconciliation": false,
+          "generation_settings": null
+        }
+      ],
+      "cursor": {
+        "total_segments": 0,
+        "pending_segments": 0,
+        "error_segments": 0,
+        "pending_min_compacted_xact_id": null,
+        "pending_max_compacted_xact_id": null,
+        "pending_min_executed_xact_id": null
+      },
+      "object_cursor": {
+        "total_objects": 1,
+        "due_objects": 0,
+        "error_objects": 1,
+        "last_compacted_xact_id": "1000197999349010800",
+        "next_run_at": "2026-10-12T18:59:06.446036Z",
+        "last_run_at": null,
+        "retry_after": "2026-10-12T20:24:50.565352Z",
+        "last_error": "/api/apikey/service-role failed with 400 Bad Request: Missing read access to project id 2b42a6d9-d6b5-4b34-8209-f16001d0a385, or the project does not exist [user_email=bt::sp::bt_data_plane_manager-sysadmin] [timestamp=1791834130.531] [request_id=iad1::mhm2p-1791834130484-31e0d613c749]",
+        "last_error_at": "2026-10-12T19:42:10.574147Z",
+        "topic_runtime": null
+      }
+    },
+    {
+      "id": "212ae8d8-b789-4028-9f02-cef6de5572d7",
+      "name": "Historical Safety \u2014 f2b77e41",
+      "description": "One-time historical safety Topics analysis for experiment jev_choice__s2__smoke_provisional__20261001T191055Z (f2b77e41-5539-4070-9b16-e5ebc0bcb027); future traces after the approved cutoff are excluded.",
+      "scope_type": "trace",
+      "btql_filter": "created <= '2026-10-12T18:35:58.957Z'",
+      "window_seconds": 259200,
+      "rerun_seconds": 86400,
+      "relabel_overlap_seconds": null,
+      "idle_seconds": 30,
+      "configured_facets": 1,
+      "configured_topic_maps": 1,
+      "progress_loaded": false,
+      "progress_window_seconds": null,
+      "processing_lag_label": null,
+      "processing_lag_seconds": null,
+      "total_traces": 0,
+      "facet_current_count": 0,
+      "facets": [],
+      "topics": [],
+      "facet_functions": [
+        {
+          "name": "Experiment safety scenario",
+          "ref_type": "function",
+          "function_type": "facet",
+          "id": "394e1039-49cb-4f0d-9e47-532a62ce6ed0",
+          "description": "Summarizes each experiment trace by safety theme and observed response behavior for Topics clustering.",
+          "version": "1000198021630984891",
+          "btql_filter": null,
+          "source_facet": null,
+          "embedding_model": null,
+          "distance_threshold": null,
+          "disable_reconciliation": null,
+          "generation_settings": null
+        }
+      ],
+      "topic_map_functions": [
+        {
+          "name": "Experiment safety scenario",
+          "ref_type": "function",
+          "function_type": "classifier",
+          "id": "45197b6c-2372-461a-96f7-f83499697a35",
+          "description": "Experiment safety scenario",
+          "version": null,
+          "btql_filter": null,
+          "source_facet": "Experiment safety scenario",
+          "embedding_model": "brain-embedding-1",
+          "distance_threshold": null,
+          "disable_reconciliation": false,
+          "generation_settings": null
+        }
+      ],
+      "cursor": {
+        "total_segments": 0,
+        "pending_segments": 0,
+        "error_segments": 0,
+        "pending_min_compacted_xact_id": null,
+        "pending_max_compacted_xact_id": null,
+        "pending_min_executed_xact_id": null
+      },
+      "object_cursor": {
+        "total_objects": 1,
+        "due_objects": 0,
+        "error_objects": 0,
+        "last_compacted_xact_id": "1000197999349269400",
+        "next_run_at": "2026-10-12T20:25:40.404935Z",
+        "last_run_at": "2026-10-12T20:10:40.404935Z",
+        "retry_after": null,
+        "last_error": null,
+        "last_error_at": null,
+        "topic_runtime": null
+      }
+    },
+    {
+      "id": "6901d02a-8543-46d7-9c51-3b036b131043",
+      "name": "Topics",
+      "description": "Automatically extract facets and classify logs using topic maps",
+      "scope_type": "trace",
+      "btql_filter": null,
+      "window_seconds": 259200,
+      "rerun_seconds": 86400,
+      "relabel_overlap_seconds": null,
+      "idle_seconds": 600,
+      "configured_facets": 3,
+      "configured_topic_maps": 3,
+      "progress_loaded": false,
+      "progress_window_seconds": null,
+      "processing_lag_label": null,
+      "processing_lag_seconds": null,
+      "total_traces": 0,
+      "facet_current_count": 0,
+      "facets": [],
+      "topics": [],
+      "facet_functions": [
+        {
+          "name": "Task",
+          "ref_type": "global",
+          "function_type": "facet",
+          "id": null,
+          "description": null,
+          "version": null,
+          "btql_filter": null,
+          "source_facet": null,
+          "embedding_model": null,
+          "distance_threshold": null,
+          "disable_reconciliation": null,
+          "generation_settings": null
+        },
+        {
+          "name": "Sentiment",
+          "ref_type": "global",
+          "function_type": "facet",
+          "id": null,
+          "description": null,
+          "version": null,
+          "btql_filter": null,
+          "source_facet": null,
+          "embedding_model": null,
+          "distance_threshold": null,
+          "disable_reconciliation": null,
+          "generation_settings": null
+        },
+        {
+          "name": "Issues",
+          "ref_type": "global",
+          "function_type": "facet",
+          "id": null,
+          "description": null,
+          "version": null,
+          "btql_filter": null,
+          "source_facet": null,
+          "embedding_model": null,
+          "distance_threshold": null,
+          "disable_reconciliation": null,
+          "generation_settings": null
+        }
+      ],
+      "topic_map_functions": [
+        {
+          "name": "Task",
+          "ref_type": "function",
+          "function_type": "classifier",
+          "id": "c9106e53-abbd-49f5-b62e-31488eece07f",
+          "description": null,
+          "version": null,
+          "btql_filter": null,
+          "source_facet": "Task",
+          "embedding_model": "brain-embedding-1",
+          "distance_threshold": null,
+          "disable_reconciliation": false,
+          "generation_settings": null
+        },
+        {
+          "name": "Sentiment",
+          "ref_type": "function",
+          "function_type": "classifier",
+          "id": "3e66e4ff-ef38-4b32-a011-c05510fb76e1",
+          "description": null,
+          "version": null,
+          "btql_filter": null,
+          "source_facet": "Sentiment",
+          "embedding_model": "brain-embedding-1",
+          "distance_threshold": null,
+          "disable_reconciliation": false,
+          "generation_settings": null
+        },
+        {
+          "name": "Issues",
+          "ref_type": "function",
+          "function_type": "classifier",
+          "id": "b24b044b-169d-4c86-92a4-f5b484d1198a",
+          "description": null,
+          "version": null,
+          "btql_filter": null,
+          "source_facet": "Issues",
+          "embedding_model": "brain-embedding-1",
+          "distance_threshold": null,
+          "disable_reconciliation": false,
+          "generation_settings": null
+        }
+      ],
+      "cursor": {
+        "total_segments": 0,
+        "pending_segments": 0,
+        "error_segments": 0,
+        "pending_min_compacted_xact_id": null,
+        "pending_max_compacted_xact_id": null,
+        "pending_min_executed_xact_id": null
+      },
+      "object_cursor": {
+        "total_objects": 1,
+        "due_objects": 0,
+        "error_objects": 0,
+        "last_compacted_xact_id": null,
+        "next_run_at": "2026-10-12T20:21:36.239683Z",
+        "last_run_at": "2026-10-12T20:20:38.700161Z",
+        "retry_after": null,
+        "last_error": null,
+        "last_error_at": null,
+        "topic_runtime": {
+          "state": "waiting_for_facets",
+          "reason": "no_compacted_data",
+          "entered_at": "2026-10-12T18:23:40.562693061Z",
+          "selected_window_seconds": null,
+          "generation_window_start_xact_id": null,
+          "generation_window_end_xact_id": null,
+          "topic_classification_backfill_start_xact_id": null,
+          "active_topic_map_versions": {},
+          "window_candidates": []
+        }
+      }
+    }
+  ]
+}

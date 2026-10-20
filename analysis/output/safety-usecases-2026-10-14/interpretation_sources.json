@@ -1,0 +1,7 @@
+{
+  "analysis/output/source-2026-10-12/quality_by_configuration.csv": "2818622a0b7e68c5180b5a33a55b5d991a5992819e5e35ad9401d632545fafca",
+  "analysis/output/failures-2026-10-12/failure_summary.csv": "a856f432a6eb78fee5cd6c17253adeae4b871ccff92d928d4a15ee8d157386ad",
+  "analysis/output/explicit-categories-2026-10-14/overall_metrics.csv": "2edc5adfc46dd45c39c3649f37d599f1917f84d3463609d8d02d3c9cdf319ce3",
+  "analysis/output/failures-2026-10-12/user_assistant_safety_cases.csv": "6800d833e7b9f607110accec7897825fcefc5e8d9effaa8fdacacd867ba4984b",
+  "analysis/output/safety-usecases-2026-10-14/f2_metrics.csv": "e71aa89f4780905e91e04e8033f4121fc2b16e5a91c32707bf44c7d7d6fbdb83"
+}

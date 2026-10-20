@@ -43,8 +43,20 @@ def parse_response(response: Any, request: dict[str, Any],
         for content in getattr(item, "content", []) or []:
             if getattr(content, "type", None) == "refusal":
                 return Decision(None, None, raw, "refusal", latency_ms, usage)
+    # output_text concatenates commentary and final-answer messages. Decode only
+    # the explicitly marked final answer when the endpoint supplies phases.
+    messages = [item for item in (getattr(response, 'output', []) or [])
+                if getattr(item, 'type', None) == 'message']
+    finals = [item for item in messages if getattr(item, 'phase', None) == 'final_answer']
+    if finals:
+        text = ''.join(getattr(c, 'text', '') for c in getattr(finals[0], 'content', [])
+                       if getattr(c, 'type', None) == 'output_text') if len(finals) == 1 else ''
+    elif any(getattr(item, 'phase', None) is not None for item in messages):
+        text = ''  # An explicit commentary phase alone is not a final decision.
+    else:
+        text = response.output_text
     try:
-        label = json.loads(response.output_text)["label"]
+        label = json.loads(text)["label"]
     except (ValueError, KeyError, TypeError):
         label = None
     if label not in option_order:

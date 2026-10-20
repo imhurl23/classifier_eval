@@ -1,0 +1,5 @@
+arm,reference_label,run_role,n,errors,error_rate,ci_low,ci_high,strict_errors,invalid,wrong_label
+nemotron_guard,safe,archived_fixed_policy_reference,936,181,0.19337606837606838,0.1693480585805554,0.21991072715525367,181,0,181
+nemotron_guard,unsafe,archived_fixed_policy_reference,745,87,0.11677852348993288,0.09565798869485341,0.141830954227121,87,0,87
+qwen3guard_8b,safe,archived_fixed_policy_reference,936,36,0.038461538461538464,0.02790927092843558,0.052786880423026206,56,0,56
+qwen3guard_8b,unsafe,archived_fixed_policy_reference,745,149,0.2,0.1728479439938216,0.23023009013248766,149,0,149

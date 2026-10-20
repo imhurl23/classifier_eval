@@ -5,6 +5,9 @@
 data/models/
 __pycache__/
 .pytest_cache/
+.ruff_cache/
+/tmp/
+/output/
 data/raw/
 data/processed/
 run_manifest.json
@@ -12,5 +15,6 @@ training/data/
 training/logs/
 analysis/output/*/safety-analysis.zip
 analysis/output/*/judgments.csv.gz
+analysis/output/*/decisions.csv
 analysis/output/*/failure-explorer.html
 analysis/output/*/failure-analysis.zip

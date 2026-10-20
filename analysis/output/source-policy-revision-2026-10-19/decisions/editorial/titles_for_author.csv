@@ -1,0 +1,6 @@
+chart,proposed_title_for_author_rewrite
+response_value,Higher spending did not buy better answer screening.
+request_value,The fewest missed requests came with more false alarms.
+response_failures,A classifier can miss harm by misjudging it—or declining to judge.
+topic_failures,Models agreed on self-harm more often than on advice.
+custom_finetune_article,Fine-tuning improved request screening without improving answer screening.

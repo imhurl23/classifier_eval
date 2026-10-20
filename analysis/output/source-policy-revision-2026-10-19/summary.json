@@ -1,0 +1,19 @@
+{
+  "policy_version": "source_aligned_v1_20261019",
+  "configurations": 62,
+  "comparisons": 290,
+  "significant_comparisons": 132,
+  "physical_new_core": 84751,
+  "reused_xstest": 4500,
+  "diagnostic_decisions": 1832,
+  "caveats": [
+    "Policy revision follows inspection of test disagreements; not preregistered or fresh held-out evidence.",
+    "Aegis detailed human category instructions are not fully published; alignment uses published taxonomy and model-policy descriptions, not a claim of identical annotation instructions.",
+    "Questionable individual labels remain unchanged; no per-example exceptions or source labels in requests.",
+    "Expanded-choice and rubric diagnostics retain small original development samples, not full-dataset robustness claims.",
+    "Unchanged XSTest and fixed-policy native references are reused with their original provenance.",
+    "Dollar estimates use October 12 snapshots and recorded usage; retries, gateway fees and provider invoices may differ."
+  ],
+  "holm_family": 290,
+  "original_holm_family": 345
+}

@@ -1,0 +1,25 @@
+{
+  "charts": 3,
+  "total_narrative_charts": 4,
+  "main_charts": 3,
+  "excluded_charts": [
+    "benign_requests",
+    "adversarial_answers",
+    "exchange_review",
+    "refusal_audit"
+  ],
+  "significance_family": 680,
+  "statistical_test": "Exact paired McNemar; original global Holm family retained despite editorial cuts",
+  "intervals": "Wilson 95% for error rates; normal mean 95% for recorded token-cost sampling variation",
+  "titles_rendered": [
+    "response_value",
+    "request_value",
+    "response_failures"
+  ],
+  "caveats": [
+    "Sampling intervals do not capture annotation or policy uncertainty.",
+    "Cost intervals do not capture pricing changes, retries, or gateway fees.",
+    "No deployment guarantee or model-family causal claim; underlying models recur across interfaces."
+  ],
+  "response_value_chart": "F2 versus cost scatter; observed Pareto frontier; paired F2 tests use the saved 290-comparison Holm family"
+}

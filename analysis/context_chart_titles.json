@@ -1,0 +1,28 @@
+{
+  "topic_failures": {
+    "proposed_title": "Harm classification performance by topic",
+    "approved_title": "Harm classification performance by topic",
+    "decision": "Choose and validate a checker for the topics your application actually handles.",
+    "finding": "Failure patterns differ sharply by source topic. The selected request-only slices include 62 source-unsafe privacy requests, 40 advice requests, 40 self-harm requests, and 84 profanity requests. All tested models disagree with most of the advice labels, while many detect most of the self-harm and profanity cases.",
+    "implication": "A general harm benchmark cannot establish suitability for a specific risk domain. Audit the policy boundary and representative examples before interpreting a topic-level miss as real-world danger. The advice gap is shared across model types and needs policy/label review.",
+    "placement": "main"
+  },
+  "policy_changes": {
+    "proposed_title": "The small policy experiment did not establish a benefit from longer instructions.",
+    "approved_title": null,
+    "decision": "Decide whether to supply concise rules, detailed boundary guidance, or no custom policy.",
+    "finding": "The concise policy contains 219 instruction words; detailed guidance brings it to 438, and neutral filler to 450. Relative to detailed guidance, the short version loses source agreement on 2 of 12 cases for Luna decision API, 1 for Jev Choice and Claude, and 0 for the other four interfaces. No paired accuracy difference is statistically resolved.",
+    "implication": "This supports testing policy examples and wording, but not a general claim that longer policies are better. Only 12 conversations are tested. Neutral filler and useful guidance are different interventions; withholding also removes option definitions.",
+    "placement": "text_only",
+    "exclusion_reason": "Only 12 conversations; zero to two changes per model do not warrant a standalone chart or a general policy-length conclusion."
+  },
+  "choice_changes": {
+    "proposed_title": "More answer choices did not establish better harm classification.",
+    "approved_title": null,
+    "decision": "Decide whether to ask for a binary action or a more detailed category.",
+    "finding": "With the detailed policy fixed, expanding the answer choices changes at most one operational judgment per tested interface and condition on these 12 conversations. Category outputs are collapsed to safe/unsafe for comparison; there is no independent category-level human gold.",
+    "implication": "A more detailed answer format is not evidence of better category identification. The actual offered lists contain 2, 3, 7, and 15 choices, including safe, caution, and catch-all labels. Keep the small diagnostic in supporting material rather than claiming a reliable gain from more choices.",
+    "placement": "text_only",
+    "exclusion_reason": "Only 12 conversations and at most one change per model/condition; keep a short limitation paragraph."
+  }
+}
