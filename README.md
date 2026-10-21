@@ -12,6 +12,7 @@ The revised policy followed inspection of test disagreements. These results are 
 - [Current notebook](analysis/source_policy_revision_exploration.ipynb) and [F2 results](analysis/output/source-policy-revision-2026-10-19/f2_metrics.csv).
 - [Policies](prompts/README.md), [adapter interfaces](adapters/README.md), and [study design](decision-interface-safety-eval-design.md).
 - [Every Eval Ever submission preparation](submission/eee/README.md) and [release audit](docs/release-audit.md).
+- [Published HF dataset](https://huggingface.co/datasets/BraintrustDataDev/decision-interface-safety-eval), [release review](docs/hf-release-review.md), and [repository cleanup](docs/repository-privacy.md).
 
 ## What the tasks measure
 
@@ -55,7 +56,7 @@ For notebooks, also install `analysis/requirements-notebook.txt`.
 
 ## Data and full-study reproduction
 
-[Source provenance](docs/data-provenance.md) records dataset revisions, task boundaries, and source terms. Dataset text and complete prediction archives are not part of the Every Eval Ever package. Existing historical case-review files in this private working repository can contain benchmark text.
+[Source provenance](docs/data-provenance.md) records dataset revisions, task boundaries, and source terms. Dataset text and complete prediction archives are not part of the Every Eval Ever package. Case-review tables, predictions, browser captures and internal review reports are local, ignored artifacts. Older private Git history still contains some of them. Generated analysis outputs are ignored by default; the retained aggregate tables and charts remain tracked.
 
 To rebuild local source datasets, install the study dependencies and obtain access to the original datasets under their terms:
 
@@ -73,6 +74,8 @@ Keep credentials in an untracked `.env`; never include them in exports. Provider
 
 ```sh
 .venv/bin/python -m pytest -q
+.venv/bin/python -m analysis.check_repository_privacy
+.venv/bin/python -m pytest -q submission/hf/test_export.py
 ```
 
 The full suite expects the local processed study datasets and tokenizer artifacts. It is not a fresh-clone-only test. Every Eval Ever export tests run in their separate environment; see [submission instructions](submission/eee/README.md).
@@ -88,5 +91,6 @@ The full suite expects the local processed study datasets and tokenizer artifact
 | `analysis/` | Metrics, uncertainty, notebooks, charts, saved aggregate reports |
 | `training/`, `deploy/` | Separate fine-tuning and serving workflows |
 | `submission/eee/` | Offline export adapter, reviewed metadata, submission drafts |
+| `submission/hf/` | Source attribution, review ledger, component licenses and public dataset exporter |
 
 No repository-wide release license has been selected. Preparation of an export does not authorize public release of this repository or change the source datasets' terms.

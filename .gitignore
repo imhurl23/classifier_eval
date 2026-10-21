@@ -18,3 +18,12 @@ analysis/output/*/judgments.csv.gz
 analysis/output/*/decisions.csv
 analysis/output/*/failure-explorer.html
 analysis/output/*/failure-analysis.zip
+
+# Generated reports can contain source conversations, predictions and account IDs.
+# Existing reviewed aggregate tables/charts remain tracked; review any new addition.
+/analysis/output/
+/analysis/assets/company-logos/
+/REVIEW_CHECKLIST.md
+/REVIEW_CHECKLIST.pdf
+/REVIEW_CHECKLIST.print.html
+/run/pilot-report-2026-10-01.md
