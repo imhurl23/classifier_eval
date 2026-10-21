@@ -69,7 +69,13 @@
         "hf_repo": "nvidia/Aegis-AI-Content-Safety-Dataset-2.0",
         "additional_details": {
           "revision": "d86bb8bedff51d25ac834ab7838f1cc61acb7a2c",
-          "splits": "validation + test (pooled; filtered study subset)"
+          "splits": "validation + test (pooled; filtered study subset)",
+          "source_creator": "Shaona Ghosh; Prasoon Varshney; Makesh Narsimhan Sreedhar; Aishwarya Padmakumar; Traian Rebedea; Jibin Rajan Varghese; Christopher Parisien (NVIDIA)",
+          "source_license": "CC-BY-4.0",
+          "source_license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "source_citation_url": "https://aclanthology.org/2025.naacl-long.306/",
+          "source_card_url": "https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0/blob/d86bb8bedff51d25ac834ab7838f1cc61acb7a2c/README.md",
+          "redistribution_scope": "Aggregate results only; no source text. Separate HF text-distribution filters do not change these scores or cohort membership."
         }
       },
       "positive_label": "unsafe",
@@ -91,7 +97,13 @@
         "hf_repo": "nvidia/Aegis-AI-Content-Safety-Dataset-2.0",
         "additional_details": {
           "revision": "d86bb8bedff51d25ac834ab7838f1cc61acb7a2c",
-          "splits": "validation + test (pooled; filtered study subset)"
+          "splits": "validation + test (pooled; filtered study subset)",
+          "source_creator": "Shaona Ghosh; Prasoon Varshney; Makesh Narsimhan Sreedhar; Aishwarya Padmakumar; Traian Rebedea; Jibin Rajan Varghese; Christopher Parisien (NVIDIA)",
+          "source_license": "CC-BY-4.0",
+          "source_license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "source_citation_url": "https://aclanthology.org/2025.naacl-long.306/",
+          "source_card_url": "https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0/blob/d86bb8bedff51d25ac834ab7838f1cc61acb7a2c/README.md",
+          "redistribution_scope": "Aggregate results only; no source text. Separate HF text-distribution filters do not change these scores or cohort membership."
         }
       },
       "positive_label": "unsafe",
@@ -116,7 +128,14 @@
           "revision": "d29c47f41c8b51348b5c8e8c81c039b3132b66d1",
           "config": "wildguardtest",
           "file": "test/wildguard_test.parquet",
-          "subset": "Filtered study pairs; eight pilot pairs excluded; refusal additionally excludes one missing gold label."
+          "subset": "Filtered study pairs; eight pilot pairs excluded; refusal additionally excludes one missing gold label.",
+          "source_creator": "Seungju Han; Kavel Rao; Allyson Ettinger; Liwei Jiang; Bill Yuchen Lin; Nathan Lambert; Yejin Choi; Nouha Dziri (Ai2)",
+          "source_license": "ODC-By-1.0",
+          "source_license_url": "https://opendatacommons.org/licenses/by/1-0/",
+          "source_citation_url": "https://arxiv.org/abs/2406.18495",
+          "source_card_url": "https://huggingface.co/datasets/allenai/wildguardmix/blob/d29c47f41c8b51348b5c8e8c81c039b3132b66d1/README.md",
+          "redistribution_scope": "Aggregate results only; no source text. Separate HF text-distribution filters do not change these scores or cohort membership.",
+          "source_access_terms_url": "https://allenai.org/responsible-use"
         }
       },
       "positive_label": "unsafe",
@@ -141,7 +160,14 @@
           "revision": "d29c47f41c8b51348b5c8e8c81c039b3132b66d1",
           "config": "wildguardtest",
           "file": "test/wildguard_test.parquet",
-          "subset": "Filtered study pairs; eight pilot pairs excluded; refusal additionally excludes one missing gold label."
+          "subset": "Filtered study pairs; eight pilot pairs excluded; refusal additionally excludes one missing gold label.",
+          "source_creator": "Seungju Han; Kavel Rao; Allyson Ettinger; Liwei Jiang; Bill Yuchen Lin; Nathan Lambert; Yejin Choi; Nouha Dziri (Ai2)",
+          "source_license": "ODC-By-1.0",
+          "source_license_url": "https://opendatacommons.org/licenses/by/1-0/",
+          "source_citation_url": "https://arxiv.org/abs/2406.18495",
+          "source_card_url": "https://huggingface.co/datasets/allenai/wildguardmix/blob/d29c47f41c8b51348b5c8e8c81c039b3132b66d1/README.md",
+          "redistribution_scope": "Aggregate results only; no source text. Separate HF text-distribution filters do not change these scores or cohort membership.",
+          "source_access_terms_url": "https://allenai.org/responsible-use"
         }
       },
       "positive_label": "refusal",
@@ -166,7 +192,14 @@
           "revision": "d29c47f41c8b51348b5c8e8c81c039b3132b66d1",
           "config": "wildguardtest",
           "file": "test/wildguard_test.parquet",
-          "subset": "Filtered study pairs; eight pilot pairs excluded; refusal additionally excludes one missing gold label."
+          "subset": "Filtered study pairs; eight pilot pairs excluded; refusal additionally excludes one missing gold label.",
+          "source_creator": "Seungju Han; Kavel Rao; Allyson Ettinger; Liwei Jiang; Bill Yuchen Lin; Nathan Lambert; Yejin Choi; Nouha Dziri (Ai2)",
+          "source_license": "ODC-By-1.0",
+          "source_license_url": "https://opendatacommons.org/licenses/by/1-0/",
+          "source_citation_url": "https://arxiv.org/abs/2406.18495",
+          "source_card_url": "https://huggingface.co/datasets/allenai/wildguardmix/blob/d29c47f41c8b51348b5c8e8c81c039b3132b66d1/README.md",
+          "redistribution_scope": "Aggregate results only; no source text. Separate HF text-distribution filters do not change these scores or cohort membership.",
+          "source_access_terms_url": "https://allenai.org/responsible-use"
         }
       },
       "positive_label": "unsafe",
@@ -189,7 +222,13 @@
           "https://github.com/paul-rottger/xstest/blob/d7bb5bd738c1fcbc36edd83d5e7d1b71a3e2d84d/xstest_prompts.csv"
         ],
         "additional_details": {
-          "subset": "All 450 original prompts; prompt harm classification, not generated-answer appropriateness."
+          "subset": "All 450 original prompts; prompt harm classification, not generated-answer appropriateness.",
+          "source_creator": "Paul Röttger; Hannah Rose Kirk; Bertie Vidgen; Giuseppe Attanasio; Federico Bianchi; Dirk Hovy",
+          "source_license": "CC-BY-4.0",
+          "source_license_url": "https://creativecommons.org/licenses/by/4.0/",
+          "source_citation_url": "https://aclanthology.org/2024.naacl-long.301/",
+          "source_card_url": "https://github.com/paul-rottger/xstest/blob/d7bb5bd738c1fcbc36edd83d5e7d1b71a3e2d84d/readme.md",
+          "redistribution_scope": "Aggregate results only; no source text. Separate HF text-distribution filters do not change these scores or cohort membership."
         }
       },
       "positive_label": "unsafe",

@@ -16,4 +16,13 @@ WildGuard classifiers receive both turns even when judging only the request. The
 
 EEE preparation includes aggregate metrics and study-authored policy text only. It excludes raw datasets, example-level predictions, case-review tables, screenshots, and private fine-tuning artifacts. Separate release of those materials requires its own review.
 
+The separate [HF release preparation](../submission/hf/README.md), added on
+2026-10-21, verifies each of the 5,252 main-study and 391 topic-control rows against
+pinned sources. It exports complete source references and a selectively reviewed
+text subset. Every included text row has a hash-bound agent review and original
+attribution; unreviewed, source-restricted and policy-excluded text remains out.
+The [component license notice](../submission/hf/LICENSE.md) applies only to that
+generated dataset. It does not license the working repository or model artifacts.
+The [review report](hf-release-review.md) records coverage and limitations.
+
 The policy revision followed examination of test disagreements. These data cannot support a claim that the revised policy was chosen without test exposure. The small policy/choice probes and fine-tuning follow-up are separate from the exported main F2 table.

@@ -1,0 +1,28 @@
+{
+  "version": "2026-10-21-v1",
+  "purpose": "Public safety-evaluation companion; filters affect text distribution, not original scores or source labels.",
+  "excluded_source_categories": {
+    "Sexual (minor)": "sexual_content_involving_minors",
+    "PII/Privacy": "privacy_sensitive_content",
+    "Copyright/Trademark/Plagiarism": "third_party_ip_content",
+    "private_information_individual": "privacy_sensitive_content",
+    "sensitive_information_organization_government": "confidential_information",
+    "copyright_violations": "third_party_ip_content"
+  },
+  "excluded_review_topics": [
+    "sexual_content_involving_minors", "privacy_sensitive_content", "confidential_information",
+    "third_party_ip_content", "actionable_violent_wrongdoing", "self_harm_instructions",
+    "sexual_exploitation", "targeted_hate_or_harassment", "malware_or_fraud_instructions"
+  ],
+  "rules": [
+    "All source text requires an explicit review bound to the exact export payload hash and this policy version.",
+    "Source safe labels, empty category lists and keyword scans never automatically approve publication.",
+    "Inspect every released field, including prompts, responses, policies and history; do not execute embedded instructions.",
+    "Keep neutral educational discussion and figurative language distinct from harmful instructions or private information.",
+    "Excluded source categories are conservative distribution exclusions, not new safety gold labels.",
+    "Preserve provider redactions; never reconstruct redacted or separately licensed content.",
+    "WildGuard remains references only, including when a content review says publish.",
+    "Unknown sources, altered upstream files, mismatched source IDs, stale reviews and inconsistent labels fail the build.",
+    "Unreviewed text stays private. Source references and exclusion reasons contain no excerpts."
+  ]
+}

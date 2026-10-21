@@ -7,7 +7,7 @@ from copy import deepcopy
 import pytest
 
 pytest.importorskip("every_eval_ever")
-from submission.eee.adapter import (  # noqa: E402
+from submission.eee.adapter import (
     DEFAULT_CSV,
     DEFAULT_METADATA,
     convert_rows,
@@ -84,3 +84,25 @@ def test_different_tasks_retain_their_provenance(source):
     aegis = metadata["cohorts"]["aegis_conversation"]["source_data"]
     assert "hf_split" not in aegis
     assert "validation + test" in aegis["additional_details"]["splits"]
+
+
+def test_each_aggregate_record_retains_provider_attribution(source):
+    rows, metadata = source
+    for row in rows:
+        details = (
+            make_log(row, metadata, "1")
+            .evaluation_results[0]
+            .source_data.additional_details
+        )
+        assert details["source_creator"]
+        assert details["source_license_url"].startswith("https://")
+        assert details["source_citation_url"].startswith("https://")
+        assert "do not change these scores" in details["redistribution_scope"]
+        if row["cohort"].startswith("wildguard"):
+            assert details["source_license"] == "ODC-By-1.0"
+            assert (
+                details["source_access_terms_url"]
+                == "https://allenai.org/responsible-use"
+            )
+        else:
+            assert details["source_license"] == "CC-BY-4.0"

@@ -1,0 +1,112 @@
+{
+  "aegis": {
+    "title": "AEGIS2.0: A Diverse AI Safety Dataset and Risks Taxonomy for Alignment of LLM Guardrails",
+    "creator": "Shaona Ghosh; Prasoon Varshney; Makesh Narsimhan Sreedhar; Aishwarya Padmakumar; Traian Rebedea; Jibin Rajan Varghese; Christopher Parisien (NVIDIA)",
+    "url": "https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0",
+    "revision": "d86bb8bedff51d25ac834ab7838f1cc61acb7a2c",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "citation_url": "https://aclanthology.org/2025.naacl-long.306/",
+    "text_redistribution": "review_required",
+    "notes": [
+      "Preserve source redactions; do not reconstruct Suicide Detection text for redistribution.",
+      "Do not attempt to identify individuals.",
+      "Intended for moderation and safety research; not ordinary dialogue-agent training.",
+      "No warranty that all personal information has been removed.",
+      "Attribution identifies the immediate dataset provider; individual original authors are not identified in these rows."
+    ],
+    "files": {
+      "test.json": {
+        "local_path": "data/raw/aegis/test.json",
+        "sha256": "b0a6d602260524866053cb34105194f074f2c2906e3691b68d43b9e6e9318f35"
+      },
+      "validation.json": {
+        "local_path": "data/raw/aegis/validation.json",
+        "sha256": "a97200e226ad4f6ba6a639982f817f675909bc74513859df3e8fc9a92951dfcd"
+      }
+    },
+    "verified_on": "2026-10-21",
+    "source_card_file": "notices/aegis-source-card.md",
+    "source_card_sha256": "da2598e587850bacc77c0658f56d0ea430f55d1cf70b197eb06070871802d3ba",
+    "source_card_url": "https://huggingface.co/datasets/nvidia/Aegis-AI-Content-Safety-Dataset-2.0/blob/d86bb8bedff51d25ac834ab7838f1cc61acb7a2c/README.md"
+  },
+  "xstest": {
+    "title": "XSTest: A Test Suite for Identifying Exaggerated Safety Behaviours in Large Language Models",
+    "creator": "Paul Röttger; Hannah Rose Kirk; Bertie Vidgen; Giuseppe Attanasio; Federico Bianchi; Dirk Hovy",
+    "url": "https://github.com/paul-rottger/xstest",
+    "revision": "d7bb5bd738c1fcbc36edd83d5e7d1b71a3e2d84d",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "citation_url": "https://aclanthology.org/2024.naacl-long.301/",
+    "text_redistribution": "review_required",
+    "notes": [
+      "CC BY covers the prompts; published model completions retain their separate provider licenses. No such completions are included.",
+      "Our task is prompt-harm classification, not the original generated-response evaluation."
+    ],
+    "files": {
+      "xstest_prompts.csv": {
+        "local_path": "data/raw/xstest_prompts.csv",
+        "sha256": "11783fb294ed017473ee53c207d71f2161c7672c8d0b037501e78387f801cb5a"
+      }
+    },
+    "verified_on": "2026-10-21",
+    "source_card_file": "notices/xstest-source-card.md",
+    "source_card_sha256": "51488f4032ba007b0345449e63293fccf5588cde1a967e3897107c6e08b532ce",
+    "source_card_url": "https://github.com/paul-rottger/xstest/blob/d7bb5bd738c1fcbc36edd83d5e7d1b71a3e2d84d/readme.md"
+  },
+  "wildguard": {
+    "title": "WildGuard: Open One-stop Moderation Tools for Safety Risks, Jailbreaks, and Refusals of LLMs",
+    "creator": "Seungju Han; Kavel Rao; Allyson Ettinger; Liwei Jiang; Bill Yuchen Lin; Nathan Lambert; Yejin Choi; Nouha Dziri (Ai2)",
+    "url": "https://huggingface.co/datasets/allenai/wildguardmix",
+    "revision": "d29c47f41c8b51348b5c8e8c81c039b3132b66d1",
+    "license": "ODC-By-1.0",
+    "license_url": "https://opendatacommons.org/licenses/by/1-0/",
+    "citation_url": "https://arxiv.org/abs/2406.18495",
+    "terms_url": "https://allenai.org/responsible-use",
+    "text_redistribution": "upstream_access_only",
+    "notes": [
+      "Access requires accepting Ai2 Responsible Use Guidelines.",
+      "ODC-BY governs database rights, not all rights in individual contents.",
+      "References only in this release; this is a release choice, not a finding that the license prohibits redistribution.",
+      "This release contains information from WildGuardMix, made available under the Open Data Commons Attribution License."
+    ],
+    "files": {
+      "test/wildguard_test.parquet": {
+        "local_path": "data/raw/wildguard/test/wildguard_test.parquet",
+        "sha256": "6ccc2909c1ae6d41424fac69f1fc32535b1de39cb8f80407d81e8bc64a0bebca"
+      }
+    },
+    "verified_on": "2026-10-21",
+    "source_card_file": "notices/wildguard-source-card.md",
+    "source_card_sha256": "4cdee2c6fa839a2802237826a09f594522a31b2c33afe691f46be5ee98d66512",
+    "source_card_url": "https://huggingface.co/datasets/allenai/wildguardmix/blob/d29c47f41c8b51348b5c8e8c81c039b3132b66d1/README.md"
+  },
+  "topic": {
+    "title": "CantTalkAboutThis: Aligning Language Models to Stay on Topic in Dialogues",
+    "creator": "Makesh Sreedhar; Traian Rebedea; Shaona Ghosh; Jiaqi Zeng; Christopher Parisien (NVIDIA)",
+    "url": "https://huggingface.co/datasets/nvidia/CantTalkAboutThis-Topic-Control-Dataset",
+    "revision": "b015ae8902d8429ce32ebfed9f9935f891d10ed5",
+    "license": "CC-BY-4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/",
+    "citation_url": "https://arxiv.org/abs/2404.03820",
+    "text_redistribution": "review_required",
+    "notes": [
+      "Topic-control labels are not harmfulness labels.",
+      "Derived histories stop at the intervention; synthetic and agent-reviewed references remain explicitly identified."
+    ],
+    "files": {
+      "canttalkaboutthis_topic_control_human_test_set.jsonl": {
+        "local_path": "data/raw/topic-following/canttalkaboutthis_topic_control_human_test_set.jsonl",
+        "sha256": "f224611b53982b8a8ced52b725246db1d52f99676df1d6bce907781275755fe3"
+      },
+      "canttalkaboutthis_topic_control_mixtral.jsonl": {
+        "local_path": "data/raw/topic-following/canttalkaboutthis_topic_control_mixtral.jsonl",
+        "sha256": "031adcb13e1b608609ec8a992085f8fc4d7d868d8aa5f2068f7d8c1f3ac53410"
+      }
+    },
+    "verified_on": "2026-10-21",
+    "source_card_file": "notices/topic-source-card.md",
+    "source_card_sha256": "56062a7d218e167f556bb1b7f09758dcfdda41ad14bfa7e3855002126b33a444",
+    "source_card_url": "https://huggingface.co/datasets/nvidia/CantTalkAboutThis-Topic-Control-Dataset/blob/b015ae8902d8429ce32ebfed9f9935f891d10ed5/README.md"
+  }
+}
